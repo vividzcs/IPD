@@ -1,0 +1,38 @@
+/*大伙儿都可以把后台老师相关的css写在这里*/
+
+.create-class-main-container {
+    width: 55%;
+    float: none;
+    margin: 10px auto;
+    padding-top: 90px;
+}
+
+.create-course-h2 {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.create-course-h4 {
+    font-size: large;
+    font-weight: bold;
+}
+.create-course-h5 {
+    font-size: small;
+    font-weight: bold;
+}
+
+.table-top-form {
+    /*margin-bottom: -30px;*/
+    margin-top: 18px;
+    margin-left: 10px;
+    padding-left: 35px;
+}
+
+.main-content textarea {
+    width: 85%;
+}
+
+.button-group {
+    float: right;
+    margin: 8px 2px;
+}
