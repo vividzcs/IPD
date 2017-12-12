@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="19e8c7bee8f2409cad92a4b631264f61" Name="Diagram1">
+        <EntityTypeShape EntityType="HaermsModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.Class" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.Course" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.CourseAttachment" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.CourseExperiment" Width="1.5" PointX="7.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.CourseHomework" Width="1.5" PointX="7.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.Department" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.Experiment" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.Homework" Width="1.5" PointX="10.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.Student" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.Teacher" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.Score" Width="1.5" PointX="13.5" PointY="10.875" IsExpanded="true" />
+        <AssociationConnector Association="HaermsModel.FK_Class_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_Course_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_Student_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_Course_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_CourseAttachment_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_CourseExperiment_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_CourseHomework_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_Score_Course" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_Student_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_Teacher_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_Experiment_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_Homework_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="HaermsModel.FK_Score_Student" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
