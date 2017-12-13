@@ -4,6 +4,7 @@ using Models;
 
 namespace DataAccessLayer.Impl
 {
+    /// <inheritdoc />
     /// <summary>
     /// TeacherServiceImpl 的摘要说明
     /// </summary>

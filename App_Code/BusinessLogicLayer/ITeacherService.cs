@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using System.Collections.Generic;
+using Models;
 
 namespace BusinessLogicLayer
 {
@@ -7,7 +8,7 @@ namespace BusinessLogicLayer
     /// </summary>
     public interface ITeacherService
     {
-        Teacher[] GetTeachers(int departmentId);
+        IEnumerable<Teacher> GetTeachers(int departmentId);
 
         Teacher[] GetTeachers(Department department);
     }

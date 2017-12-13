@@ -1,4 +1,5 @@
-﻿using DataAccessLayer;
+﻿using System.Collections.Generic;
+using DataAccessLayer;
 using DataAccessLayer.Impl;
 using Models;
 
@@ -10,7 +11,7 @@ namespace BusinessLogicLayer.Impl
     public class TeacherServiceImpl : ITeacherService
     {
         private readonly ITeacherDal _teacherDal = new TeacherDal();
-        public Teacher[] GetTeachers(int departmentId)
+        public IEnumerable<Teacher> GetTeachers(int departmentId)
         {
             return _teacherDal.SelectTeachersByDepartment(departmentId);
         }

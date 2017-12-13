@@ -1,15 +1,17 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Models;
 
 namespace DataAccessLayer.Impl
 {
+    /// <inheritdoc />
     /// <summary>
     /// DepartmentDal 的摘要说明
     /// </summary>
     public class DepartmentDal : IDepartmentDal
     {
  
-        public Department[] GetAllDepartments()
+        public IEnumerable<Department> SelectAllDepartments()
         {
             using (var context = new HaermsEntities())
             {

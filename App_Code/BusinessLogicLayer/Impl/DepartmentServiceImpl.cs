@@ -1,4 +1,5 @@
-﻿using DataAccessLayer;
+﻿using System.Collections.Generic;
+using DataAccessLayer;
 using DataAccessLayer.Impl;
 using Models;
 
@@ -11,9 +12,9 @@ namespace BusinessLogicLayer.Impl
     public class DepartmentServiceImpl : IDepartmentService
     {
         private readonly IDepartmentDal _departmentDal = new DepartmentDal();
-        public Department[] GetAllDepartments()
+        public IEnumerable<Department> GetAllDepartments()
         {
-            return _departmentDal.GetAllDepartments();
+            return _departmentDal.SelectAllDepartments();
         }
 
         public Department GetDepartment(int id)

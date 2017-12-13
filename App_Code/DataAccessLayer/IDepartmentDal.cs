@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using System.Collections.Generic;
+using Models;
 
 namespace DataAccessLayer
 {
@@ -7,7 +8,7 @@ namespace DataAccessLayer
     /// </summary>
     public interface IDepartmentDal
     {
-        Department[] GetAllDepartments();
+        IEnumerable<Department> SelectAllDepartments();
         Department SelectDepartmentById(int id);
     }
 }
