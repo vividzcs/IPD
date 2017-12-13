@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Models;
 
-namespace DataAccessLayer
+namespace DataAccessLayer.Interface
 {
     /// <summary>
     /// IDepartmentDal 的摘要说明

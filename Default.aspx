@@ -21,7 +21,7 @@
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
-            <asp:ObjectDataSource ID="allDepartment" runat="server" SelectMethod="GetAllDepartments"
+            <asp:ObjectDataSource ID="allDepartment" runat="server" SelectMethod="GetAll"
                                   TypeName="BusinessLogicLayer.Impl.DepartmentServiceImpl">
             </asp:ObjectDataSource>
         </div>

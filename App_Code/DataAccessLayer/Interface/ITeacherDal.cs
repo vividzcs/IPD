@@ -1,6 +1,6 @@
 ﻿using Models;
 
-namespace DataAccessLayer
+namespace DataAccessLayer.Interface
 {
     /// <summary>
     /// ITeacherDal 的摘要说明

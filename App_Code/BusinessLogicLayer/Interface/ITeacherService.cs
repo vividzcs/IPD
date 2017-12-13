@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Models;
 
-namespace BusinessLogicLayer
+namespace BusinessLogicLayer.Interface
 {
     /// <summary>
     /// ITeacherService 的摘要说明

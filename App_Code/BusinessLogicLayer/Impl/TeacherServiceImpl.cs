@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using BusinessLogicLayer.Interface;
 using DataAccessLayer;
 using DataAccessLayer.Impl;
+using DataAccessLayer.Interface;
 using Models;
 
 namespace BusinessLogicLayer.Impl
