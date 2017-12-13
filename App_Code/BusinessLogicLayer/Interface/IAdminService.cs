@@ -5,6 +5,7 @@ using Models;
  */
 namespace BusinessLogicLayer.Interface
 {
+    /// <inheritdoc />
     public interface IAdminService : IBusinessLogicLayerBase {
 
         /**

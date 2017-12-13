@@ -66,3 +66,8 @@ body {
     font-size: 10px;
     text-align: left;
 }
+
+.inconsistent-input {
+    margin: 0 50px;
+    color: red;
+}

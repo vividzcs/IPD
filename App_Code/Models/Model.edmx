@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HaermsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="HaermsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -122,6 +122,7 @@
           <Property Name="Grade" Type="int" Nullable="false" />
           <Property Name="ClassId" Type="int" Nullable="false" />
           <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="32" Nullable="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -365,8 +366,7 @@
             <End Role="Teacher" EntitySet="Teacher" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HaermsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -498,6 +498,7 @@
           <NavigationProperty Name="Experiment" Relationship="Self.FK_Experiment_Student" FromRole="Student" ToRole="Experiment" />
           <NavigationProperty Name="Homework" Relationship="Self.FK_Homework_Student" FromRole="Student" ToRole="Homework" />
           <NavigationProperty Name="Score" Relationship="Self.FK_Score_Student" FromRole="Student" ToRole="Score" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -862,6 +863,7 @@
           <EntitySetMapping Name="Student">
             <EntityTypeMapping TypeName="HaermsModel.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />

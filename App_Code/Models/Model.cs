@@ -233,6 +233,7 @@ namespace Models
         public int Grade { get; set; }
         public int ClassId { get; set; }
         public int DepartmentId { get; set; }
+        public string Password { get; set; }
     
         public virtual Class Class { get; set; }
         public virtual Department Department { get; set; }

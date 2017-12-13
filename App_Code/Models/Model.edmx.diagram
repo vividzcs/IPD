@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="HaermsModel.Course" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="HaermsModel.CourseAttachment" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HaermsModel.CourseExperiment" Width="1.5" PointX="7.5" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HaermsModel.CourseHomework" Width="1.5" PointX="7.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HaermsModel.CourseHomework" Width="1.75" PointX="7.5" PointY="16.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HaermsModel.Department" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HaermsModel.Experiment" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HaermsModel.Homework" Width="1.5" PointX="10.5" PointY="11.5" IsExpanded="true" />
