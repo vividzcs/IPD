@@ -13,5 +13,8 @@ namespace BusinessLogicLayer
         /// <returns>所有的院系组成的数组</returns>
         Department[] GetAllDepartments();
 
+        Department GetDepartment(int id);
+        Department GetDepartment(Department department);
+        
     }
 }

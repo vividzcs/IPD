@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer;
+using DataAccessLayer.Impl;
 using Models;
 
 namespace BusinessLogicLayer.Impl
@@ -13,6 +14,16 @@ namespace BusinessLogicLayer.Impl
         public Department[] GetAllDepartments()
         {
             return _departmentDal.GetAllDepartments();
+        }
+
+        public Department GetDepartment(int id)
+        {
+            return _departmentDal.SelectDepartmentById(id);
+        }
+
+        public Department GetDepartment(Department department)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

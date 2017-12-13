@@ -8,5 +8,6 @@ namespace DataAccessLayer
     public interface IDepartmentDal
     {
         Department[] GetAllDepartments();
+        Department SelectDepartmentById(int id);
     }
 }

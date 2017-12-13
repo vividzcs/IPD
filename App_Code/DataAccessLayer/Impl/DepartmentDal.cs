@@ -1,23 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using DataAccessLayer;
+﻿using System.Linq;
 using Models;
 
-/// <summary>
-/// DepartmentDal 的摘要说明
-/// </summary>
-public class DepartmentDal : IDepartmentDal
+namespace DataAccessLayer.Impl
 {
- 
-    public Department[] GetAllDepartments()
+    /// <summary>
+    /// DepartmentDal 的摘要说明
+    /// </summary>
+    public class DepartmentDal : IDepartmentDal
     {
-        using (var context = new HaermsEntities())
+ 
+        public Department[] GetAllDepartments()
         {
-            var departments = context.Department.ToArray();
-            return departments;
+            using (var context = new HaermsEntities())
+            {
+                var departments = context.Department.ToArray();
+                return departments;
+            }
+
         }
 
+        public Department SelectDepartmentById(int id)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var department = context.Department.Find(id);
+                return department;
+            }
+        }
     }
 }
