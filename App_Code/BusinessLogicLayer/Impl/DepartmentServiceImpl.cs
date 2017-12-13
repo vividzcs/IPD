@@ -46,5 +46,14 @@ namespace BusinessLogicLayer.Impl
             throw new System.NotImplementedException();
         }
 
+        public Department GetByChineseName(string chineseName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Department GetByEnglishName(string englishName)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
