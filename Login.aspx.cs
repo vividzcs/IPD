@@ -69,32 +69,34 @@ public partial class Login : System.Web.UI.Page
                 }
                 break;
             }
-            default:
-                if (Username.Value.Length == 10)
+            case 8:
+                //是老师在登录
+
+                //封装数据
+                var t = new Teacher()
                 {
-                    //是老师在登录
+                    Password = Password.Value,
+                    JobNumber = Username.Value
+                };
 
-                    //封装数据
-                    var t = new Teacher()
-                    {
-                        Password = Password.Value,
-                        JobNumber = Username.Value
-                    };
+                //调用业务逻辑
+                var teacher = new TeacherServiceImpl().Login(t);
 
-                    //调用业务逻辑
-                    var teacher = new TeacherServiceImpl().Login(t);
-
-                    //处理数据转发
-                    if (teacher != null)
-                    {
-                        Session["user"] = teacher;
-                        Response.Redirect("TeacherHome.aspx");
-                    }
-                    else
-                    {
-                        InconsistentTip.Visible = true;
-                    }
+                //处理数据转发
+                if (teacher != null)
+                {
+                    Session["user"] = teacher;
+                    Response.Redirect("TeacherHome.aspx");
                 }
+                else
+                {
+                    InconsistentTip.Visible = true;
+                }
+
+                break;
+            default:
+                InconsistentTip.Visible = true;
+                InconsistentTip.InnerText = "用户名长度不正确";
                 break;
         }
     }

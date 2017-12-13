@@ -14,12 +14,6 @@ li { list-style: none; }
 
 body { background-color: #ffffff; }
 
-.container {
-    width: 1200px;
-    margin: 0 auto;
-    min-width: 700px;
-}
-
 /* 顶部导航 */
 
 .top {

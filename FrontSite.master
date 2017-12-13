@@ -6,7 +6,7 @@
 <html>
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="/Content/index.css" rel="stylesheet"/>
+    <link href="~/Content/index.css" rel="stylesheet"/>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -16,7 +16,7 @@
         <div class="container">
             <div class="brand">
                 <a href="/Default.aspx">
-                    <img src="/images/logo.png">
+                    <img src="/Images/logo.png">
                 </a>
                 <h1>
                     <a href="/Default.aspx">作业与实验报告管理系统</a>
@@ -47,7 +47,7 @@
                            break;
                    }
                 %>
-                <%--                                    <a href="#">注销</a>--%>
+                <%--<a href="#">注销</a>--%>
                 <a href="#">修改密码</a>
             </div>
         </div>
