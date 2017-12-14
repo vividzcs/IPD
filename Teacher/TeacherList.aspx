@@ -17,7 +17,7 @@
                         </div>
                         <div class="teacherInfo">
                             <h2><%#Eval("Name") %></h2>
-                            <p><%#Eval("Introduction").ToString().Substring(0, Eval("Introduction").ToString().Length > 56 ? 56 : Eval("Introduction").ToString().Length)+"..." %></p>
+                            <p class="intro"><%#Eval("Introduction")%></p>
                         </div>
                         <p>
                             <a class="btn" href="TeacherDetail.aspx?tid=<%#Eval("TeacherId") %>">点击查看>></a>

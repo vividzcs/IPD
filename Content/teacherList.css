@@ -105,14 +105,19 @@ p {
     border: 1px solid #868e96;
     padding: 6px 12px;
     border-radius: .25rem;
-    text-align: center;
-    vertical-align: middle;
-    margin-left: 20px;
-    margin-right: 20px;
     transition: all .15s ease-in-out;
+    margin-left: 25%;
 }
 
 .btn:hover {
     background-color: #777777;
     border: 1px solid #777777;
+}
+
+.intro {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
