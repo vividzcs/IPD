@@ -100,6 +100,7 @@ namespace Models
         public string Name { get; set; }
         public string Path { get; set; }
         public int CourseId { get; set; }
+        public Nullable<System.DateTime> IssuedTime { get; set; }
     
         public virtual Course Course { get; set; }
     }

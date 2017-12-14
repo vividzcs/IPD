@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using BusinessLogicLayer.Impl;
 using Models;
 
 namespace Class
 {
-    public partial class Experiment : System.Web.UI.Page
+    public partial class Homework : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,10 +19,11 @@ namespace Class
                 return;
             }
 
-            var experiments = new ExperimentServiceImpl()
-                .Get(new Course(){CourseId = int.Parse(cidString)});
-            RepeaterCourseExperiments.DataSource = experiments;
-            RepeaterCourseExperiments.DataBind();
+            var homeworks = new HomeworkServiceImpl()
+                .Get(new Course() { CourseId = int.Parse(cidString) });
+            RepeaterCourseHomework.DataSource = homeworks;
+            RepeaterCourseHomework.DataBind();
+
         }
     }
 }

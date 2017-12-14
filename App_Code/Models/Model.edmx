@@ -50,6 +50,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Path" Type="nvarchar" MaxLength="100" />
           <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="IssuedTime" Type="datetime" />
         </EntityType>
         <EntityType Name="CourseExperiment">
           <Key>
@@ -57,10 +58,10 @@
           </Key>
           <Property Name="CourseExperimentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
-          <Property Name="Deadline" Type="date" />
+          <Property Name="Deadline" Type="datetime" />
           <Property Name="Purpose" Type="nvarchar" MaxLength="500" />
           <Property Name="Steps" Type="nvarchar(max)" />
-          <Property Name="References" Type="nvarchar" MaxLength="100" />
+          <Property Name="References" Type="nvarchar(max)" />
           <Property Name="CourseId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CourseHomework">
@@ -70,8 +71,8 @@
           <Property Name="CourseHomeworkId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IssuedTime" Type="datetime" Nullable="false" />
-          <Property Name="Deadline" Type="date" Nullable="false" />
-          <Property Name="Content" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Deadline" Type="datetime" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CourseId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Department">
@@ -133,7 +134,7 @@
           </Key>
           <Property Name="TeacherId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="JobNumber" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="JobNumber" Type="char" MaxLength="8" Nullable="false" />
           <Property Name="Password" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="DepartmentId" Type="int" Nullable="false" />
           <Property Name="Introduction" Type="nvarchar" MaxLength="300" />
@@ -428,6 +429,7 @@
           <Property Name="Path" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CourseId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="Self.FK_CourseAttachment_Course" FromRole="CourseAttachment" ToRole="Course" />
+          <Property Name="IssuedTime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="CourseExperiment">
           <Key>
@@ -435,10 +437,10 @@
           </Key>
           <Property Name="CourseExperimentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Deadline" Type="DateTime" Precision="0" />
+          <Property Name="Deadline" Type="DateTime" Precision="3" />
           <Property Name="Purpose" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Steps" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="References" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="References" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CourseId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="Self.FK_CourseExperiment_Course" FromRole="CourseExperiment" ToRole="Course" />
         </EntityType>
@@ -449,8 +451,8 @@
           <Property Name="CourseHomeworkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IssuedTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Content" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CourseId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="Self.FK_CourseHomework_Course" FromRole="CourseHomework" ToRole="Course" />
         </EntityType>
@@ -512,7 +514,7 @@
           </Key>
           <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="JobNumber" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="JobNumber" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="DepartmentId" Type="Int32" Nullable="false" />
           <Property Name="Introduction" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
@@ -804,6 +806,7 @@
           <EntitySetMapping Name="CourseAttachment">
             <EntityTypeMapping TypeName="HaermsModel.CourseAttachment">
               <MappingFragment StoreEntitySet="CourseAttachment">
+                <ScalarProperty Name="IssuedTime" ColumnName="IssuedTime" />
                 <ScalarProperty Name="AttachmentId" ColumnName="AttachmentId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Path" ColumnName="Path" />

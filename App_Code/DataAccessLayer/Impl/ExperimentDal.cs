@@ -17,7 +17,7 @@ namespace DataAccessLayer.Impl
         {
             using (var context = new HaermsEntities())
             {
-                var queryable = context.CourseExperiment.Where(ce => ce.CourseId == course.ClassId);
+                var queryable = context.CourseExperiment.Where(ce => ce.CourseId == course.CourseId);
                 return queryable.ToArray();
             }
         }

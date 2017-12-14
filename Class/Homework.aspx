@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="Experiment.aspx.cs" Inherits="Class.Experiment" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="Homework.aspx.cs" Inherits="Class.Homework" %>
 <%@ Import Namespace="Models" %>
 <%@ Import Namespace="BusinessLogicLayer.Impl" %>
 
@@ -27,52 +27,41 @@
                 <li class="list-class-item">
                     <a href="Attachment.aspx?cid=<%= cid %>">课件</a>
                 </li>
-                <li class="list-class-item selected-class-item">
+                <li class="list-class-item">
                     <a href="Experiment.aspx?cid=<%= cid %>">实验</a>
                 </li>
-                <li class="list-class-item">
+                <li class="list-class-item selected-class-item">
                     <a href="Homework.aspx?cid=<%= cid %>">作业</a>
                 </li>
             </ul>
         </nav>
         <div class="main-container">
             <div class="main-content card">
-                <h2>课程实验列表</h2>
+                <h2>课程作业列表</h2>
                 <hr>
                 <div class="experiments" onclick="expandOrCollapse(event)">
-                    <asp:Repeater runat="server" ID="RepeaterCourseExperiments">
+                    <asp:Repeater runat="server" ID="RepeaterCourseHomework">
                         <ItemTemplate>
-                            <div class="an-experiment">
+                            <div class="an-homework">
                                 <div class="title-box" id="title-box-<%# Container.ItemIndex%>">
                                     <img src="/Images/down_arrow.svg" id="img-<%# Container.ItemIndex%>">
                                     <span class="experiment-name" id="experiment-name-<%# Container.ItemIndex%>"><%#Eval("Name") %></span>
                                     <span class="experiment-deadline" id="experiment-deadline-<%# Container.ItemIndex%>">截止时间：<%#((DateTime) Eval("Deadline")).ToString("f") %></span>
-                                    <!-- 提交报告 -->
+                                    <!-- 提交作业 -->
                                     <span class="experiment-uploadhomework">
                                         <a href="javascript:;" class="experiment-homeworkfile btn">
-                                            <input type="file" name="" id="">点击这里上传报告(To Be Programmed)
+                                            <input type="file" name="" id="">点击这里上传作业(To Be Programmed)
                                         </a>
                                         </a>
-                                        <input type="submit" name="" value="提交报告(To Be Programmed)" class="btn experiment-upload">
+                                        <input type="submit" name="" value="提交作业(To Be Programmed)" class="btn experiment-upload">
                                     </span>
-                                    <!-- 提交报告-->
+                                    <!-- 提交作业-->
                                 </div>
-                                <div class="experiment-detail">
+                                <div class="homework-detail">
                                     <div class="experiment-purpose">
-                                        <h4>实验目的：</h4>
+                                        <h4>作业内容</h4>
                                         <hr>
-                                        <pre><%#Eval("Purpose") %></pre>
-                                    </div>
-                                    <div class="experiment-steps">
-                                        <h4>实验步骤：</h4>
-                                        <hr>
-                                        <pre><%#Eval("Steps") %></pre>
-
-                                    </div>
-                                    <div class="experiment-references">
-                                        <h4>参考资料：</h4>
-                                        <hr>
-                                        <pre><%#Eval("References") %></pre>
+                                        <pre><%#Eval("Content") %></pre>
                                     </div>
                                 </div>
                             </div>
@@ -84,27 +73,26 @@
     </div>
     <script>
         (function() {
-            var allExpDet = document.getElementsByClassName('experiment-detail');
-            for (var exp in allExpDet) {
-                if (allExpDet.hasOwnProperty(exp)) {
-                    allExpDet[exp].style.display = 'none';
+            var allHomework = document.getElementsByClassName('homework-detail');
+            for (var homeworkIndex in allHomework) {
+                if (allHomework.hasOwnProperty(homeworkIndex)) {
+                    allHomework[homeworkIndex].style.display = 'none';
                 }
             }
         })();
 
         function expandOrCollapse(event) {
-            var experiment = document.getElementsByClassName('experiment-detail')[
+            var homework = document.getElementsByClassName('homework-detail')[
                 parseInt(event.target.id.substr(event.target.id.lastIndexOf('-') + 1,
                     event.target.id.length))];
-            var flagEx = experiment.style.display === 'none';
-
-            experiment.style.display = flagEx ? 'block' : 'none';
+            var flagHw = homework.style.display === 'none';
+            homework.style.display = flagHw ? 'block' : 'none';
 
             var img = document.getElementById('img-' +
                 parseInt(event.target.id.substr(event.target.id.lastIndexOf('-') + 1,
                     event.target.id.length)));
             if (img !== null && img !== undefined) {
-                img.src = flagEx ? '/Images/up_arrow.svg' : '/Images/down_arrow.svg';
+                img.src = flagHw ? '/Images/up_arrow.svg' : '/Images/down_arrow.svg';
             }
         }
     </script>
