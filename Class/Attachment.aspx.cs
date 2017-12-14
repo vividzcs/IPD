@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
-public partial class Class_Attachment : System.Web.UI.Page
+namespace Class
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Attachment : System.Web.UI.Page
     {
-        //需要登录和cid才能访问到的页面
-        var session = Session["user"];
-        var cidString = Request.QueryString["cid"];
-        if (session == null || cidString.Length == 0)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("~/Login.aspx");
-            return;
+            //需要登录和cid才能访问到的页面
+            var session = Session["user"];
+            var cidString = Request.QueryString["cid"];
+            if (session == null || cidString.Length == 0)
+            {
+                Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
+                return;
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Class
             var cidString = Request.QueryString["cid"];
             if (session == null || cidString.Length == 0)
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
                 return;
             }
 

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogicLayer.Impl;
 using Models;
+using Utils;
 
 public partial class Login : System.Web.UI.Page
 {
@@ -50,7 +51,7 @@ public partial class Login : System.Web.UI.Page
                 //封装数据
                 var s = new Student()
                 {
-                    Password = Password.Value,
+                    Password = Md5Helper.Md5WithSalt(Password.Value),
                     StudentNumber = Username.Value
                 };
 
@@ -61,7 +62,15 @@ public partial class Login : System.Web.UI.Page
                 if (student != null)
                 {
                     Session["user"] = student;
-                    Response.Redirect("~/Student/Home.aspx");
+
+                    if (string.IsNullOrEmpty(Request.QueryString["pre"]))
+                    {
+                        Response.Redirect("/Default.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect(Server.UrlDecode(Request.QueryString["pre"]));
+                    }
                 }
                 else
                 {

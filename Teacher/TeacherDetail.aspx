@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <% if (Request.QueryString["tid"] == null)
        {
-           Response.Redirect("/Default.aspx");
+           Response.Redirect("/Teacher/TeacherList.aspx");
            return;
        } %>
     <% var teacher = (Teacher) (new TeacherServiceImpl().GetById(int.Parse(Request.QueryString["tid"]))); %>
@@ -16,7 +16,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <% if (Request.QueryString["tid"] == null)
        {
-           Response.Redirect("/Default.aspx");
+           Response.Redirect("/Teacher/TeacherList.aspx");
            return;
        } %>
     <% var teacher = (Teacher) (new TeacherServiceImpl().GetById(int.Parse(Request.QueryString["tid"]))); %>

@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="Home.aspx.cs" Inherits="Student.StudentHome" %>
-<%@ Import Namespace="Models" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <% Student student = (Student) Session["user"];
+    <% Models.Student student = (Models.Student) Session["user"];
        if (student == null)
        {
-           Response.Redirect("~/Login.aspx");
+           Server.Transfer("/Login.aspx");
            return;
        } %>
     <title><%= student.Name %> - 学生首页 - HAERMS</title>

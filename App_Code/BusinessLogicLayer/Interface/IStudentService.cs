@@ -17,7 +17,7 @@ namespace BusinessLogicLayer.Interface
      * @param student 
      * @return
      */
-        Student ModifyPassword(Student student);
+        int ModifyPassword(Student student);
 
     }
 }

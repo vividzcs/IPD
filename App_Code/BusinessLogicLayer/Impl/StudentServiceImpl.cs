@@ -49,8 +49,8 @@ public class StudentServiceImpl : IStudentService
         return _studentDal.SelectStudentByStudentNumberAndPassword(student);
     }
 
-    public Student ModifyPassword(Student student)
+    public int ModifyPassword(Student student)
     {
-        throw new NotImplementedException();
+        return _studentDal.UpdateStudent(student);
     }
 }

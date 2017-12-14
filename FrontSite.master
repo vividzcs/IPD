@@ -47,8 +47,8 @@
                            break;
                    }
                 %>
-                <%--<a href="#">注销</a>--%>
-                <a href="#">修改密码</a>
+                
+                <a href="/ChangPassword.aspx">修改密码</a>
             </div>
         </div>
     </div>

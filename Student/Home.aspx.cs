@@ -12,7 +12,7 @@ namespace Student
             var session = Session["user"];
             if (session == null)
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/Login.aspx?pre="+Server.UrlEncode(Request.Url.AbsoluteUri));
                 return;
             }
             var student = new Models.Student();

@@ -8,5 +8,7 @@ namespace DataAccessLayer.Interface
     public interface IStudentDal
     {
         Student SelectStudentByStudentNumberAndPassword(Student student);
+
+        int UpdateStudent(Student student);
     }
 }

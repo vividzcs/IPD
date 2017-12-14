@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="Attachment.aspx.cs" Inherits="Class_Attachment" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="Attachment.aspx.cs" Inherits="Class.Attachment" %>
 <%@ Import Namespace="Models" %>
 <%@ Import Namespace="BusinessLogicLayer.Impl" %>
 
