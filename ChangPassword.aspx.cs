@@ -32,7 +32,7 @@ public partial class ChangPassword : System.Web.UI.Page
                 if (s == 1)
                 {
                     Session.Remove("user");
-                    Response.Redirect("Login.aspx");
+                    Response.Redirect("/Login.aspx");
                 }
                 break;
         }
