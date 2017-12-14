@@ -28,26 +28,32 @@
                    { %>
                     <a href="/Login.aspx">登录</a>
                 <% }
-                   switch (u)
+                   else
                    {
-                       case Student student:
+                       switch (u)
+                       {
+                           case Student student:
                 %>
-                <a><%= student.Name %></a>
+                    <a href="/Student/Home.aspx"><%= student.Name %></a>
+                    <%
+                               break;
+                           case Teacher teacher:
+                    %>
+                    <a><%= teacher.Name %></a>
+                    <%
+                               break;
+                           case Admin admin:
+                    %>
+                    <a><%= admin.Name %></a>
+                    <%
+                               break;
+                       }
+                    %>
+                    <a href="/LogOff.aspx">注销</a>
                 <%
-                           break;
-                       case Teacher teacher:
-                %>
-                <a><%= teacher.Name %></a>
-                <%
-                           break;
-                       case Admin admin:
-                %>
-                <a><%= admin.Name %></a>
-                <%
-                           break;
                    }
                 %>
-                
+
                 <a href="/ChangPassword.aspx">修改密码</a>
             </div>
         </div>

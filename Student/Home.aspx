@@ -5,7 +5,7 @@
     <% Models.Student student = (Models.Student) Session["user"];
        if (student == null)
        {
-           Server.Transfer("/Login.aspx");
+           Response.Redirect("~/Login.aspx?pre="+Server.UrlEncode(Request.Url.AbsoluteUri));
            return;
        } %>
     <title><%= student.Name %> - 学生首页 - HAERMS</title>
