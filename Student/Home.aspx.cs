@@ -39,8 +39,6 @@ namespace Student
 
             SpanClass.InnerText = aClass.Name;
 
-            var courseService = new CourseServiceImpl();
-            courseService.GetById(aClass.ClassId);
 
             var courses = new CourseServiceImpl()
                 .Get(student, SchoolYearSelector.Value, SemesterSelector.Value);

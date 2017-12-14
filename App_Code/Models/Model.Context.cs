@@ -32,10 +32,10 @@ namespace Models
         public virtual DbSet<CourseExperiment> CourseExperiment { get; set; }
         public virtual DbSet<CourseHomework> CourseHomework { get; set; }
         public virtual DbSet<Department> Department { get; set; }
-        public virtual DbSet<Experiment> Experiment { get; set; }
-        public virtual DbSet<Homework> Homework { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Teacher> Teacher { get; set; }
+        public virtual DbSet<Experiment> Experiment { get; set; }
         public virtual DbSet<Score> Score { get; set; }
+        public virtual DbSet<Homework> Homework { get; set; }
     }
 }

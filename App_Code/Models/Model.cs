@@ -112,6 +112,12 @@ namespace Models
     
     public partial class CourseExperiment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CourseExperiment()
+        {
+            this.Experiment = new HashSet<Experiment>();
+        }
+    
         public int CourseExperimentId { get; set; }
         public string Name { get; set; }
         public Nullable<System.DateTime> Deadline { get; set; }
@@ -121,6 +127,8 @@ namespace Models
         public int CourseId { get; set; }
     
         public virtual Course Course { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Experiment> Experiment { get; set; }
     }
 }
 namespace Models
@@ -130,6 +138,12 @@ namespace Models
     
     public partial class CourseHomework
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CourseHomework()
+        {
+            this.Homework = new HashSet<Homework>();
+        }
+    
         public int CourseHomeworkId { get; set; }
         public string Name { get; set; }
         public System.DateTime IssuedTime { get; set; }
@@ -138,6 +152,8 @@ namespace Models
         public int CourseId { get; set; }
     
         public virtual Course Course { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Homework> Homework { get; set; }
     }
 }
 namespace Models
@@ -176,12 +192,14 @@ namespace Models
     
     public partial class Experiment
     {
-        public int CourseExperiment { get; set; }
+        public int ExperimentId { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }
         public int StudentId { get; set; }
         public Nullable<int> Mark { get; set; }
+        public int CourseExperimentId { get; set; }
     
+        public virtual CourseExperiment CourseExperiment { get; set; }
         public virtual Student Student { get; set; }
     }
 }
@@ -192,12 +210,14 @@ namespace Models
     
     public partial class Homework
     {
-        public int CourseHomeworkId { get; set; }
+        public int HomeworkId { get; set; }
         public string Name { get; set; }
         public string Path { get; set; }
         public int StudentId { get; set; }
         public Nullable<int> Mark { get; set; }
+        public int CourseHomeworkId { get; set; }
     
+        public virtual CourseHomework CourseHomework { get; set; }
         public virtual Student Student { get; set; }
     }
 }
@@ -211,6 +231,7 @@ namespace Models
         public int StudentId { get; set; }
         public int CourseId { get; set; }
         public Nullable<int> Mark { get; set; }
+        public int ScoreId { get; set; }
     
         public virtual Course Course { get; set; }
         public virtual Student Student { get; set; }
@@ -227,8 +248,8 @@ namespace Models
         public Student()
         {
             this.Experiment = new HashSet<Experiment>();
-            this.Homework = new HashSet<Homework>();
             this.Score = new HashSet<Score>();
+            this.Homework = new HashSet<Homework>();
         }
     
         public int StudentId { get; set; }
@@ -244,9 +265,9 @@ namespace Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Experiment> Experiment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Homework> Homework { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Score> Score { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Homework> Homework { get; set; }
     }
 }
 namespace Models

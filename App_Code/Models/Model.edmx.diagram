@@ -12,11 +12,8 @@
         <EntityTypeShape EntityType="HaermsModel.CourseExperiment" Width="1.5" PointX="7.5" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="HaermsModel.CourseHomework" Width="1.75" PointX="7.5" PointY="16.875" IsExpanded="true" />
         <EntityTypeShape EntityType="HaermsModel.Department" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HaermsModel.Experiment" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HaermsModel.Homework" Width="1.5" PointX="10.5" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HaermsModel.Student" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="HaermsModel.Teacher" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HaermsModel.Score" Width="1.5" PointX="13.5" PointY="10.875" IsExpanded="true" />
         <AssociationConnector Association="HaermsModel.FK_Class_Department" ManuallyRouted="false" />
         <AssociationConnector Association="HaermsModel.FK_Course_Class" ManuallyRouted="false" />
         <AssociationConnector Association="HaermsModel.FK_Student_Class" ManuallyRouted="false" />
@@ -24,12 +21,17 @@
         <AssociationConnector Association="HaermsModel.FK_CourseAttachment_Course" ManuallyRouted="false" />
         <AssociationConnector Association="HaermsModel.FK_CourseExperiment_Course" ManuallyRouted="false" />
         <AssociationConnector Association="HaermsModel.FK_CourseHomework_Course" ManuallyRouted="false" />
-        <AssociationConnector Association="HaermsModel.FK_Score_Course" ManuallyRouted="false" />
         <AssociationConnector Association="HaermsModel.FK_Student_Department" ManuallyRouted="false" />
         <AssociationConnector Association="HaermsModel.FK_Teacher_Department" ManuallyRouted="false" />
-        <AssociationConnector Association="HaermsModel.FK_Experiment_Student" ManuallyRouted="false" />
-        <AssociationConnector Association="HaermsModel.FK_Homework_Student" ManuallyRouted="false" />
-        <AssociationConnector Association="HaermsModel.FK_Score_Student" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HaermsModel.Experiment" Width="1.5" PointX="13.5" PointY="14.625" />
+        <AssociationConnector Association="HaermsModel.Experiment_CourseExperiment_CourseExperimentId_fk" />
+        <AssociationConnector Association="HaermsModel.FK_Experiment_Student" />
+        <EntityTypeShape EntityType="HaermsModel.Score" Width="1.5" PointX="10.5" PointY="8" />
+        <AssociationConnector Association="HaermsModel.FK_Score_Course" />
+        <AssociationConnector Association="HaermsModel.FK_Score_Student" />
+        <EntityTypeShape EntityType="HaermsModel.Homework" Width="1.5" PointX="10.5" PointY="13.25" />
+        <AssociationConnector Association="HaermsModel.Homework_CourseHomework_CourseHomeworkId_fk" />
+        <AssociationConnector Association="HaermsModel.FK_Homework_Student" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

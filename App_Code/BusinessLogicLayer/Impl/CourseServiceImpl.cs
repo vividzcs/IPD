@@ -49,7 +49,7 @@ namespace BusinessLogicLayer.Impl
 
         public IEnumerable<Course> GetByTeacherNotEndYet(Teacher whichTeacher)
         {
-            throw new System.NotImplementedException();
+            return courseDal.SelectNotEnded(whichTeacher);
         }
 
         public IEnumerable<Course> Get(Student student)

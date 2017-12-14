@@ -13,5 +13,7 @@ namespace DataAccessLayer.Interface
         IEnumerable<Course> Select(Class cClass);
 
         IEnumerable<Course> Select(Class cClass, string schoolYear, string semester);
+
+        IEnumerable<Course> SelectNotEnded(Teacher teacher);
     }
 }

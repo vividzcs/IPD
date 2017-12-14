@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="TeacherDetail.aspx.cs" Inherits="Teacher_TeacherDetail" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="TeacherDetail.aspx.cs" Inherits="Teacher.TeacherDetail" %>
 <%@ Import Namespace="BusinessLogicLayer.Impl" %>
 <%@ Import Namespace="Models" %>
 
@@ -8,7 +8,7 @@
            Response.Redirect("/Teacher/TeacherList.aspx");
            return;
        } %>
-    <% var teacher = (Teacher) (new TeacherServiceImpl().GetById(int.Parse(Request.QueryString["tid"]))); %>
+    <% var teacher = (Models.Teacher) (new TeacherServiceImpl().GetById(int.Parse(Request.QueryString["tid"]))); %>
     <title><%= teacher.Name %> - 教师首页 - HAERMS</title>
     <link href="../Content/index.css" rel="stylesheet" />
     <link href="../Content/teacher-detail.css" rel="stylesheet" />
@@ -19,7 +19,7 @@
            Response.Redirect("/Teacher/TeacherList.aspx");
            return;
        } %>
-    <% var teacher = (Teacher) (new TeacherServiceImpl().GetById(int.Parse(Request.QueryString["tid"]))); %>
+    <% var teacher = (Models.Teacher) (new TeacherServiceImpl().GetById(int.Parse(Request.QueryString["tid"]))); %>
     <div class="content">
         <div class="content-show">
             <img src="<%= teacher.HeadImage %>" />
@@ -29,7 +29,8 @@
                     <span class="tea-job-title"><%= teacher.Title %></span>
                 </li>
                 <li>工号: <%= teacher.JobNumber %></li>
-                <li>院系: to be programmed</li>
+                <% var department = (Department)(new DepartmentServiceImpl().GetById(teacher.DepartmentId)); %>
+                <li>院系: <%=department.ChinesaeName %></li>
                 <li>个人简介: <%= teacher.Introduction %></li>
             </ul>
         </div>
@@ -37,12 +38,13 @@
             <div class="hd">开课列表</div>
             <div class="bd">
                 <ul id="courses-list">
-                    <li>
-                        <a href="#">1. to be programmed</a>
-                    </li>
-                    <li>
-                        <a href="#">2.  to be programmed</a>
-                    </li>
+                    <asp:Repeater runat="server" ID="RepeaterCourseList">
+                        <ItemTemplate>
+                            <li>
+                                <a href="/Class/Intro.aspx?cid=<%#Eval("CourseId") %>"><%# Container.ItemIndex+1%>. <%#Eval("Name") %></a>
+                            </li>
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </ul>
             </div>
         </div>

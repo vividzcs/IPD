@@ -37,4 +37,14 @@ public class CourseDal : ICourseDal
             return queryable.ToList();
         }
     }
+
+    public IEnumerable<Course> SelectNotEnded(Teacher teacher)
+    {
+        using (var context = new HaermsEntities())
+        {
+            var queryable = context.Course.Where(c =>
+                c.TeacherId == teacher.TeacherId && DateTime.Compare(c.EndDate.Value, new DateTime()) > 0);
+            return queryable.ToArray();
+        }
+    }
 }
