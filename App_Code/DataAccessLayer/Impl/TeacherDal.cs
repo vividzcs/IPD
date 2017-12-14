@@ -19,5 +19,13 @@ namespace DataAccessLayer.Impl
                 return queryable.ToArray();
             }
         }
+
+        public Teacher SelectById(int id)
+        {
+            using (var context = new HaermsEntities())
+            {
+                return context.Teacher.Find(id);
+            }
+        }
     }
 }

@@ -36,8 +36,11 @@
           <Property Name="EndDate" Type="date" />
           <Property Name="TeacherId" Type="int" Nullable="false" />
           <Property Name="ClassId" Type="int" Nullable="false" />
-          <Property Name="SchoolYear" Type="int" />
-          <Property Name="Semester" Type="int" />
+          <Property Name="SchoolYear" Type="char" MaxLength="9" />
+          <Property Name="Semester" Type="char" MaxLength="1" />
+          <Property Name="IntroImage" Type="varchar" MaxLength="100" />
+          <Property Name="TheoryClassHour" Type="int" />
+          <Property Name="ExperimentClassHour" Type="int" />
         </EntityType>
         <EntityType Name="CourseAttachment">
           <Key>
@@ -404,14 +407,17 @@
           <Property Name="EndDate" Type="DateTime" Precision="0" />
           <Property Name="TeacherId" Type="Int32" Nullable="false" />
           <Property Name="ClassId" Type="Int32" Nullable="false" />
-          <Property Name="SchoolYear" Type="Int32" />
-          <Property Name="Semester" Type="Int32" />
+          <Property Name="SchoolYear" Type="String" FixedLength="true" MaxLength="9" Unicode="false" />
+          <Property Name="Semester" Type="String" FixedLength="true" MaxLength="1" Unicode="false" />
           <NavigationProperty Name="Class" Relationship="Self.FK_Course_Class" FromRole="Course" ToRole="Class" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK_Course_Teacher" FromRole="Course" ToRole="Teacher" />
           <NavigationProperty Name="CourseAttachment" Relationship="Self.FK_CourseAttachment_Course" FromRole="Course" ToRole="CourseAttachment" />
           <NavigationProperty Name="CourseExperiment" Relationship="Self.FK_CourseExperiment_Course" FromRole="Course" ToRole="CourseExperiment" />
           <NavigationProperty Name="CourseHomework" Relationship="Self.FK_CourseHomework_Course" FromRole="Course" ToRole="CourseHomework" />
           <NavigationProperty Name="Score" Relationship="Self.FK_Score_Course" FromRole="Course" ToRole="Score" />
+          <Property Name="IntroImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TheoryClassHour" Type="Int32" />
+          <Property Name="ExperimentClassHour" Type="Int32" />
         </EntityType>
         <EntityType Name="CourseAttachment">
           <Key>
@@ -779,6 +785,9 @@
           <EntitySetMapping Name="Course">
             <EntityTypeMapping TypeName="HaermsModel.Course">
               <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="ExperimentClassHour" ColumnName="ExperimentClassHour" />
+                <ScalarProperty Name="TheoryClassHour" ColumnName="TheoryClassHour" />
+                <ScalarProperty Name="IntroImage" ColumnName="IntroImage" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ShortIntroduction" ColumnName="ShortIntroduction" />

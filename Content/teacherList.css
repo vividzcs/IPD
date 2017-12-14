@@ -107,8 +107,8 @@ p {
     border-radius: .25rem;
     text-align: center;
     vertical-align: middle;
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
     transition: all .15s ease-in-out;
 }
 

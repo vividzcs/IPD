@@ -8,5 +8,7 @@ namespace DataAccessLayer.Interface
     public interface ITeacherDal
     {
         Teacher[] SelectTeachersByDepartment(int did);
+
+        Teacher SelectById(int id);
     }
 }

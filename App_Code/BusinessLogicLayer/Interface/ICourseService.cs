@@ -26,6 +26,8 @@ namespace BusinessLogicLayer.Interface
      */
         IEnumerable<Course> Get(Student student);
 
+        IEnumerable<Course> Get(Student student, string schoolYear, string semester);
+
         /**
      * @param whichCourse 
      * @param whichStudent 

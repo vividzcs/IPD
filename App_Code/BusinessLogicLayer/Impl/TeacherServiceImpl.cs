@@ -30,7 +30,7 @@ namespace BusinessLogicLayer.Impl
 
         public object GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return _teacherDal.SelectById(id);
         }
 
         public object Modify(object modifyWhich)

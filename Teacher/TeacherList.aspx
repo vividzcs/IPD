@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="TeacherList.aspx.cs" Inherits="TeacherList" %>
-<%@ PreviousPageType VirtualPath="Default.aspx" %>
+<%@ PreviousPageType VirtualPath="~/Default.aspx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>教师列表 - HAERMS</title>
-    <link rel="stylesheet" href="Content/teacherList.css"/>
+    <link rel="stylesheet" href="/Content/teacherList.css"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="content">
@@ -17,7 +17,7 @@
                         </div>
                         <div class="teacherInfo">
                             <h2><%#Eval("Name") %></h2>
-                            <p><%#Eval("Introduction").ToString().Substring(0, Eval("Introduction").ToString().Length > 36 ? 36 : Eval("Introduction").ToString().Length)+"..." %></p>
+                            <p><%#Eval("Introduction").ToString().Substring(0, Eval("Introduction").ToString().Length > 56 ? 56 : Eval("Introduction").ToString().Length)+"..." %></p>
                         </div>
                         <p>
                             <a class="btn" href="TeacherDetail.aspx?tid=<%#Eval("TeacherId") %>">点击查看>></a>

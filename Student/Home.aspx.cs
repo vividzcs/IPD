@@ -1,14 +1,54 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Diagnostics;
+using BusinessLogicLayer.Impl;
+using Models;
 
-public partial class StudentHome : System.Web.UI.Page
+namespace Student
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class StudentHome : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            var session = Session["user"];
+            if (session == null)
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+            var student = new Models.Student();
+            if (session is Models.Student s)
+            {
+                student = s;
+            }
+            else
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+            var departmentService = new DepartmentServiceImpl();
+            var did = student.DepartmentId;
+            var department = (Department) departmentService.GetById(did);
+
+            SpanStudentNumber.InnerText = student.StudentNumber;
+            SpanName.InnerText = student.Name;
+            SpanDepartment.InnerText = department.ChinesaeName;
+
+            var classService = new ClassServiceImpl();
+            var cid = student.ClassId;
+            var aClass = (Class) classService.GetById(cid);
+
+            SpanClass.InnerText = aClass.Name;
+
+            var courseService = new CourseServiceImpl();
+            courseService.GetById(aClass.ClassId);
+
+            var courses = new CourseServiceImpl()
+                .Get(student, SchoolYearSelector.Value, SemesterSelector.Value);
+            RepeaterCourseAndScore.DataSource = courses;
+            RepeaterCourseAndScore.DataBind();
+
+        
+        }
 
     }
 }

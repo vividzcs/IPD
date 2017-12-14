@@ -71,8 +71,11 @@ namespace Models
         public Nullable<System.DateTime> EndDate { get; set; }
         public int TeacherId { get; set; }
         public int ClassId { get; set; }
-        public Nullable<int> SchoolYear { get; set; }
-        public Nullable<int> Semester { get; set; }
+        public string SchoolYear { get; set; }
+        public string Semester { get; set; }
+        public string IntroImage { get; set; }
+        public Nullable<int> TheoryClassHour { get; set; }
+        public Nullable<int> ExperimentClassHour { get; set; }
     
         public virtual Class Class { get; set; }
         public virtual Teacher Teacher { get; set; }

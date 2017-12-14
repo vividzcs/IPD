@@ -11,7 +11,7 @@
                     <div class="block">
                         <div class="photo">
                             <img src=<%#Eval("Image") %> alt="x">
-                            <a href="TeacherList.aspx?did=<%#Eval("DepartmentId") %>">点击查看</a>
+                            <a href="/Teacher/TeacherList.aspx?did=<%#Eval("DepartmentId") %>">点击查看</a>
                         </div>
                         <div class="info">
                             <h2 class="title"><%#Eval("ChinesaeName") %></h2>

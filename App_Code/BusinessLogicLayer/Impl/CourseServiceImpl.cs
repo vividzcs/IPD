@@ -1,29 +1,25 @@
 ﻿using System.Collections.Generic;
 using BusinessLogicLayer.Interface;
-using DataAccessLayer;
-using DataAccessLayer.Impl;
 using DataAccessLayer.Interface;
 using Models;
 
 namespace BusinessLogicLayer.Impl
 {
-    /// <inheritdoc />
     /// <summary>
-    /// DepartmentServiceImpl 的摘要说明
+    /// CourseServiceImpl 的摘要说明
     /// </summary>
-    public class DepartmentServiceImpl : IDepartmentService
+    public class CourseServiceImpl : ICourseService
     {
-        private readonly IDepartmentDal _departmentDal = new DepartmentDal();
-
+        private ICourseDal courseDal = new CourseDal();
 
         public IEnumerable<object> GetAll()
         {
-            return _departmentDal.SelectAllDepartments();
+            throw new System.NotImplementedException();
         }
 
         public object GetById(int id)
         {
-            return _departmentDal.SelectDepartmentById(id);
+            return courseDal.SelectById(id);
         }
 
         public object Modify(object modifyWhich)
@@ -46,12 +42,27 @@ namespace BusinessLogicLayer.Impl
             throw new System.NotImplementedException();
         }
 
-        public Department GetByChineseName(string chineseName)
+        public IEnumerable<Course> GetByTeacher(Teacher whichTeacher)
         {
             throw new System.NotImplementedException();
         }
 
-        public Department GetByEnglishName(string englishName)
+        public IEnumerable<Course> GetByTeacherNotEndYet(Teacher whichTeacher)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<Course> Get(Student student)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<Course> Get(Student student, string schoolYear, string semester)
+        {
+            return courseDal.Select(new Class() {ClassId = student.ClassId}, schoolYear, semester);
+        }
+
+        public Course Get(Course whichCourse, Student whichStudent)
         {
             throw new System.NotImplementedException();
         }
