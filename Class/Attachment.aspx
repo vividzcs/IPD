@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <% var cid = int.Parse(Request.QueryString["cid"]); %>
     <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
-    <title><%= course.Name %> - 课件 - HAERMS</title>
+    <title><%= course.Name %> - 实验 - HAERMS</title>
     <link href="../Content/index.css" rel="stylesheet" />
     <link href="../Content/classes.css" rel="stylesheet" />
     <link href="../Content/form-controls.css" rel="stylesheet" />

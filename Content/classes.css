@@ -276,6 +276,22 @@ body {
     text-indent: 2em;
 }
 
+.experiment-steps pre,
+.experiment-references pre,
+.experiment-step pre,
+.homework-purpose pre,
+.experiment-purpose pre {
+    font-family: 'Î¢ÈíÑÅºÚ', 'serif';
+    padding: 10px;
+    font-size: 12px;
+    text-indent: 2em;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap; /*Mozilla,since1999*/ 
+    white-space: -pre-wrap; /*Opera4-6*/ 
+    white-space: -o-pre-wrap; /*Opera7*/ 
+    word-wrap: break-word; /*InternetExplorer5.5+*/ 
+}
+
 .experiment-references span a {
     font-size: 14px;
 }
