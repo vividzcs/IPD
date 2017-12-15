@@ -51,5 +51,10 @@ namespace BusinessLogicLayer.Impl
         {
             throw new System.NotImplementedException();
         }
+
+        public Experiment Get(Student student, CourseExperiment ce)
+        {
+            return _experimentDal.Select(student.StudentId, ce.CourseExperimentId);
+        }
     }
 }

@@ -21,5 +21,15 @@ namespace DataAccessLayer.Impl
                 return queryable.ToArray();
             }
         }
+
+        public Experiment Select(int studentStudentId, int ceCourseExperimentId)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var experiments = context.Experiment.Where(e =>
+                    e.StudentId == studentStudentId && e.CourseExperimentId == ceCourseExperimentId);
+                return experiments.First();
+            }
+        }
     }
 }

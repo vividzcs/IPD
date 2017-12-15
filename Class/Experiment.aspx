@@ -62,6 +62,12 @@
                                         <input type="submit" name="" value="提交报告(To Be Programmed)" class="btn experiment-upload">
                                     </span>
                                     <!-- 提交报告-->
+                                <% }
+                                    else
+                                    {
+                                        var exp = new ExperimentServiceImpl().Get((Student) Session["user"], courseExperiment);
+                                %>
+                                    <span class="mark">分数：<%= exp.Mark %></span>
                                 <% } %>
 
 

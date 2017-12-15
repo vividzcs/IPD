@@ -361,3 +361,8 @@ body {
 .experiment-operation a {
     color: white;
 }
+
+.mark {
+    margin-left: 20px;
+    color: #383838
+}

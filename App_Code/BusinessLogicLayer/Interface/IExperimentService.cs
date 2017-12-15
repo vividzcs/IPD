@@ -17,5 +17,13 @@ namespace BusinessLogicLayer.Interface
 
         int Submit(Course whichCourse, Student whichStudent, Experiment exp);
 
+        /// <summary>
+        /// 由学生（id）和课程实验（id）来获取该次实验报告对象
+        /// </summary>
+        /// <param name="student">学生</param>
+        /// <param name="ce">课程实验</param>
+        /// <returns>实验报告对象</returns>
+        Experiment Get(Student student, CourseExperiment ce);
+
     }
 }
