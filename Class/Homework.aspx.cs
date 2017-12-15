@@ -19,7 +19,7 @@ namespace Class
                 return;
             }
 
-            if (session != null) return;
+            if (session == null)
             Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
 
             //绑定作业列表数据
