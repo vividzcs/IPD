@@ -15,7 +15,7 @@ namespace Class
                 return;
             }
 
-            if (session != null) return;
+            if (session == null)
             Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
         }
     }
