@@ -43,7 +43,7 @@ public class CourseDal : ICourseDal
         using (var context = new HaermsEntities())
         {
             var queryable = context.Course.Where(c =>
-                c.TeacherId == teacher.TeacherId && DateTime.Compare(c.EndDate.Value, new DateTime()) > 0);
+                c.TeacherId == teacher.TeacherId && DateTime.Compare(c.EndDate.Value, DateTime.Now) > 0);
             return queryable.ToArray();
         }
     }

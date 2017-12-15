@@ -41,44 +41,52 @@
                 <h2>课程实验列表</h2>
                 <hr>
                 <div class="experiments" onclick="expandOrCollapse(event)">
-                    <asp:Repeater runat="server" ID="RepeaterCourseExperiments">
-                        <ItemTemplate>
-                            <div class="an-experiment">
-                                <div class="title-box" id="title-box-<%# Container.ItemIndex%>">
-                                    <img src="/Images/down_arrow.svg" id="img-<%# Container.ItemIndex%>">
-                                    <span class="experiment-name" id="experiment-name-<%# Container.ItemIndex%>"><%#Eval("Name") %></span>
-                                    <span class="experiment-deadline" id="experiment-deadline-<%# Container.ItemIndex%>">截止时间：<%#((DateTime) Eval("Deadline")).ToString("f") %></span>
+                    <% var experiments = new ExperimentServiceImpl()
+                           .Get(new Course() {CourseId = cid});
+                       var i = 0; %>
+                    <% foreach (var courseExperiment in experiments)
+                       { %>
+                        <div class="an-experiment">
+                            <div class="title-box" id="title-box-<%= i %>">
+                                <img src="/Images/down_arrow.svg" id="img-<%= i %>">
+                                <span class="experiment-name" id="experiment-name-<%= i %>"><%= courseExperiment.Name %></span>
+                                <span class="experiment-deadline" id="experiment-deadline-<%= i %>">截止时间：<%= courseExperiment.Deadline.Value.ToString("f") %></span>
+                                <%
+                                    if (DateTime.Compare(courseExperiment.Deadline.Value, DateTime.Now) > 0)
+                                    { %>
                                     <!-- 提交报告 -->
                                     <span class="experiment-uploadhomework">
                                         <a href="javascript:;" class="experiment-homeworkfile btn">
                                             <input type="file" name="" id="">点击这里上传报告(To Be Programmed)
                                         </a>
-                                        </a>
                                         <input type="submit" name="" value="提交报告(To Be Programmed)" class="btn experiment-upload">
                                     </span>
                                     <!-- 提交报告-->
-                                </div>
-                                <div class="experiment-detail">
-                                    <div class="experiment-purpose">
-                                        <h4>实验目的：</h4>
-                                        <hr>
-                                        <pre><%#Eval("Purpose") %></pre>
-                                    </div>
-                                    <div class="experiment-steps">
-                                        <h4>实验步骤：</h4>
-                                        <hr>
-                                        <pre><%#Eval("Steps") %></pre>
+                                <% } %>
 
-                                    </div>
-                                    <div class="experiment-references">
-                                        <h4>参考资料：</h4>
-                                        <hr>
-                                        <pre><%#Eval("References") %></pre>
-                                    </div>
+
+                            </div>
+                            <div class="experiment-detail">
+                                <div class="experiment-purpose">
+                                    <h4>实验目的：</h4>
+                                    <hr>
+                                    <pre><%= courseExperiment.Purpose %></pre>
+                                </div>
+                                <div class="experiment-steps">
+                                    <h4>实验步骤：</h4>
+                                    <hr>
+                                    <pre><%= courseExperiment.Steps %></pre>
+
+                                </div>
+                                <div class="experiment-references">
+                                    <h4>参考资料：</h4>
+                                    <hr>
+                                    <pre><%= courseExperiment.References %></pre>
                                 </div>
                             </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
+                        </div>
+                    <% i++;
+                       } %>
                 </div>
             </div>
         </div>

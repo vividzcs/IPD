@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
 using BusinessLogicLayer.Impl;
 using Models;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 namespace Class
 {
@@ -18,13 +21,7 @@ namespace Class
             }
 
             if (session == null)
-            Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
-
-            //绑定实验列表数据
-            var experiments = new ExperimentServiceImpl()
-                .Get(new Course(){CourseId = int.Parse(cidString)});
-            RepeaterCourseExperiments.DataSource = experiments;
-            RepeaterCourseExperiments.DataBind();
+                Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
         }
     }
 }

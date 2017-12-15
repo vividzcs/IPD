@@ -3,7 +3,7 @@
 <%@ Import Namespace="BusinessLogicLayer.Impl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<%--    通过调用业务逻辑CourseServiceImpl的GetById方法取得该课程的对象，给title赋值--%>
+    <%--    通过调用业务逻辑CourseServiceImpl的GetById方法取得该课程的对象，给title赋值--%>
     <% var cid = int.Parse(Request.QueryString["cid"]); %>
     <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
     <title><%= course.Name %> - 实验 - HAERMS</title>
@@ -38,27 +38,12 @@
         </nav>
         <div class="main-container">
             <div class="main-content card">
-                <div class="table-filter-group">
-                    <button class="float-left btn btn-primary filter-button" onclick="">批量下载(To Be Programmed)</button>
-                    <div class="input-group float-left filter-div">
-                        <label for="filter-context">过滤条件</label>
-                        <input type="text" id="filter-context">
-                    </div>
-                    <button onclick="" class="float-left btn btn-primary filter-button">搜索(To Be Programmed)</button>
-                </div>
+
+                <h2>课件列表</h2>
+                <hr/>
                 <table class="attachment-table clear" border="2">
                     <tr>
-                        <th class="">
-                            <div class="cell">
-                                <label for="" class="el_switch" id="el_switch">
-                                    <span class="switch_core" id="switch_core">
-                                        <span class="switch_button" id="switch_button">
-                                            <input type="checkbox" name="" id="checkbox-input">
-                                        </span>
-                                    </span>
-                                </label>
-                            </div>
-                        </th>
+                        <th>序号</th>
                         <th>课件名称</th>
                         <th>发布日期</th>
                         <th>操作</th>
@@ -68,7 +53,7 @@
                             <tr>
                                 <td>
                                     <div class="content-cell">
-                                        <span>1</span>
+                                        <span><%# Container.ItemIndex + 1 %></span>
                                     </div>
                                 </td>
                                 <td>
@@ -83,7 +68,9 @@
                                 </td>
                                 <td>
                                     <div class="content-cell">
-                                        <button class="btn btn-success"><a href="/Download.aspx?req=<%#Eval("Name") %>">下载</a></button>
+                                        <button class="btn btn-success">
+                                            <a href="/Download.aspx?req=<%#Eval("Name") %>">下载</a>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -99,18 +86,5 @@
         </div>
     </div>
     <script>
-        var i = 0;
-        var label = document.getElementById('el_switch');
-
-        function change() {
-            var flag = i % 2 === 0;
-            document.getElementById('switch_button').style.transform =
-                flag ? 'translate(2px, 2px)' : 'translate(26px, 2px)';
-            document.getElementById('switch_core').style.backgroundColor = flag ? '#bfcbd9' : '#20a0ff';
-            i++;
-        }
-
-        label.addEventListener('click', change, false);
-
     </script>
 </asp:Content>

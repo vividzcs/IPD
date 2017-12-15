@@ -201,6 +201,10 @@ body {
     background-color: transparent;
 }
 
+.attachment-table th {
+    padding: 10px;
+}
+
 .clear {
     clear: both;
 }
