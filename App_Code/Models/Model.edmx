@@ -63,6 +63,7 @@
           <Property Name="Steps" Type="nvarchar(max)" />
           <Property Name="References" Type="nvarchar(max)" />
           <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="IssuedTime" Type="datetime" />
         </EntityType>
         <EntityType Name="CourseHomework">
           <Key>
@@ -470,6 +471,7 @@
           <Property Name="CourseId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="Self.FK_CourseExperiment_Course" FromRole="CourseExperiment" ToRole="Course" />
           <NavigationProperty Name="Experiment" Relationship="HaermsModel.Experiment_CourseExperiment_CourseExperimentId_fk" FromRole="CourseExperiment" ToRole="Experiment" />
+          <Property Name="IssuedTime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="CourseHomework">
           <Key>
@@ -881,6 +883,7 @@
           <EntitySetMapping Name="CourseExperiment">
             <EntityTypeMapping TypeName="HaermsModel.CourseExperiment">
               <MappingFragment StoreEntitySet="CourseExperiment">
+                <ScalarProperty Name="IssuedTime" ColumnName="IssuedTime" />
                 <ScalarProperty Name="CourseExperimentId" ColumnName="CourseExperimentId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Deadline" ColumnName="Deadline" />

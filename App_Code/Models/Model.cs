@@ -125,6 +125,7 @@ namespace Models
         public string Steps { get; set; }
         public string References { get; set; }
         public int CourseId { get; set; }
+        public Nullable<System.DateTime> IssuedTime { get; set; }
     
         public virtual Course Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
