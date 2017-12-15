@@ -28,7 +28,18 @@ namespace DataAccessLayer.Impl
             {
                 var experiments = context.Experiment.Where(e =>
                     e.StudentId == studentStudentId && e.CourseExperimentId == ceCourseExperimentId);
-                return experiments.First();
+                return experiments.FirstOrDefault();
+            }
+        }
+
+        public int InsertExperiment(Experiment exp)
+        {
+            using (var context = new HaermsEntities())
+            {
+                context.Experiment.Add(exp);
+                context.SaveChanges();
+                return context.Experiment.First(h =>
+                           h.CourseExperimentId == exp.CourseExperimentId && h.StudentId == exp.StudentId) != null ? 1 : 0;
             }
         }
     }

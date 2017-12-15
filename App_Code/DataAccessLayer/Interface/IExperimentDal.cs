@@ -16,5 +16,6 @@ namespace DataAccessLayer.Interface
         IEnumerable<CourseExperiment> SelectByCourse(Course course);
 
         Experiment Select(int studentStudentId, int ceCourseExperimentId);
+        int InsertExperiment(Experiment exp);
     }
 }

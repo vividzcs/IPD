@@ -47,9 +47,11 @@ namespace BusinessLogicLayer.Impl
             return _experimentDal.SelectByCourse(whichCourse);
         }
 
-        public int Submit(Course whichCourse, Student whichStudent, Experiment exp)
+        public int Submit(CourseExperiment courseExperiment, Student whichStudent, Experiment exp)
         {
-            throw new System.NotImplementedException();
+            exp.CourseExperimentId = courseExperiment.CourseExperimentId;
+            exp.StudentId = whichStudent.StudentId;
+            return _experimentDal.InsertExperiment(exp);
         }
 
         public Experiment Get(Student student, CourseExperiment ce)

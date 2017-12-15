@@ -20,7 +20,9 @@ namespace BusinessLogicLayer.Interface
      * @param homework 
      * @return
      */
-        int Submit(Course whichCourse, Student whichStudent, Homework homework);
+        int Submit(CourseHomework whichCourseHomework, Student whichStudent, Homework homework);
+
+        Homework Get(Student student, CourseHomework sh);
 
     }
 }
