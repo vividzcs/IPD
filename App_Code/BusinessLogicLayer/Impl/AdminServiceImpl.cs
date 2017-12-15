@@ -10,12 +10,20 @@ using Models;
 /// </summary>
 public class AdminServiceImpl : IAdminService
 {
- 
+
+    /// <summary>
+    /// 请勿调用此方法！！！获取所有的管理员账户
+    /// </summary>
+    /// <returns>在任何情况下直接抛出异常NotImplementedException</returns>
     public IEnumerable<object> GetAll()
     {
         throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// 请勿调用此方法！！！获取所有的管理员账户
+    /// </summary>
+    /// <returns>在任何情况下直接抛出异常NotImplementedException</returns>
     public object GetById(int id)
     {
         throw new NotImplementedException();

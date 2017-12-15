@@ -10,14 +10,15 @@ using Utils;
 
 public partial class ChangPassword : System.Web.UI.Page
 {
+    /// <summary>
+    /// 所有用户的修改密码都在这里
+    /// </summary>
     protected void Page_Load(object sender, EventArgs e)
     {
+        //必须要登录了才能更改密码
         var session = Session["user"];
-        if (session == null)
-        {
-            Response.Redirect("~/Login.aspx");
-            return;
-        }
+        if (session != null) return;
+        Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
     }
 
     protected void ChangePasswordAction(object sender, EventArgs e)
@@ -31,6 +32,7 @@ public partial class ChangPassword : System.Web.UI.Page
                 var s = new StudentServiceImpl().ModifyPassword(student);
                 if (s == 1)
                 {
+                    //改密成功，清除session，要求重新登录
                     Session.Remove("user");
                     Response.Redirect("/Login.aspx");
                 }

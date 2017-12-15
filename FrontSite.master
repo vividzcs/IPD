@@ -26,7 +26,9 @@
                 <% var u = Session["user"];
                    if (u == null)
                    { %>
-                    <a href="/Login.aspx">登录</a>
+                    <% var previousPageUrl =  Server.UrlEncode(Request.Url.AbsoluteUri); %>
+<%--                在哪里点的登录，登录玩就返回到哪里！--%>
+                    <a href="/Login.aspx?pre=<%=previousPageUrl %>">登录</a>
                 <% }
                    else
                    {

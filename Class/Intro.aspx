@@ -3,6 +3,7 @@
 <%@ Import Namespace="Models" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <%--    通过调用业务逻辑CourseServiceImpl的GetById方法取得该课程的对象，给title赋值--%>
     <% var cid = int.Parse(Request.QueryString["cid"]); %>
     <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
     <title><%= course.Name %> - 课程首页 - HAERMS</title>

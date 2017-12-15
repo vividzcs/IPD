@@ -5,12 +5,13 @@ using Models;
 
 namespace BusinessLogicLayer.Impl
 {
+    /// <inheritdoc />
     /// <summary>
     /// CourseServiceImpl 的摘要说明
     /// </summary>
     public class CourseServiceImpl : ICourseService
     {
-        private ICourseDal courseDal = new CourseDal();
+        private readonly ICourseDal _courseDal = new CourseDal();
 
         public IEnumerable<object> GetAll()
         {
@@ -19,7 +20,7 @@ namespace BusinessLogicLayer.Impl
 
         public object GetById(int id)
         {
-            return courseDal.SelectById(id);
+            return _courseDal.SelectById(id);
         }
 
         public object Modify(object modifyWhich)
@@ -49,7 +50,7 @@ namespace BusinessLogicLayer.Impl
 
         public IEnumerable<Course> GetByTeacherNotEndYet(Teacher whichTeacher)
         {
-            return courseDal.SelectNotEnded(whichTeacher);
+            return _courseDal.SelectNotEnded(whichTeacher);
         }
 
         public IEnumerable<Course> Get(Student student)
@@ -59,7 +60,7 @@ namespace BusinessLogicLayer.Impl
 
         public IEnumerable<Course> Get(Student student, string schoolYear, string semester)
         {
-            return courseDal.Select(new Class() {ClassId = student.ClassId}, schoolYear, semester);
+            return _courseDal.Select(new Class() {ClassId = student.ClassId}, schoolYear, semester);
         }
 
         public Course Get(Course whichCourse, Student whichStudent)

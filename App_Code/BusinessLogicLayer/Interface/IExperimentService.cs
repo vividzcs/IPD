@@ -8,18 +8,13 @@ namespace BusinessLogicLayer.Interface
 {
     public interface IExperimentService : IBusinessLogicLayerBase {
 
-        /**
-     * @param whichCourse 
-     * @return
-     */
+        /// <summary>
+        /// 通过课程id获取课程实验情况
+        /// </summary>
+        /// <param name="whichCourse"></param>
+        /// <returns></returns>
         IEnumerable<CourseExperiment> Get(Course whichCourse);
 
-        /**
-     * @param whichCourse 
-     * @param whichStudent 
-     * @param exp 
-     * @return
-     */
         int Submit(Course whichCourse, Student whichStudent, Experiment exp);
 
     }

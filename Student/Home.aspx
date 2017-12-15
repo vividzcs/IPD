@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <% Models.Student student = (Models.Student) Session["user"];
+    <% var student = (Models.Student) Session["user"];
        if (student == null)
        {
            Response.Redirect("~/Login.aspx?pre="+Server.UrlEncode(Request.Url.AbsoluteUri));

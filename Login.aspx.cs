@@ -8,6 +8,9 @@ using BusinessLogicLayer.Impl;
 using Models;
 using Utils;
 
+/// <summary>
+/// 所有用户包括学生，管理员和教师的登录都在这里处理
+/// </summary>
 public partial class Login : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -25,7 +28,7 @@ public partial class Login : System.Web.UI.Page
                 //封装数据
                 var a = new Admin()
                 {
-                    Password = Password.Value,
+                    Password = Md5Helper.Md5WithSalt(Password.Value),
                     JobNumber = Username.Value
                 };
 
@@ -36,7 +39,14 @@ public partial class Login : System.Web.UI.Page
                 if (admin != null)
                 {
                     Session["user"] = admin;
-                    Response.Redirect("AdminHome.aspx");
+                    if (string.IsNullOrEmpty(Request.QueryString["pre"]))
+                    {
+                        Response.Redirect("/Default.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect(Server.UrlDecode(Request.QueryString["pre"]));
+                    }
                 }
                 else
                 {
@@ -65,7 +75,7 @@ public partial class Login : System.Web.UI.Page
 
                     if (string.IsNullOrEmpty(Request.QueryString["pre"]))
                     {
-                        Response.Redirect("/Default.aspx");
+                        Response.Redirect("/Student/Home.aspx");
                     }
                     else
                     {
@@ -84,7 +94,7 @@ public partial class Login : System.Web.UI.Page
                 //封装数据
                 var t = new Teacher()
                 {
-                    Password = Password.Value,
+                    Password = Md5Helper.Md5WithSalt(Password.Value),
                     JobNumber = Username.Value
                 };
 
@@ -95,7 +105,14 @@ public partial class Login : System.Web.UI.Page
                 if (teacher != null)
                 {
                     Session["user"] = teacher;
-                    Response.Redirect("TeacherHome.aspx");
+                    if (string.IsNullOrEmpty(Request.QueryString["pre"]))
+                    {
+                        Response.Redirect("TeacherHome.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect(Server.UrlDecode(Request.QueryString["pre"]));
+                    }
                 }
                 else
                 {
