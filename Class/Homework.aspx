@@ -83,7 +83,7 @@
                                         else
                                         {
                                     %>
-                                        <span class="more-info">分数：<%= homew.Mark %></span>
+                                        <span class="more-info">分数：<%= homew.Mark==null ? "老师尚未评分" : homew.Mark.ToString() %></span>
                                 <%
                                         }
                                     }

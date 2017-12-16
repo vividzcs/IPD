@@ -81,7 +81,7 @@
                                         else
                                         {
                                     %>
-                                        <span class="more-info">分数：<%= exp.Mark %></span>
+                                        <span class="more-info">分数：<%= exp.Mark==null ? "老师尚未评分" : exp.Mark.ToString() %></span>
                                 <%
                                         }
                                     }
