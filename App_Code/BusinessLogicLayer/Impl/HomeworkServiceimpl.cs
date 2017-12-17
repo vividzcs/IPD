@@ -47,9 +47,16 @@ namespace BusinessLogicLayer.Impl
             return _homeworkDal.SelectByCourse(whichCourse);
         }
 
-        public int Submit(Course whichCourse, Student whichStudent, Homework homework)
+        public int Submit(CourseHomework whichCourseHomework, Student whichStudent, Homework homework)
         {
-            throw new System.NotImplementedException();
+            homework.CourseHomeworkId = whichCourseHomework.CourseHomeworkId;
+            homework.StudentId = whichStudent.StudentId;
+            return _homeworkDal.InsertHomework(homework);
+        }
+
+        public Homework Get(Student student, CourseHomework sh)
+        {
+            return _homeworkDal.SelectByStudentAndCourseHomework(student, sh);
         }
     }
 }

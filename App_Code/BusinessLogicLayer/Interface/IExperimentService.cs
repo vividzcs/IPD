@@ -15,7 +15,7 @@ namespace BusinessLogicLayer.Interface
         /// <returns></returns>
         IEnumerable<CourseExperiment> Get(Course whichCourse);
 
-        int Submit(Course whichCourse, Student whichStudent, Experiment exp);
+        int Submit(CourseExperiment courseExperiment, Student whichStudent, Experiment exp);
 
         /// <summary>
         /// 由学生（id）和课程实验（id）来获取该次实验报告对象

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="Homework.aspx.cs" Inherits="Class.Homework" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="Homework.aspx.cs" Inherits="Class.Class_Homework" %>
 <%@ Import Namespace="Models" %>
 <%@ Import Namespace="BusinessLogicLayer.Impl" %>
 
@@ -41,33 +41,64 @@
                 <h2>课程作业列表</h2>
                 <hr>
                 <div class="experiments" onclick="expandOrCollapse(event)">
-                    <asp:Repeater runat="server" ID="RepeaterCourseHomework">
-                        <ItemTemplate>
-                            <div class="an-homework">
-                                <div class="title-box" id="title-box-<%# Container.ItemIndex%>">
-                                    <img src="/Images/down_arrow.svg" id="img-<%# Container.ItemIndex%>">
-                                    <span class="experiment-name" id="experiment-name-<%# Container.ItemIndex%>"><%#Eval("Name") %></span>
-                                    <span class="experiment-deadline" id="experiment-deadline-<%# Container.ItemIndex%>">截止时间：<%#((DateTime) Eval("Deadline")).ToString("f") %></span>
-                                    <!-- 提交作业 -->
-                                    <span class="experiment-uploadhomework">
-                                        <a href="javascript:;" class="experiment-homeworkfile btn">
-                                            <input type="file" name="" id="">点击这里上传作业(To Be Programmed)
-                                        </a>
-                                        </a>
-                                        <input type="submit" name="" value="提交作业(To Be Programmed)" class="btn experiment-upload">
-                                    </span>
-                                    <!-- 提交作业-->
-                                </div>
-                                <div class="homework-detail">
-                                    <div class="experiment-purpose">
-                                        <h4>作业内容</h4>
-                                        <hr>
-                                        <pre><%#Eval("Content") %></pre>
-                                    </div>
+                    <% var homeworks = new HomeworkServiceImpl()
+                           .Get(new Course() {CourseId = cid});
+                       var i = 0; %>
+                    <% foreach (var homework in homeworks)
+                       { %>
+                        <div class="an-homework">
+                            <div class="title-box" id="title-box-<%= i %>">
+                                <img src="/Images/down_arrow.svg" id="img-<%= i %>">
+                                <span class="experiment-name" id="experiment-name-<%= i %>"><%= homework.Name %></span>
+                                <span class="experiment-deadline" id="experiment-deadline-<%= i %>">截止时间：<%= homework.Deadline.ToString("f") %></span>
+                                <%
+                                    var homew = new HomeworkServiceImpl().Get((Student) Session["user"], homework);
+                                    if (DateTime.Compare(homework.Deadline, DateTime.Now) > 0)
+                                    {
+                                        if (homew != null)
+                                        { %>
+                                        <span class="more-info">作业已经提交</span>
+                                    <% }
+                                        else
+                                        {
+                                            Session["ThatCourseHomework"] = homework;
+                                    %>
+                                        <!-- 提交作业 -->
+                                        <form class="experiment-uploadhomework" runat="server">
+                                            <asp:FileUpload runat="server" class="btn btn-info" ID="FileUploader" accept="application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel,application/pdf,application/rtf,application/x-zip-compressed"/>
+                                            <asp:Button runat="server" Text="点击上传" CssClass="btn btn-primary" OnClick="FileUpload"/>
+                                        </form>
+                                        <!-- 提交作业-->
+                                <%
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (homew == null)
+                                        {
+                                %>
+                                        <span class="more-info">你错过了时间</span>
+                                    <%
+                                        }
+                                        else
+                                        {
+                                    %>
+                                        <span class="more-info">分数：<%= homew.Mark==null ? "老师尚未评分" : homew.Mark.ToString() %></span>
+                                <%
+                                        }
+                                    }
+                                %>
+                            </div>
+                            <div class="homework-detail">
+                                <div class="experiment-purpose">
+                                    <h4>作业内容</h4>
+                                    <hr>
+                                    <pre><%= homework.Content %></pre>
                                 </div>
                             </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
+                        </div>
+                    <% i++;
+                       } %>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="Experiment.aspx.cs" Inherits="Class.Experiment" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="Experiment.aspx.cs" Inherits="Class.Class_Experiment" %>
 <%@ Import Namespace="Models" %>
 <%@ Import Namespace="BusinessLogicLayer.Impl" %>
 
@@ -50,25 +50,42 @@
                             <div class="title-box" id="title-box-<%= i %>">
                                 <img src="/Images/down_arrow.svg" id="img-<%= i %>">
                                 <span class="experiment-name" id="experiment-name-<%= i %>"><%= courseExperiment.Name %></span>
-                                <span class="experiment-deadline" id="experiment-deadline-<%= i %>">截止时间：<%= courseExperiment.Deadline.Value.ToString("f") %></span>
+                                <span class="experiment-deadline" id="experiment-deadline-<%= i %>">截止时间：<%= courseExperiment.Deadline.GetValueOrDefault().ToString("f") %></span>
                                 <%
-                                    if (DateTime.Compare(courseExperiment.Deadline.Value, DateTime.Now) > 0)
-                                    { %>
-                                    <!-- 提交报告 -->
-                                    <span class="experiment-uploadhomework">
-                                        <a href="javascript:;" class="experiment-homeworkfile btn">
-                                            <input type="file" name="" id="">点击这里上传报告(To Be Programmed)
-                                        </a>
-                                        <input type="submit" name="" value="提交报告(To Be Programmed)" class="btn experiment-upload">
-                                    </span>
-                                    <!-- 提交报告-->
-                                <% }
+                                    var exp = new ExperimentServiceImpl().Get((Student) Session["user"], courseExperiment);
+                                    if (DateTime.Compare(courseExperiment.Deadline.GetValueOrDefault(), DateTime.Now) > 0)
+                                    {
+                                        if (exp != null)
+                                        { %>
+                                        <span class="more-info">实验报告已经提交</span>
+                                    <% }
+                                        else
+                                        {
+                                            Session["ThatCourseExperiment"] = courseExperiment;
+                                    %>
+                                        <!-- 提交实验报告 -->
+                                        <form class="experiment-uploadhomework" runat="server">
+                                            <asp:FileUpload runat="server" class="btn btn-info" ID="ExperimentUploader" accept="application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel,application/pdf,application/rtf,application/x-zip-compressed"/>
+                                            <asp:Button runat="server" Text="点击上传" CssClass="btn btn-primary" OnClick="FileUpload"/>
+                                        </form>
+                                        <!-- 提交作业-->
+                                <%
+                                        }
+                                    }
                                     else
                                     {
-                                        var exp = new ExperimentServiceImpl().Get((Student) Session["user"], courseExperiment);
+                                        if (exp == null)
+                                        { %>
+                                        <span class="more-info">你错过了时间</span>
+                                    <% }
+                                        else
+                                        {
+                                    %>
+                                        <span class="more-info">分数：<%= exp.Mark==null ? "老师尚未评分" : exp.Mark.ToString() %></span>
+                                <%
+                                        }
+                                    }
                                 %>
-                                    <span class="mark">分数：<%= exp.Mark %></span>
-                                <% } %>
 
 
                             </div>

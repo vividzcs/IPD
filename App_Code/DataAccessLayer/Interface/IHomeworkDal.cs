@@ -14,5 +14,8 @@ namespace DataAccessLayer.Interface
         /// <param name="course">封装了课程id的课程对象</param>
         /// <returns>课程作业对象的枚举器</returns>
         IEnumerable<CourseHomework> SelectByCourse(Course course);
+
+        Homework SelectByStudentAndCourseHomework(Student student, CourseHomework sh);
+        int InsertHomework(Homework homework);
     }
 }
