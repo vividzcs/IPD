@@ -107,7 +107,7 @@ public partial class Login : System.Web.UI.Page
                     Session["user"] = teacher;
                     if (string.IsNullOrEmpty(Request.QueryString["pre"]))
                     {
-                        Response.Redirect("TeacherHome.aspx");
+                        Response.Redirect("/Admin/Teacher/CourseList.aspx");
                     }
                     else
                     {
