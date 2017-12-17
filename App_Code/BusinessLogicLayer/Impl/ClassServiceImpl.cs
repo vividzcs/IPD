@@ -14,7 +14,7 @@ public class ClassServiceImpl : IClassService
     private readonly IClassDal _classDal = new ClassDal();
     public IEnumerable<object> GetAll()
     {
-        throw new NotImplementedException();
+        return _classDal.SelectClassAll();
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public class ClassServiceImpl : IClassService
         throw new NotImplementedException();
     }
 
-    public object Create(object createWhich)
+    public int Create(object createWhich)
     {
         throw new NotImplementedException();
     }

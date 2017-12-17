@@ -47,4 +47,26 @@ public class CourseDal : ICourseDal
             return queryable.ToArray();
         }
     }
+
+    public int Create(object course)
+    {
+        using (var context = new HaermsEntities())
+        {
+            Course c = context.Course.Add((Course) course);
+            context.SaveChanges();
+            return c.CourseId;
+        }
+    }
+
+    public object Update(Course course)
+    {
+        using (var context = new HaermsEntities())
+        {
+            var c = context.Course.Where(t=>t.CourseId == course.CourseId);
+            var cl = c.First();
+            cl.Description = course.Description;
+            context.SaveChanges();
+            return cl;
+        }
+    }
 }

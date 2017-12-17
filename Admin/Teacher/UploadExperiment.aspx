@@ -2,11 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>创建课程 - 上传实验 - HAERMS</title>
-    <link href="../Content/index.css" rel="stylesheet"/>
-    <link href="../Content/classes.css" rel="stylesheet"/>
-    <link href="../Content/teacher-style.css" rel="stylesheet"/>
-    <link href="../Content/form-controls.css" rel="stylesheet"/>
-    <link href="../Content/progressbar.css" rel="stylesheet"/>
+    <link href="../../Content/index.css" rel="stylesheet"/>
+    <link href="../../Content/classes.css" rel="stylesheet"/>
+    <link href="../../Content/teacher-style.css" rel="stylesheet"/>
+    <link href="../../Content/form-controls.css" rel="stylesheet"/>
+    <link href="../../Content/progressbar.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="progressbar-container progressbar-margin-top">
@@ -30,7 +30,7 @@
             <div class="experiments" id="experiment-container" onclick="expandOrCollapseExp(event)">
                 <div class="an-experiment">
                     <div class="title-box" id="title-box-ex-0">
-                        <img src="../../style/images/down_arrow.svg" id="img-ex-0">
+                        <img src="../../Images/down_arrow.svg" id="img-ex-0">
                         <span class="experiment-name" id="experiment-name-ex-0">
                             <input title="实验名称" placeholder="实验名称" class="create-course-h4 input-style">
                         </span>
@@ -92,7 +92,7 @@
                 parseInt(event.target.id.substr(event.target.id.lastIndexOf('-') + 1,
                     event.target.id.length)));
             if (img !== null) {
-                img.src = flagEx ? '../../style/images/up_arrow.svg' : '../../style/images/down_arrow.svg';
+                img.src = flagEx ? '../../Images/up_arrow.svg' : '../../Images/down_arrow.svg';
             }
         }
 
@@ -105,7 +105,7 @@
             div.innerHTML = "<div class=\"title-box\" id=\"title-box-ex-" +
                 experimentCounter +
                 "\">\n" +
-                "                    <img src=\"../../style/images/down_arrow.svg\" id=\"img-ex-" +
+                "                    <img src=\"../../Images/down_arrow.svg\" id=\"img-ex-" +
                 experimentCounter +
                 "\">\n" +
                 "                    <span class=\"experiment-name\" id=\"experiment-name-ex-" +

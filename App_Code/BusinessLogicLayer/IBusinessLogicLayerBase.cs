@@ -18,7 +18,7 @@ namespace BusinessLogicLayer
 
         object Modify(object modifyWhich);
 
-        object Create(object createWhich);
+       int Create(object createWhich);
 
         int Delete(int id);
 

@@ -23,14 +23,14 @@ namespace BusinessLogicLayer.Impl
             return _courseDal.SelectById(id);
         }
 
-        public object Modify(object modifyWhich)
+        public object Modify(object course)
         {
-            throw new System.NotImplementedException();
+            return _courseDal.Update((Course)course);
         }
 
-        public object Create(object createWhich)
+        public int Create(object course)
         {
-            throw new System.NotImplementedException();
+            return _courseDal.Create(course);
         }
 
         public int Delete(int id)

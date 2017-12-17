@@ -37,5 +37,14 @@ namespace DataAccessLayer.Interface
         /// <param name="teacher">哪个老师？（ｉｄ需有效）</param>
         /// <returns></returns>
         IEnumerable<Course> SelectNotEnded(Teacher teacher);
+
+        /// <summary>
+        /// 添加一门课程
+        /// </summary>
+        /// <param name="Course">已经把课程包装成对象</param>
+        /// <returns>返回创建的课程的ID</returns>
+        int Create(object course);
+
+        object Update(Course course);
     }
 }

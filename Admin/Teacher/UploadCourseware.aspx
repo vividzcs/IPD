@@ -2,11 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>创建课程 - 上传课件 - HAERMS</title>
-    <link href="../Content/index.css" rel="stylesheet" />
-    <link href="../Content/classes.css" rel="stylesheet" />
-    <link href="../Content/teacher-style.css" rel="stylesheet" />
-    <link href="../Content/form-controls.css" rel="stylesheet" />
-    <link href="../Content/progressbar.css" rel="stylesheet" />
+    <link href="../../Content/index.css" rel="stylesheet" />
+    <link href="../../Content/classes.css" rel="stylesheet" />
+    <link href="../../Content/teacher-style.css" rel="stylesheet" />
+    <link href="../../Content/form-controls.css" rel="stylesheet" />
+    <link href="../../Content/progressbar.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="progressbar-container progressbar-margin-top">

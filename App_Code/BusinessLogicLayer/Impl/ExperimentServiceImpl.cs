@@ -27,7 +27,7 @@ namespace BusinessLogicLayer.Impl
             throw new System.NotImplementedException();
         }
 
-        public object Create(object createWhich)
+        public int Create(object createWhich)
         {
             throw new System.NotImplementedException();
         }

@@ -1,6 +1,9 @@
 ﻿using System;
 using DataAccessLayer.Interface;
 using Models;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 
 namespace DataAccessLayer.Impl
 {
@@ -9,6 +12,15 @@ namespace DataAccessLayer.Impl
     /// </summary>
     public class ClassDal : IClassDal
     {
+        public IEnumerable<Class> SelectClassAll()
+        {
+            using (var context = new HaermsEntities())
+            {
+                return context.Class.AsParallel().ToArray();
+            }
+        }
+
+
         /// <summary>
         /// 通过ｃｌａｓｓＩｄ查找班级
         /// </summary>

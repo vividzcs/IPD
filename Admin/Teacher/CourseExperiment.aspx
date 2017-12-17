@@ -2,15 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>课程实验 - HAERMS</title>
-    <link href="../Content/index.css" rel="stylesheet"/>
-    <link href="../Content/classes.css" rel="stylesheet"/>
-    <link href="../Content/form-controls.css" rel="stylesheet"/>
+    <link href="../../Content/index.css" rel="stylesheet"/>
+    <link href="../../Content/classes.css" rel="stylesheet"/>
+    <link href="../../Content/form-controls.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="">
     <nav class="sidebar">
         <div class="card">
-            <img src="../../style/images/course-main_image.png" class="image-item"/>
+            <img src="../../Images/course-main_image.png" class="image-item"/>
         </div>
         <ul class="list-class card">
             <li class="list-class-item">
@@ -34,7 +34,7 @@
             <div class="experiments" onclick="expandOrCollapse(event)">
                 <div class="an-experiment">
                     <div class="title-box" id="title-box-0">
-                        <img src="../../style/images/down_arrow.svg" id="img-0">
+                        <img src="../../Images/down_arrow.svg" id="img-0">
                         <span class="experiment-name" id="experiment-name-0">实验一：使用Wireshark操作TCP的三次握手</span>
                         <span class="experiment-deadline" id="experiment-deadline-0">截止时间：2017年12月21日</span>
                         <!-- 下载报告 -->
@@ -130,7 +130,7 @@
         var img = document.getElementById('img-' + parseInt(event.target.id.substr(event.target.id.lastIndexOf('-') + 1,
             event.target.id.length)));
         if (img !== null) {
-            img.src = flagEx ? '../../style/images/up_arrow.svg' : '../../style/images/down_arrow.svg';
+            img.src = flagEx ? '../../Images/up_arrow.svg' : '../../Images/down_arrow.svg';
         }
     }
 </script>

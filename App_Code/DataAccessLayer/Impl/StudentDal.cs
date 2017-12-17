@@ -28,7 +28,7 @@ namespace DataAccessLayer.Impl
                 var st = q.First();
                 st.Password = student.Password;
                 return context.SaveChanges();
-
+            
             }
         }
     }
