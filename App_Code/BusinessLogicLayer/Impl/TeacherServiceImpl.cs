@@ -65,7 +65,7 @@ namespace BusinessLogicLayer.Impl
 
         public Teacher Login(Teacher teacher)
         {
-            throw new System.NotImplementedException();
+            return _teacherDal.SelectByJobNumberAndPassword(teacher);
         }
 
         public int CreateCourse(Course course)

@@ -18,7 +18,7 @@
     {
         // 在出现未处理的错误时运行的代码
         Server.ClearError();
-        Server.Transfer("~/Error/404.html");
+        Response.Redirect("~/Error/404.aspx");
 
     }
 

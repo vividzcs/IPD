@@ -27,5 +27,14 @@ namespace DataAccessLayer.Impl
                 return context.Teacher.Find(id);
             }
         }
+
+        public Teacher SelectByJobNumberAndPassword(Teacher teacher)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var queryable = context.Teacher.Where(t => t.JobNumber == teacher.JobNumber && t.Password == teacher.Password);
+                return queryable.FirstOrDefault();
+            }
+        }
     }
 }
