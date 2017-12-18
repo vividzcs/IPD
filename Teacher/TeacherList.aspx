@@ -20,7 +20,7 @@
                             <p class="intro"><%#Eval("Introduction")%></p>
                         </div>
                         <p>
-                            <a class="btn" href="TeacherDetail.aspx?tid=<%#Eval("TeacherId") %>">点击查看>></a>
+                            <a class="btn" href="TeacherHome.aspx?tid=<%#Eval("TeacherId") %>">点击查看>></a>
                         </p>
                     </div>
                 </ItemTemplate>
