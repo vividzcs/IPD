@@ -62,9 +62,13 @@ public class CourseDal : ICourseDal
     {
         using (var context = new HaermsEntities())
         {
-            var c = context.Course.Where(t=>t.CourseId == course.CourseId);
+            var c = context.Course.Where(t=>t.CourseId == course.CourseId).ToArray();
             var cl = c.First();
-            cl.Description = course.Description;
+            cl.Description = course.Description == null ? null : course.Description;
+            cl.BeginDate = course.BeginDate == null ? null : course.BeginDate;
+            cl.EndDate = course.EndDate == null ? null : course.EndDate;
+            cl.ExperimentClassHour = course.ExperimentClassHour == null ? null : course.ExperimentClassHour;
+            cl.TheoryClassHour = course.TheoryClassHour == null ? null : course.TheoryClassHour;
             context.SaveChanges();
             return cl;
         }

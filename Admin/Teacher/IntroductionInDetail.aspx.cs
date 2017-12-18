@@ -11,7 +11,7 @@ public partial class Admin_IntroductionInDetail : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        CourseId.Value = Request.QueryString["id"];
+        CourseId.Value = Request.QueryString["id"] ?? "0";
     }
 
     protected void StepOver(object sender, EventArgs e)
