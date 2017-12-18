@@ -45,7 +45,7 @@ namespace BusinessLogicLayer.Impl
 
         public IEnumerable<Course> GetByTeacher(Teacher whichTeacher)
         {
-            throw new System.NotImplementedException();
+            return _courseDal.SelectAllByTeacher(whichTeacher);
         }
 
         public IEnumerable<Course> GetByTeacherNotEndYet(Teacher whichTeacher)
