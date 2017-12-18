@@ -76,6 +76,14 @@
           <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CourseId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="CourseSelection">
+          <Key>
+            <PropertyRef Name="CourseSelectionId" />
+          </Key>
+          <Property Name="CourseSelectionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="DepartmentId" />
@@ -143,6 +151,34 @@
           <Property Name="HeadImage" Type="nvarchar" MaxLength="100" />
           <Property Name="Title" Type="nvarchar" MaxLength="40" />
         </EntityType>
+        <Association Name="CourseSelection_Course_CourseId_fk">
+          <End Role="Course" Type="Self.Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseSelection" Type="Self.CourseSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseSelection">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CourseSelection_Student_StudentId_fk">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CourseSelection" Type="Self.CourseSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CourseSelection">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Experiment_CourseExperiment_CourseExperimentId_fk">
           <End Role="CourseExperiment" Type="Self.CourseExperiment" Multiplicity="1" />
           <End Role="Experiment" Type="Self.Experiment" Multiplicity="*" />
@@ -330,12 +366,21 @@
           <EntitySet Name="CourseAttachment" EntityType="Self.CourseAttachment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CourseExperiment" EntityType="Self.CourseExperiment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CourseHomework" EntityType="Self.CourseHomework" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseSelection" EntityType="Self.CourseSelection" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Experiment" EntityType="Self.Experiment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Homework" EntityType="Self.Homework" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Score" EntityType="Self.Score" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="CourseSelection_Course_CourseId_fk" Association="Self.CourseSelection_Course_CourseId_fk">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseSelection" EntitySet="CourseSelection" />
+          </AssociationSet>
+          <AssociationSet Name="CourseSelection_Student_StudentId_fk" Association="Self.CourseSelection_Student_StudentId_fk">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="CourseSelection" EntitySet="CourseSelection" />
+          </AssociationSet>
           <AssociationSet Name="Experiment_CourseExperiment_CourseExperimentId_fk" Association="Self.Experiment_CourseExperiment_CourseExperimentId_fk">
             <End Role="CourseExperiment" EntitySet="CourseExperiment" />
             <End Role="Experiment" EntitySet="Experiment" />
@@ -446,6 +491,7 @@
           <Property Name="TheoryClassHour" Type="Int32" />
           <Property Name="ExperimentClassHour" Type="Int32" />
           <NavigationProperty Name="Score" Relationship="HaermsModel.FK_Score_Course" FromRole="Course" ToRole="Score" />
+          <NavigationProperty Name="CourseSelection" Relationship="HaermsModel.CourseSelection_Course_CourseId_fk" FromRole="Course" ToRole="CourseSelection" />
         </EntityType>
         <EntityType Name="CourseAttachment">
           <Key>
@@ -515,6 +561,7 @@
           <NavigationProperty Name="Experiment" Relationship="HaermsModel.FK_Experiment_Student" FromRole="Student" ToRole="Experiment" />
           <NavigationProperty Name="Score" Relationship="HaermsModel.FK_Score_Student" FromRole="Student" ToRole="Score" />
           <NavigationProperty Name="Homework" Relationship="HaermsModel.FK_Homework_Student" FromRole="Student" ToRole="Homework" />
+          <NavigationProperty Name="CourseSelection" Relationship="HaermsModel.CourseSelection_Student_StudentId_fk" FromRole="Student" ToRole="CourseSelection" />
         </EntityType>
         <EntityType Name="Teacher">
           <Key>
@@ -713,6 +760,15 @@
             <End Role="Student" EntitySet="Student" />
             <End Role="Homework" EntitySet="Homework" />
           </AssociationSet>
+          <EntitySet Name="CourseSelection" EntityType="HaermsModel.CourseSelection" />
+          <AssociationSet Name="CourseSelection_Course_CourseId_fk" Association="HaermsModel.CourseSelection_Course_CourseId_fk">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="CourseSelection" EntitySet="CourseSelection" />
+          </AssociationSet>
+          <AssociationSet Name="CourseSelection_Student_StudentId_fk" Association="HaermsModel.CourseSelection_Student_StudentId_fk">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="CourseSelection" EntitySet="CourseSelection" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Experiment">
           <Key>
@@ -819,6 +875,44 @@
               <PropertyRef Name="StudentId" />
             </Principal>
             <Dependent Role="Homework">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CourseSelection">
+          <Key>
+            <PropertyRef Name="CourseSelectionId" />
+          </Key>
+          <Property Name="CourseSelectionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="HaermsModel.CourseSelection_Course_CourseId_fk" FromRole="CourseSelection" ToRole="Course" />
+          <NavigationProperty Name="Student" Relationship="HaermsModel.CourseSelection_Student_StudentId_fk" FromRole="CourseSelection" ToRole="Student" />
+        </EntityType>
+        <Association Name="CourseSelection_Course_CourseId_fk">
+          <End Type="HaermsModel.Course" Role="Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HaermsModel.CourseSelection" Role="CourseSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseSelection">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CourseSelection_Student_StudentId_fk">
+          <End Type="HaermsModel.Student" Role="Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HaermsModel.CourseSelection" Role="CourseSelection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="CourseSelection">
               <PropertyRef Name="StudentId" />
             </Dependent>
           </ReferentialConstraint>
@@ -976,6 +1070,15 @@
                 <ScalarProperty Name="Path" ColumnName="Path" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="HomeworkId" ColumnName="HomeworkId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseSelection">
+            <EntityTypeMapping TypeName="HaermsModel.CourseSelection">
+              <MappingFragment StoreEntitySet="CourseSelection">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseSelectionId" ColumnName="CourseSelectionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
