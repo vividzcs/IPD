@@ -18,7 +18,7 @@
     <div class="">
         <nav class="sidebar">
             <div class="card">
-                <img src="<%= course.IntroImage %>" class="image-item"/>
+                <img src="<%= course.IntroImage %>" class="image-item" alt="课程图片"/>
             </div>
             <ul class="list-class card">
                 <li class="list-class-item selected-class-item">
@@ -75,7 +75,7 @@
                 <table class="class-hour-table" border="2">
                     <tr>
                         <td class="table-head">开课时间</td>
-                        <td><%=course.BeginDate.Value.ToString("D")%> - <%=course.EndDate.Value.ToString("D")%></td>
+                        <td><%=course.BeginDate.GetValueOrDefault().ToString("D")%> - <%=course.EndDate.GetValueOrDefault().ToString("D")%></td>
                     </tr>
                     <tr>
                         <td class="table-head">课时安排</td>
