@@ -15,8 +15,8 @@
                         </div>
                         <div class="info">
                             <h2 class="title"><%#Eval("ChinesaeName") %></h2>
-                            <div><%#Eval("EnglishName") %></div>
-                            <span><%#Eval("Introduction").ToString().Substring(0, 45) + "..." %></span>
+                            <span class="english-name"><%#Eval("EnglishName") %></span>
+                            <span class="school-intro"><%#Eval("Introduction")%></span>
                         </div>
                     </div>
                 </ItemTemplate>

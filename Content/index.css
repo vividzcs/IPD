@@ -102,8 +102,22 @@ body {
     padding: 5px 20px;
 }
 
-.info span {
+.school-intro {
     font-size: 12px;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.english-name {
+    font-size: large;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .photo img {
