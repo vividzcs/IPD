@@ -21,14 +21,19 @@
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Department") %>'></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:DropDownList ID="DropDownListDepart" runat="server" DataSourceID="ObjectDataSourceGetAllTeachers" DataTextField="院系" DataValueField="Name"/>
+                            <asp:DropDownList ID="DropDownListDepart" runat="server" DataSourceID="ObjectDataSourceDepartments" DataTextField="ChinesaeName" DataValueField="DepartmentId" />
 
+                            <asp:ObjectDataSource runat="server" ID="ObjectDataSourceDepartments" SelectMethod="GetAll" TypeName="BusinessLogicLayer.Impl.DepartmentServiceImpl"></asp:ObjectDataSource>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:BoundField DataField="Introduction" HeaderText="简介" />
+                    <asp:ButtonField ButtonType="Button" CommandName="Update" Text="冻结" />
                 </Columns>
             </asp:GridView>
 
-            <asp:ObjectDataSource runat="server" ID="ObjectDataSourceGetAllTeachers" SelectMethod="GetAll" TypeName="BusinessLogicLayer.Impl.TeacherServiceImpl"></asp:ObjectDataSource>
+            <asp:ObjectDataSource runat="server" ID="ObjectDataSourceGetAllTeachers" UpdateMethod="FreezeTeacher" SelectMethod="GetAll" TypeName="BusinessLogicLayer.Impl.TeacherServiceImpl" DataObjectTypeName="Models.Teacher">
+              
+            </asp:ObjectDataSource>
             <input type="button" class="button_delete" value="删除">
             <input type="button" class="button_delete" value="提交">
             <input type="button" class="button_create" value="新建">

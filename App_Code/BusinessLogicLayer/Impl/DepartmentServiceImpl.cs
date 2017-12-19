@@ -4,6 +4,7 @@ using DataAccessLayer;
 using DataAccessLayer.Impl;
 using DataAccessLayer.Interface;
 using Models;
+using System;
 
 namespace BusinessLogicLayer.Impl
 {
@@ -55,5 +56,21 @@ namespace BusinessLogicLayer.Impl
         {
             throw new System.NotImplementedException();
         }
+
+        public int CreateDepartment(Department department)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int ModifyDepartment(Department department)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int DestoryDepartment(Department department)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

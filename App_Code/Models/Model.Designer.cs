@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿// 为模型“E:\IPD\IPD\App_Code\Models\Model.edmx”启用了 T4 代码生成。
-=======
-﻿// 为模型“D:\Projects\VisualStudioProjects\IPD\App_Code\Models\Model.edmx”启用了 T4 代码生成。
->>>>>>> 8bf4fc748c9359645e60ba0dcba483b660f6b919
+
 // 要启用旧代码生成功能，请将“代码生成策略”设计器属性的值
 // 更改为“旧的 ObjectContext”。当在设计器中打开该模型时，此属性会出现在
 // “属性”窗口中。

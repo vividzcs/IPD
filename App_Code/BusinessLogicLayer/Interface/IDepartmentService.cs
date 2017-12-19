@@ -20,5 +20,25 @@ namespace BusinessLogicLayer.Interface
         /// <param name="englishName"></param>
         /// <returns></returns>
         Department GetByEnglishName(string englishName);
+
+
+
+        /**
+     * @param department 
+     * @return
+     */
+        int CreateDepartment(Department department);
+
+        /**
+     * @param department 
+     * @return
+     */
+        int ModifyDepartment(Department department);
+
+        /**
+     * @param department Department 
+     * @return
+     */
+        int DestoryDepartment(Department department);
     }
 }

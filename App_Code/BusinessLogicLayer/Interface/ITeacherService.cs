@@ -68,5 +68,30 @@ namespace BusinessLogicLayer.Interface
      * @return
      */
         Experiment Evaluate(Student student, CourseExperiment courseExperiment);
+
+        /**
+     * @param teacher 
+     * @return
+     */
+        int CreateTeacher(Teacher teacher);
+
+        /**
+     * @param teacher 
+     * @return
+     */
+        int ModifyTeacher(Teacher teacher);
+
+
+        /**
+    * @param teacher 
+    * @return
+    */
+        int FreezeTeacher(Teacher teacher);
+
+        /**
+     * @param teacher 
+     * @return
+     */
+        int ResetTeacherPassword(Teacher teacher);
     }
 }

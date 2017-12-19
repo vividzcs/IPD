@@ -4,6 +4,7 @@ using DataAccessLayer;
 using DataAccessLayer.Impl;
 using DataAccessLayer.Interface;
 using Models;
+using System;
 
 namespace BusinessLogicLayer.Impl
 {
@@ -97,5 +98,27 @@ namespace BusinessLogicLayer.Impl
         {
             throw new System.NotImplementedException();
         }
+
+        public int FreezeTeacher(Teacher teacher)
+        {
+          return _teacherDal.UpdateTeacherBanned(teacher);
+        }
+
+        public int ResetTeacherPassword(Teacher teacher)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public int CreateTeacher(Teacher teacher)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int ModifyTeacher(Teacher teacher)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

@@ -45,5 +45,16 @@ namespace DataAccessLayer.Impl
                 return context.Teacher.ToArray();
             }
         }
+
+        public int UpdateTeacherBanned(Teacher teacher)
+        {
+            using(var context = new HaermsEntities())
+            {
+                var _t = context.Teacher.Where(t => t.TeacherId == teacher.TeacherId).FirstOrDefault();
+                _t.Banned = true;
+                context.SaveChanges();
+                return _t.Banned == true ? 1 : 0;
+            }
+        }
     }
 }
