@@ -2,10 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>管理作业实验 - HAERMS</title>
-    <link href="../Content/index.css" rel="stylesheet" />
-    <link href="../Content/classes.css" rel="stylesheet" />
-    <link href="../Content/form-controls.css" rel="stylesheet" />
-    <link href="../Content/manageCourseHwEx.css" rel="stylesheet" />
+    <link href="../../Content/index.css" rel="stylesheet" />
+    <link href="../../Content/classes.css" rel="stylesheet" />
+    <link href="../../Content/form-controls.css" rel="stylesheet" />
+    <link href="../../Content/manageCourseHwEx.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <!--是作业还是实验根据PreviousPage决定-->

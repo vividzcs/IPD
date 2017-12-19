@@ -2,14 +2,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title></title>
-    <link href="../../Content/index.css" rel="stylesheet" />
-    <link href="../../Content/teacher-detail.css" rel="stylesheet" />
-    <link href="../../Content/courses-list.css" rel="stylesheet" />
+    <link href="../../../Content/index.css" rel="stylesheet" />
+    <link href="../../../Content/teacher-detail.css" rel="stylesheet" />
+    <link href="../../../Content/courses-list.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="content">
 		<div class="teacher-name">
-			<h2>何路<a href="#"><button class="create-course">创建课程</button></a></h2>
+			<h2>何路<a href="CreateCourse.aspx"><button class="create-course">创建课程</button></a></h2>
 			<hr/>
 		</div>
 		<div class="courses">

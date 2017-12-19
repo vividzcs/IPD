@@ -2,14 +2,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>课程首页 - HAERMS</title>
-    <link href="../Content/index.css" rel="stylesheet" />
-    <link href="../Content/classes.css" rel="stylesheet" />
+    <link href="../../Content/index.css" rel="stylesheet" />
+    <link href="../../Content/classes.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="">
     <nav class="sidebar">
         <div class="card">
-            <img src="../../style/images/course-main_image.png" class="image-item"/>
+            <img src="../../Images/course-main_image.png" class="image-item"/>
         </div>
         <ul class="list-class card">
             <li class="list-class-item selected-class-item">
@@ -55,7 +55,7 @@
         <div class="main-content card">
             <h2>授课教师</h2>
             <hr>
-            <img class="teacher-image" src="../../style/images/1444660450180.jpg"/>
+            <img class="teacher-image" src="../../Images/1444660450180.jpg"/>
             <div class="teacher-info">
                 <span class="">围绕过程管理展开应用基础理论、软件度量、软件开发方法学的研究</span>
                 <br>

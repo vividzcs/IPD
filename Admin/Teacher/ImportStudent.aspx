@@ -1,16 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ImportStudent.aspx.cs" Inherits="ImportStudent" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ImportStudent.aspx.cs" Inherits="ImportStudent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link href="../Content/form.css" rel="stylesheet" />
-    <link href="../Content/index.css" rel="stylesheet" />
-    <link href="../Content/importstu.css" rel="stylesheet" />
-    <script src="../Scripts/importstu.js"></script>
+    <link href="../../Content/form.css" rel="stylesheet" />
+    <link href="../../Content/index.css" rel="stylesheet" />
+    <link href="../../Content/importstu.css" rel="stylesheet" />
+    <script src="../../Scripts/importstu.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="content">
         <div class="container">
             <div class="block2">
-                <form class="" action="#" method="post" onsubmit="return checknulldata()">
+                <form class="" method="post" onsubmit="return checknulldata()" runat="server">
                     <table border="1">
                         <tbody id="stutable">
                         <tr id="table_head">
@@ -23,7 +23,7 @@
                     <div class="controltable">
                         <button type="button" name="button" class="btn btn-primary" onclick="createnewrow()">创建新行</button>
                         <button type="button" name="button" class="btn btn-danger" onclick="deleteblankrow()">删除空行</button>
-                        <button type="submit" class="btn btn-success">提交信息</button>
+<%--                        <button type="submit" class="btn btn-success" runat="server" onserverclick="import_ServerClick">提交信息</button>--%>
                     </div>
                 </form>
             </div>

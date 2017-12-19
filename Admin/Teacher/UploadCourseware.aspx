@@ -2,11 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>创建课程 - 上传课件 - HAERMS</title>
-    <link href="../Content/index.css" rel="stylesheet" />
-    <link href="../Content/classes.css" rel="stylesheet" />
-    <link href="../Content/teacher-style.css" rel="stylesheet" />
-    <link href="../Content/form-controls.css" rel="stylesheet" />
-    <link href="../Content/progressbar.css" rel="stylesheet" />
+    <link href="../../Content/index.css" rel="stylesheet" />
+    <link href="../../Content/classes.css" rel="stylesheet" />
+    <link href="../../Content/teacher-style.css" rel="stylesheet" />
+    <link href="../../Content/form-controls.css" rel="stylesheet" />
+    <link href="../../Content/progressbar.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="progressbar-container progressbar-margin-top">
@@ -20,7 +20,7 @@
         </ul>
     </div>
 
-    <form class="main-container create-class-main-container">
+    <form class="main-container create-class-main-container" runat="server">
         <div class="main-content card">
             <h2>上传课件</h2>
             <hr>
@@ -35,25 +35,25 @@
                 <tr>
                     <td>
                         <div class="content-cell">
-                            <input type="text" title="课件名称" placeholder="在这里输入课件名称" class="input-style">
+                            <input type="text" title="课件名称" placeholder="在这里输入课件名称" class="input-style" runat="server">
                         </div>
                     </td>
                     <td>
                         <div class="content-cell">
-                            <input type="file" class="btn btn-danger input-style" >
+                            <input type="file" class="btn btn-danger input-style" runat="server" >
                         </div>
                     </td>
                     <td>
                         <div class="content-cell">
-                            <button class="btn btn-primary" type="button">上传</button>
+                            <button class="btn btn-primary" type="button" runat="server" onclick="Upload">上传</button>
                         </div>
                     </td>
                 </tr>
             </table>
         </div>
         <div class="button-group">
-            <button class="btn btn-warning">跳过</button>
-            <button class="btn btn-success">完成，下一步</button>
+            <asp:button class="btn btn-warning" runat="server" text="跳过" OnClick ="StepOver" />
+            <asp:button class="btn btn-success" runat="server" text="完成，下一步" OnClick="NextStep" />
         </div>
     </form>
     <script>

@@ -7,7 +7,8 @@ function createnewrow()
     var forminput = document.getElementsByTagName('input')
     var formvalue = []
     for (var i = 0; i < forminput.length; i++) {
-        formvalue.push(forminput[i].value)
+        if (forminput[i].type == "hidden") continue
+        formvalue.push(forminput[i].value == undefined ? "" : forminput[i].value)
     }
     thistable.innerHTML =   '<tr id="table_head">\
                                 <th>姓名</th>\
@@ -17,9 +18,9 @@ function createnewrow()
     for (var i = 0; i < _row-1; i++) {
         var tr_id = i + 1
         thistable.innerHTML = thistable.innerHTML + '<tr id="' + tr_id + '">\
-                                                        <td><input type="text" name="stuname" value="'+ formvalue[i*3+0] +'"></td>\
-                                                        <td><input type="text" name="stuid" value="' + formvalue[i*3+1] + '"></td>\
-                                                        <td><input type="text" name="stuclass" value="' + formvalue[i*3+2] + '"></td>\
+                                                        <td><input type="text" name="stuname" runat="server" value="'+ formvalue[i*3+0] +'"></td>\
+                                                        <td><input type="text" name="stuid" runat="server" value="' + formvalue[i*3+1] + '"></td>\
+                                                        <td><input type="text" name="stuclass" runat="server" value="' + formvalue[i*3+2] + '"></td>\
                                                     </tr>'
     }
     thistable.innerHTML = thistable.innerHTML + '<tr id="' + _row.toString() + '">\
@@ -57,13 +58,13 @@ function checknulldata()
 {
     var inputlist = document.getElementsByTagName('input')
     for (var i = 0; i < inputlist.length; i++) {
-        if(inputlist[i].value == '')
+        if (inputlist[i].value == '' && inputlist[i].type != "hidden")
         {
             alert('请填满所有表格')
             return false
         }
     }
-    if(inputlist.length == 0) {
+    if(inputlist.length <= 5) {
         alert('请添加学生信息')
         return false
     }

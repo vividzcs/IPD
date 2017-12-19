@@ -2,11 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>创建课程 - 上传作业 - HAERMS</title>
-    <link href="../Content/index.css" rel="stylesheet"/>
-    <link href="../Content/classes.css" rel="stylesheet"/>
-    <link href="../Content/teacher-style.css" rel="stylesheet"/>
-    <link href="../Content/form-controls.css" rel="stylesheet"/>
-    <link href="../Content/progressbar.css" rel="stylesheet"/>
+    <link href="../../Content/index.css" rel="stylesheet"/>
+    <link href="../../Content/classes.css" rel="stylesheet"/>
+    <link href="../../Content/teacher-style.css" rel="stylesheet"/>
+    <link href="../../Content/form-controls.css" rel="stylesheet"/>
+    <link href="../../Content/progressbar.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="progressbar-container progressbar-margin-top">
@@ -30,7 +30,7 @@
         <div class="homeworks" id="homework-container" onclick="expandOrCollapseHw(event)">
             <div class="an-homework">
                 <div class="title-box" id="title-box-hw-0">
-                    <img src="../../style/images/down_arrow.svg" id="img-hw-0">
+                    <img src="../../Images/down_arrow.svg" id="img-hw-0">
                     <span class="homework-name" id="homework-name-hw-0">
                         <input title="作业名称" placeholder="作业名称" class="create-course-h4 input-style">
                     </span>
@@ -69,7 +69,7 @@
         var img = document.getElementById('img-hw-' + parseInt(event.target.id.substr(event.target.id.lastIndexOf('-') + 1,
             event.target.id.length)));
         if (img !== null) {
-            img.src = flagHw ? '../../style/images/up_arrow.svg' : '../../style/images/down_arrow.svg';
+            img.src = flagHw ? '../../Images/up_arrow.svg' : '../../Images/down_arrow.svg';
         }
     }
 
@@ -80,7 +80,7 @@
         div.setAttribute("class", "homework");
         div.innerHTML = "<div class=\"an-homework\">\n" +
             "                <div class=\"title-box\" id=\"title-box-hw-"+homeworkCounter+"\">\n" +
-            "                    <img src=\"../../style/images/down_arrow.svg\" id=\"img-hw-"+homeworkCounter+"\">\n" +
+            "                    <img src=\"../../Images/down_arrow.svg\" id=\"img-hw-"+homeworkCounter+"\">\n" +
             "                    <span class=\"homework-name\" id=\"homework-name-hw-"+homeworkCounter+"\">\n" +
             "                        <input title=\"作业名称\" placeholder=\"作业名称\" class=\"create-course-h4 input-style\">\n" +
             "                    </span>\n" +

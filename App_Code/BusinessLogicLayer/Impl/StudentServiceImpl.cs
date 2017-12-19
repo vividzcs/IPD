@@ -29,7 +29,7 @@ public class StudentServiceImpl : IStudentService
         throw new NotImplementedException();
     }
 
-    public object Create(object createWhich)
+    public int Create(object createWhich)
     {
         throw new NotImplementedException();
     }

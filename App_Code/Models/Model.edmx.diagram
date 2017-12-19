@@ -32,6 +32,9 @@
         <EntityTypeShape EntityType="HaermsModel.Homework" Width="1.5" PointX="10.5" PointY="13.25" />
         <AssociationConnector Association="HaermsModel.Homework_CourseHomework_CourseHomeworkId_fk" />
         <AssociationConnector Association="HaermsModel.FK_Homework_Student" />
+        <EntityTypeShape EntityType="HaermsModel.CourseSelection" Width="1.5" PointX="13.5" PointY="11.125" />
+        <AssociationConnector Association="HaermsModel.CourseSelection_Course_CourseId_fk" />
+        <AssociationConnector Association="HaermsModel.CourseSelection_Student_StudentId_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

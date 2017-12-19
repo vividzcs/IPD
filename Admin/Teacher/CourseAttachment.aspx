@@ -2,15 +2,15 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>课程附件 - HAERMS</title>
-    <link href="../Content/index.css" rel="stylesheet"/>
-    <link href="../Content/classes.css" rel="stylesheet"/>
-    <link href="../Content/form-controls.css" rel="stylesheet"/>
+    <link href="../../Content/index.css" rel="stylesheet"/>
+    <link href="../../Content/classes.css" rel="stylesheet"/>
+    <link href="../../Content/form-controls.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="">
         <nav class="sidebar">
             <div class="card">
-                <img src="../../style/images/course-main_image.png" class="image-item"/>
+                <img src="../../Images/course-main_image.png" class="image-item"/>
             </div>
             <ul class="list-class card">
                 <li class="list-class-item">

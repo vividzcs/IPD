@@ -11,4 +11,28 @@ public partial class Admin_UploadCourseware : System.Web.UI.Page
     {
 
     }
+
+    protected void StepOver(object sender, EventArgs e)
+    {
+        //int id = int.Parse(CourseId.Value);
+
+        //Response.Redirect("CourseSchedule.aspx?id=" + id);
+
+    }
+
+    protected void NextStep(object sender, EventArgs e)
+    {
+        //Course course = new Course()
+        //{
+        //    CourseId = int.Parse(CourseId.Value),
+        //    Description = Description.Value
+        //};
+        ////之后再验证数据
+        //int id = int.Parse(CourseId.Value);
+
+        //CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
+        //courseServiceImpl.Modify(course);
+
+        //Response.Redirect("CourseSchedule.aspx?id=" + id);
+    }
 }

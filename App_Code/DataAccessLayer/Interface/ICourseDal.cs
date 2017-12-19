@@ -30,6 +30,13 @@ namespace DataAccessLayer.Interface
         /// <param name="semester">学期（格式：１或２或３）</param>
         /// <returns>这个班级本学年本学期的所有课程</returns>
         IEnumerable<Course> Select(Class cClass, string schoolYear, string semester);
+        
+        /// <summary>
+        /// 按老师id查询这个老师所有的课程
+        /// </summary>
+        /// <param name="whichTeacher">老师id</param>
+        /// <returns></returns>
+        IEnumerable<Course> SelectAllByTeacher(Teacher whichTeacher);
 
         /// <summary>
         /// 查找某教师开设的还没结束的所有课程
@@ -37,5 +44,14 @@ namespace DataAccessLayer.Interface
         /// <param name="teacher">哪个老师？（ｉｄ需有效）</param>
         /// <returns></returns>
         IEnumerable<Course> SelectNotEnded(Teacher teacher);
+
+        /// <summary>
+        /// 添加一门课程
+        /// </summary>
+        /// <param name="Course">已经把课程包装成对象</param>
+        /// <returns>返回创建的课程的ID</returns>
+        int Create(object course);
+
+        object Update(Course course);
     }
 }

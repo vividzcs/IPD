@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="CreateCourse.aspx.cs" Inherits="Admin_CreateCourse" %>
-
+<%@ Import Namespace="Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>创建课程 - HAERMS</title>
-    <link href="../Content/index.css" rel="stylesheet" />
-    <link href="../Content/classes.css" rel="stylesheet" />
-    <link href="../Content/teacher-style.css" rel="stylesheet" />
-    <link href="../Content/form-controls.css" rel="stylesheet" />
-    <link href="../Content/progressbar.css" rel="stylesheet" />
+    <link href="../../../Content/index.css" rel="stylesheet" />
+    <link href="../../../Content/classes.css" rel="stylesheet" />
+    <link href="../../../Content/teacher-style.css" rel="stylesheet" />
+    <link href="../../../Content/form-controls.css" rel="stylesheet" />
+    <link href="../../../Content/progressbar.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="progressbar-container progressbar-margin-top">
@@ -20,17 +20,20 @@
         </ul>
     </div>
 
-    <form class="main-container create-class-main-container">
+    <form class="main-container create-class-main-container" runat="server">
         <div class="main-content card">
-            <h2><input title="课程名称" placeholder="课程名称" class="create-course-h2  input-style" required="required"></h2>
+            <h2><input id="CourseName" title="课程名称" placeholder="课程名称" class="create-course-h2  input-style" required="required" runat="server"> <span style="font-size:12px;color:red"></span></h2>
             <h5 class="teacher">陈晓江/肖云</h5>
-            <hr>
+            <hr/>
+            <h2>班级:<asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList></h2>
+            
+            <hr />
             <div class="paragraphs">
-                <textarea title="课程简介" placeholder="课程简介" rows="8" class="input-style"></textarea>
+                <textarea id="ShortCourseIntro" title="课程简介" placeholder="课程简介" rows="8" class="input-style" runat="server"></textarea>
             </div>
         </div>
         <div class="button-group">
-            <button class="btn btn-success">完成，下一步</button>
+            <asp:Button ID="Button1" runat="server" class="btn btn-success" Text="完成，下一步" OnClick="NextStep" />
         </div>
     </form>
 </asp:Content>

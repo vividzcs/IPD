@@ -1,4 +1,6 @@
 ﻿using Models;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DataAccessLayer.Interface
 {
@@ -13,5 +15,11 @@ namespace DataAccessLayer.Interface
         /// <param name="id">classid</param>
         /// <returns>The entity found, or null.</returns>
         Class SelectClassById(int id);
+
+        /// <summary>
+        /// 查出所有的班级
+        /// </summary>
+        /// <returns>The entity found, or null.</returns>
+        IEnumerable<Class> SelectClassAll();
     }
 }
