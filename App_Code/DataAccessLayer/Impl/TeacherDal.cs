@@ -46,11 +46,11 @@ namespace DataAccessLayer.Impl
             }
         }
 
-        public int UpdateTeacherBanned(Teacher teacher)
+        public int UpdateTeacherBanned(int teacherId)
         {
             using(var context = new HaermsEntities())
             {
-                var _t = context.Teacher.Where(t => t.TeacherId == teacher.TeacherId).FirstOrDefault();
+                var _t = context.Teacher.FirstOrDefault(t => t.TeacherId == teacherId);
                 _t.Banned = true;
                 context.SaveChanges();
                 return _t.Banned == true ? 1 : 0;

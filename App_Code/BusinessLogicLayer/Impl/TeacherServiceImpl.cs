@@ -99,9 +99,9 @@ namespace BusinessLogicLayer.Impl
             throw new System.NotImplementedException();
         }
 
-        public int FreezeTeacher(Teacher teacher)
+        public int FreezeTeacher(int teacherId)
         {
-          return _teacherDal.UpdateTeacherBanned(teacher);
+          return _teacherDal.UpdateTeacherBanned(teacherId);
         }
 
         public int ResetTeacherPassword(Teacher teacher)

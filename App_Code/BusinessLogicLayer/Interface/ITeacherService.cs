@@ -86,7 +86,7 @@ namespace BusinessLogicLayer.Interface
     * @param teacher 
     * @return
     */
-        int FreezeTeacher(Teacher teacher);
+        int FreezeTeacher(int teacherId);
 
         /**
      * @param teacher 
