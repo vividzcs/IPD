@@ -54,38 +54,7 @@ public class AdminServiceImpl : IAdminService
         throw new NotImplementedException();
     }
 
-    public int FreezeTeacher(Teacher teacher)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int ResetTeacherPassword(Teacher teacher)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int CreateDepartment(Department department)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int ModifyDepartment(Department department)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int DestoryDepartment(Department department)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int CreateTeacher(Teacher teacher)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int ModifyTeacher(Teacher teacher)
-    {
-        throw new NotImplementedException();
-    }
+    
+    
+    
 }

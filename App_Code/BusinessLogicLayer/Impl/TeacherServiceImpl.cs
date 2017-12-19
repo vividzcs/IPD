@@ -4,6 +4,7 @@ using DataAccessLayer;
 using DataAccessLayer.Impl;
 using DataAccessLayer.Interface;
 using Models;
+using System;
 
 namespace BusinessLogicLayer.Impl
 {
@@ -25,7 +26,7 @@ namespace BusinessLogicLayer.Impl
 
         public IEnumerable<object> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _teacherDal.SelectAllTeacher();
         }
 
         public object GetById(int id)
@@ -97,5 +98,27 @@ namespace BusinessLogicLayer.Impl
         {
             throw new System.NotImplementedException();
         }
+
+        public int FreezeTeacher(int teacherId)
+        {
+          return _teacherDal.UpdateTeacherBanned(teacherId);
+        }
+
+        public int ResetTeacherPassword(Teacher teacher)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public int CreateTeacher(Teacher teacher)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int ModifyTeacher(Teacher teacher)
+        {
+            return _teacherDal.ModifyTeacher(teacher);
+        }
+
     }
 }

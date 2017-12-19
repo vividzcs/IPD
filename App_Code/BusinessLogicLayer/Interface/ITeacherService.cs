@@ -14,6 +14,9 @@ namespace BusinessLogicLayer.Interface
      */
         IEnumerable<Teacher> GetByDepartment(Department whichDepartment);
 
+
+
+
         /**
      * @param departmentId 
      * @return
@@ -65,5 +68,30 @@ namespace BusinessLogicLayer.Interface
      * @return
      */
         Experiment Evaluate(Student student, CourseExperiment courseExperiment);
+
+        /**
+     * @param teacher 
+     * @return
+     */
+        int CreateTeacher(Teacher teacher);
+
+        /**
+     * @param teacher 
+     * @return
+     */
+        int ModifyTeacher(Teacher teacher);
+
+
+        /**
+    * @param teacher 
+    * @return
+    */
+        int FreezeTeacher(int teacherId);
+
+        /**
+     * @param teacher 
+     * @return
+     */
+        int ResetTeacherPassword(Teacher teacher);
     }
 }

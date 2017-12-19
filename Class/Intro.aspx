@@ -18,7 +18,7 @@
     <div class="">
         <nav class="sidebar">
             <div class="card">
-                <img src="<%= course.IntroImage %>" class="image-item"/>
+                <img src="<%= course.IntroImage %>" class="image-item" alt="课程图片"/>
             </div>
             <ul class="list-class card">
                 <li class="list-class-item selected-class-item">
@@ -38,7 +38,7 @@
         <div class="main-container">
             <div class="main-content card">
                 <h2><%= course.Name %></h2>
-                <h5 class="teacher"><%=teacher.Name %></h5>
+                <h5 class="teacher"><%= teacher.Name %></h5>
                 <hr>
                 <div class="paragraphs">
                     <p>
@@ -51,22 +51,30 @@
                 <hr>
                 <div class="paragraphs">
                     <% var description = course.Description;
-                       var desSplit = description.Split(Environment.NewLine.ToCharArray());
-                       foreach (var p in desSplit)
+                       if (description == null)
+                       {%>
+                            <p>课程暂无概述</p>
+                       <%}
+                       else
                        {
-                           var pTrimed = p.Trim(); %>
-                        <p><%= pTrimed %></p>
-                    <% } %>
+                           var desSplit = description.Split(Environment.NewLine.ToCharArray());
+                           foreach (var p in desSplit)
+                           {
+                               var pTrimed = p.Trim();
+                    %>
+                            <p><%= pTrimed %></p>
+                    <% }
+                       } %>
                 </div>
             </div>
             <div class="main-content card">
                 <h2>授课教师</h2>
                 <hr>
-                <img class="teacher-image" src="<%=teacher.HeadImage %>"/>
+                <img class="teacher-image" src="<%= teacher.HeadImage %>"/>
                 <div class="teacher-info">
-                    <span class=""><%=teacher.Introduction %></span>
+                    <span class=""><%= teacher.Introduction %></span>
                     <br>
-                    <span class="teacher-position"><%=teacher.Title %></span>
+                    <span class="teacher-position"><%= teacher.Title %></span>
                 </div>
             </div>
             <div class="main-content card">
@@ -75,11 +83,11 @@
                 <table class="class-hour-table" border="2">
                     <tr>
                         <td class="table-head">开课时间</td>
-                        <td><%=course.BeginDate.Value.ToString("D")%> - <%=course.EndDate.Value.ToString("D")%></td>
+                        <td><%= course.BeginDate.GetValueOrDefault().ToString("D") %> - <%= course.EndDate.GetValueOrDefault().ToString("D") %></td>
                     </tr>
                     <tr>
                         <td class="table-head">课时安排</td>
-                        <td>理论<%=course.TheoryClassHour%>课时 + 实验<%=course.ExperimentClassHour%>课时</td>
+                        <td>理论<%= course.TheoryClassHour %>课时 + 实验<%= course.ExperimentClassHour %>课时</td>
                     </tr>
                 </table>
             </div>

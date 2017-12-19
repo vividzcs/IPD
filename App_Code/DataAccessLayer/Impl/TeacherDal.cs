@@ -2,6 +2,7 @@
 using System.Linq;
 using DataAccessLayer.Interface;
 using Models;
+using System.Collections.Generic;
 
 namespace DataAccessLayer.Impl
 {
@@ -34,6 +35,39 @@ namespace DataAccessLayer.Impl
             {
                 var queryable = context.Teacher.Where(t => t.JobNumber == teacher.JobNumber && t.Password == teacher.Password);
                 return queryable.FirstOrDefault();
+            }
+        }
+
+        public IEnumerable<Teacher> SelectAllTeacher()
+        {
+            using (var context = new HaermsEntities())
+            {
+                return context.Teacher.ToArray();
+            }
+        }
+
+        public int UpdateTeacherBanned(int teacherId)
+        {
+            using(var context = new HaermsEntities())
+            {
+                var _t = context.Teacher.FirstOrDefault(t => t.TeacherId == teacherId);
+                _t.Banned = true;
+                context.SaveChanges();
+                return _t.Banned == true ? 1 : 0;
+            }
+        }
+
+        public int ModifyTeacher(Teacher teacher)
+        {
+            using(var context = new HaermsEntities())
+            {
+                var _t = context.Teacher.FirstOrDefault(t => t.TeacherId == teacher.TeacherId);
+                _t.Name = teacher.Name;
+                _t.DepartmentId = teacher.DepartmentId;
+                _t.Introduction = teacher.Introduction;
+                _t.JobNumber = teacher.JobNumber;
+                context.SaveChanges();
+                return _t.Name == teacher.Name ? 1 : 0;
             }
         }
     }

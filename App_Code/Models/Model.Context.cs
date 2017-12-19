@@ -37,5 +37,6 @@ namespace Models
         public virtual DbSet<Experiment> Experiment { get; set; }
         public virtual DbSet<Score> Score { get; set; }
         public virtual DbSet<Homework> Homework { get; set; }
+        public virtual DbSet<CourseSelection> CourseSelection { get; set; }
     }
 }

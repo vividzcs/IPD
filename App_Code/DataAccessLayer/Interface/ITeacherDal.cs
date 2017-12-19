@@ -1,4 +1,5 @@
 ﻿using Models;
+using System.Collections.Generic;
 
 namespace DataAccessLayer.Interface
 {
@@ -27,5 +28,14 @@ namespace DataAccessLayer.Interface
         /// <param name="teacher">Controller传过来的老师对象</param>
         /// <returns>那个老师The entity found, or null. </returns>
         Teacher SelectByJobNumberAndPassword(Teacher teacher);
+
+
+        IEnumerable<Teacher> SelectAllTeacher();
+
+
+        int UpdateTeacherBanned(int teacherId);
+
+
+        int ModifyTeacher(Teacher teacher);
     }
 }

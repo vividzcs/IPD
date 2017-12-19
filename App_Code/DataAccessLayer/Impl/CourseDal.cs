@@ -73,4 +73,14 @@ public class CourseDal : ICourseDal
             return cl;
         }
     }
+    
+    //
+    public IEnumerable<Course> SelectAllByTeacher(Teacher teacher)
+    {
+        using (var context = new HaermsEntities())
+        {
+            var queryable = context.Course.Where(c => c.TeacherId == teacher.TeacherId);
+            return queryable.ToArray();
+        }
+    }
 }

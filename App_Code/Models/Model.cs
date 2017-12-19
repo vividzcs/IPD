@@ -61,6 +61,7 @@ namespace Models
             this.CourseExperiment = new HashSet<CourseExperiment>();
             this.CourseHomework = new HashSet<CourseHomework>();
             this.Score = new HashSet<Score>();
+            this.CourseSelection = new HashSet<CourseSelection>();
         }
     
         public int CourseId { get; set; }
@@ -87,6 +88,8 @@ namespace Models
         public virtual ICollection<CourseHomework> CourseHomework { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Score> Score { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseSelection> CourseSelection { get; set; }
     }
 }
 namespace Models
@@ -155,6 +158,21 @@ namespace Models
         public virtual Course Course { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Homework> Homework { get; set; }
+    }
+}
+namespace Models
+{
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class CourseSelection
+    {
+        public int CourseSelectionId { get; set; }
+        public int CourseId { get; set; }
+        public int StudentId { get; set; }
+    
+        public virtual Course Course { get; set; }
+        public virtual Student Student { get; set; }
     }
 }
 namespace Models
@@ -251,6 +269,7 @@ namespace Models
             this.Experiment = new HashSet<Experiment>();
             this.Score = new HashSet<Score>();
             this.Homework = new HashSet<Homework>();
+            this.CourseSelection = new HashSet<CourseSelection>();
         }
     
         public int StudentId { get; set; }
@@ -269,6 +288,8 @@ namespace Models
         public virtual ICollection<Score> Score { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Homework> Homework { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseSelection> CourseSelection { get; set; }
     }
 }
 namespace Models

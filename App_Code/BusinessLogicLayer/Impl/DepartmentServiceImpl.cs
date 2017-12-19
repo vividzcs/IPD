@@ -4,6 +4,7 @@ using DataAccessLayer;
 using DataAccessLayer.Impl;
 using DataAccessLayer.Interface;
 using Models;
+using System;
 
 namespace BusinessLogicLayer.Impl
 {
@@ -48,12 +49,28 @@ namespace BusinessLogicLayer.Impl
 
         public Department GetByChineseName(string chineseName)
         {
-            throw new System.NotImplementedException();
+            return _departmentDal.SelectDepartmentByName(chineseName);
         }
 
         public Department GetByEnglishName(string englishName)
         {
             throw new System.NotImplementedException();
         }
+
+        public int CreateDepartment(Department department)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int ModifyDepartment(Department department)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int DestoryDepartment(Department department)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

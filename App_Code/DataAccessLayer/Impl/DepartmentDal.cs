@@ -30,5 +30,14 @@ namespace DataAccessLayer.Impl
                 return department;
             }
         }
+
+        public Department SelectDepartmentByName(string name)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var _t = context.Department.FirstOrDefault(t => t.ChinesaeName == name);
+                return _t;
+            }
+        }
     }
 }

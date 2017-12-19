@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Admin",
+    "\\Admin\\Admin",
+    "\\App_Code",
+    "\\App_Code\\BusinessLogicLayer",
+    "\\App_Code\\BusinessLogicLayer\\Impl",
+    "\\App_Code\\BusinessLogicLayer\\Interface",
+    "\\App_Code\\DataAccessLayer",
+    "\\App_Code\\DataAccessLayer\\Impl"
   ],
-  "SelectedNode": "\\packages.config",
+  "SelectedNode": "\\App_Code\\DataAccessLayer\\Impl\\AttachmentDal.cs",
   "PreviewInSolutionExplorer": false
 }

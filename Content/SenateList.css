@@ -16,53 +16,13 @@ a {
     width: 90%;
     margin: 0 auto;
 }
-
-/* 顶部导航 */
-.top {
-    width: 100%;
-    line-height: 90px;
+.choose {
+    width: 150px;
+    height: 50px;
     position: fixed;
-    top: 0;
-    background-color: #f4f7f6;
-    z-index: 1;
-    min-width: 850px;
-}
-
-.top .brand {
-    float: left;
-    margin-left: 20px;
-}
-
-.brand img {
-    margin: 0 15px 0 1px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    width: 180px;
-}
-
-.top .brand a, h1, img {
-    color: #000;
-    float: left;
-}
-
-.navbar {
-    float: right;
-    margin-right: 20px;
-}
-
-.navbar a {
-    margin: 0 10px;
-    font-size: 24px;
-    color: #aaa;
-    transition: all 0.3s;
-    transition-property: all;
-    transition-duration: 0.3s;
-    transition-timing-function: initial;
-    transition-delay: initial;
-}
-
-.navbar a:hover {
-    color: #333;
+    top: 100px;
+    left: 50px;
+    color: black;
 }
 .teacher,.school {
     margin: 0 auto;
