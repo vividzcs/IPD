@@ -31,6 +31,11 @@ namespace DataAccessLayer.Interface
 
 
         IEnumerable<Teacher> SelectAllTeacher();
+
+
         int UpdateTeacherBanned(int teacherId);
+
+
+        int ModifyTeacher(Teacher teacher);
     }
 }

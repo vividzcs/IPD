@@ -20,5 +20,7 @@ namespace DataAccessLayer.Interface
         /// <param name="id">那个院系的id</param>
         /// <returns>那个院系的对象The entity found, or null. </returns>
         Department SelectDepartmentById(int id);
+
+        Department SelectDepartmentByName(string name);
     }
 }

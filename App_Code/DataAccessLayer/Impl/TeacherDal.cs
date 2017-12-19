@@ -56,5 +56,19 @@ namespace DataAccessLayer.Impl
                 return _t.Banned == true ? 1 : 0;
             }
         }
+
+        public int ModifyTeacher(Teacher teacher)
+        {
+            using(var context = new HaermsEntities())
+            {
+                var _t = context.Teacher.FirstOrDefault(t => t.TeacherId == teacher.TeacherId);
+                _t.Name = teacher.Name;
+                _t.DepartmentId = teacher.DepartmentId;
+                _t.Introduction = teacher.Introduction;
+                _t.JobNumber = teacher.JobNumber;
+                context.SaveChanges();
+                return _t.Name == teacher.Name ? 1 : 0;
+            }
+        }
     }
 }

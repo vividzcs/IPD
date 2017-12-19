@@ -49,7 +49,7 @@ namespace BusinessLogicLayer.Impl
 
         public Department GetByChineseName(string chineseName)
         {
-            throw new System.NotImplementedException();
+            return _departmentDal.SelectDepartmentByName(chineseName);
         }
 
         public Department GetByEnglishName(string englishName)

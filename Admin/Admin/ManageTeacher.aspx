@@ -12,15 +12,11 @@
              <a href="javascript:" style="color:blue">教师列表</a>
              <a href="/Admin/Admin/ManageDepartment.aspx">院系列表</a>
         </div> 
-            <asp:GridView runat="server" DataSourceID="ObjectDataSourceGetAllTeachers" 
-                AutoGenerateColumns="False" DataKeyNames="TeacherId">
+            <asp:GridView ID="GridViewTeacher" runat="server" DataSourceID="ObjectDataSourceGetAllTeachers" 
+                AutoGenerateColumns="False" DataKeyNames="TeacherId" OnRowEditing="GridViewTeacher_RowEditing" OnRowUpdating="GridViewTeacher_RowUpdating" OnRowCancelingEdit="GridViewTeacher_RowCancelingEdit">
                 <Columns>
                     <asp:BoundField DataField="Name" HeaderText="姓名" />
-                    <asp:BoundField DataField="JobNumber" HeaderText="工号" />
                     <asp:TemplateField HeaderText="院系">
-                        <EditItemTemplate>
-                            <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Department") %>'></asp:TextBox>
-                        </EditItemTemplate>
                         <ItemTemplate>
                             <asp:DropDownList ID="DropDownListDepart" runat="server" DataSourceID="ObjectDataSourceDepartments" 
                                 DataTextField="ChinesaeName" DataValueField="DepartmentId" />
@@ -31,17 +27,19 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="Introduction" HeaderText="简介" />
+                    <asp:BoundField DataField="JobNumber" HeaderText="工号" />
+                    <asp:CommandField ShowEditButton="True" />
                     <asp:ButtonField ButtonType="Button" CommandName="Delete" Text="冻结" />
                 </Columns>
             </asp:GridView>
 
-            <asp:ObjectDataSource runat="server" ID="ObjectDataSourceGetAllTeachers" 
-                SelectMethod="GetAll" DeleteMethod="FreezeTeacher" 
-                TypeName="BusinessLogicLayer.Impl.TeacherServiceImpl" >
+            <asp:ObjectDataSource runat="server" ID="ObjectDataSourceGetAllTeachers"
+                SelectMethod="GetAll" DeleteMethod="FreezeTeacher"
+                TypeName="BusinessLogicLayer.Impl.TeacherServiceImpl" DataObjectTypeName="Models.Teacher">
                 <DeleteParameters>
                     <asp:Parameter Name="TeacherId" Type="Int32" />
                 </DeleteParameters>
-              
+                
             </asp:ObjectDataSource>
             <input type="button" class="button_delete" value="删除">
             <input type="button" class="button_delete" value="提交">

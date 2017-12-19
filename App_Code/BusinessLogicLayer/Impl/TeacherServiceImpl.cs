@@ -117,7 +117,7 @@ namespace BusinessLogicLayer.Impl
 
         public int ModifyTeacher(Teacher teacher)
         {
-            throw new NotImplementedException();
+            return _teacherDal.ModifyTeacher(teacher);
         }
 
     }
