@@ -25,7 +25,7 @@ namespace BusinessLogicLayer.Impl
 
         public IEnumerable<object> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _teacherDal.SelectAllTeacher();
         }
 
         public object GetById(int id)

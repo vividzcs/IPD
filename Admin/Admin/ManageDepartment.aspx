@@ -6,6 +6,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="school">
+        <div class="choose">
+             <a href="./Admin/ManageTeacher.aspx">教师列表</a>
+             <a href="javascript:" style="color:blue">院系列表</a>
+        </div> 
         <table>
             <tr>
                 <td>编号</td>

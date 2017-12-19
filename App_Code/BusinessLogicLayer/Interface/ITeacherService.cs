@@ -14,6 +14,9 @@ namespace BusinessLogicLayer.Interface
      */
         IEnumerable<Teacher> GetByDepartment(Department whichDepartment);
 
+
+
+
         /**
      * @param departmentId 
      * @return
