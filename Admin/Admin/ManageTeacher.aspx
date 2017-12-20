@@ -34,12 +34,10 @@
             </asp:GridView>
 
             <asp:ObjectDataSource runat="server" ID="ObjectDataSourceGetAllTeachers"
-                SelectMethod="GetAll" DeleteMethod="FreezeTeacher"
-                TypeName="BusinessLogicLayer.Impl.TeacherServiceImpl" DataObjectTypeName="Models.Teacher">
+                SelectMethod="GetAll" TypeName="BusinessLogicLayer.Impl.TeacherServiceImpl" DeleteMethod="FreezeTeacher">
                 <DeleteParameters>
-                    <asp:Parameter Name="TeacherId" Type="Int32" />
+                    <asp:Parameter Name="teacherId" Type="Int32"></asp:Parameter>
                 </DeleteParameters>
-                
             </asp:ObjectDataSource>
             <input type="button" class="button_delete" value="删除">
             <input type="button" class="button_delete" value="提交">

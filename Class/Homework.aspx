@@ -61,13 +61,14 @@
                                     <% }
                                         else
                                         {
-                                            Session["ThatCourseHomework"] = homework;
+                                            Session["ThatCourseHomework"+homework.CourseHomeworkId] = homework;
                                     %>
                                         <!-- 提交作业 -->
-                                        <form class="experiment-uploadhomework" runat="server">
-                                            <asp:FileUpload runat="server" class="btn btn-info" ID="FileUploader" accept="application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msexcel,application/pdf,application/rtf,application/x-zip-compressed"/>
-                                            <asp:Button runat="server" Text="点击上传" CssClass="btn btn-primary" OnClick="FileUpload"/>
-                                        </form>
+                                        <%--用a标签，href=javascript:,onclick为js弹出窗口的代码--%>
+                                        <a class="btn btn-primary more-info" href="javascript:"
+                                           onclick="window.open('UploadFile.aspx?chid=<%= homework.CourseHomeworkId %>', 'popup_window', 'width=600,height=200,left=100,top=100,resizable=yes');">
+                                            上传实验报告
+                                        </a>
                                         <!-- 提交作业-->
                                 <%
                                         }
