@@ -68,8 +68,7 @@
                                 </td>
                                 <td>
                                     <div class="content-cell">
-                                        <a href="javascript:" class="btn btn-success" target="self" 
-                                            onclick="window.open('https://haerms.nwuer.com<%#Eval("Path") %>');return false;">下载</a>
+                                        <a href="<%#Eval("Path") %>" class="btn btn-success" download="<%#Eval("Name") %>">下载</a>
                                     </div>
                                 </td>
                             </tr>
