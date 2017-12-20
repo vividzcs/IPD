@@ -36,23 +36,22 @@ public partial class Class_UploadFile : System.Web.UI.Page
             }
             else
             {
-                var savePath = Server.MapPath("~/UserUploads/Experiments/") +
-                               ((Student) Session["user"]).StudentNumber +
-                               "\\";
-                if (!Directory.Exists(savePath))
-                {
-                    Directory.CreateDirectory(savePath);
-                }
-                var millisecond = DateTime.Now.Millisecond;
-                Uploader.SaveAs(savePath + millisecond + Uploader.FileName);
-
+                
                 var succeed = 0;
                 if (Request.QueryString["ceid"] != null)
                 {
+                    var savePath = Server.MapPath("~/UserUploads/Experiments/") +
+                                   ((Student)Session["user"]).StudentNumber + "\\";
+                    if (!Directory.Exists(savePath))
+                    {
+                        Directory.CreateDirectory(savePath);
+                    }
+                    var millisecond = DateTime.Now.Millisecond;
+                    Uploader.SaveAs(savePath + millisecond + Uploader.FileName);
                     var experiment = new Experiment()
                     {
-                        Name = millisecond + Uploader.FileName,
-                        Path = savePath.Remove(0, Server.MapPath("~").Length - 1)
+                        Name = Uploader.FileName,
+                        Path = savePath.Remove(0, Server.MapPath("~").Length - 1) + millisecond + Uploader.FileName
                     };
 
                     //由ceid获得courseExperiment
@@ -66,10 +65,18 @@ public partial class Class_UploadFile : System.Web.UI.Page
                 }
                 else if (Request.QueryString["chid"] != null)
                 {
+                    var savePath = Server.MapPath("~/UserUploads/Homeworks/") +
+                                   ((Student)Session["user"]).StudentNumber + "\\";
+                    if (!Directory.Exists(savePath))
+                    {
+                        Directory.CreateDirectory(savePath);
+                    }
+                    var millisecond = DateTime.Now.Millisecond;
+                    Uploader.SaveAs(savePath + millisecond + Uploader.FileName);
                     var homework = new Homework()
                     {
-                        Name = millisecond + Uploader.FileName,
-                        Path = savePath.Remove(0, Server.MapPath("~").Length - 1)
+                        Name = Uploader.FileName,
+                        Path = savePath.Remove(0, Server.MapPath("~").Length - 1) + millisecond + Uploader.FileName
                     };
 
                     //由ceid获得courseExperiment
