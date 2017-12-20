@@ -9,65 +9,28 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="content">
 		<div class="teacher-name">
-			<h2>何路<a href="CreateCourse.aspx"><button class="create-course">创建课程</button></a></h2>
+			<h2><%= TeacherName[0] %><a href="CreateCourse.aspx?teacher=<%= TeacherName[1] %>"><button class="create-course">创建课程</button></a></h2>
 			<hr/>
 		</div>
 		<div class="courses">
 			<div class="courses-info">
 				<div class="hd">开课列表</div>
 				<div class="bd">
+                    <%int i = 1;  foreach (var course in Course)
+                        { %>
 					<div class="courses-list">
-						<div class="course-card" id="course-card-0">
-							<a  href="#"><span class="courses-name">软件工程</span></a>
-							<span class="start-time">开课时间: 2017/9/1 -- 2017/12/31</span>
+						<div class="course-card" id="course-card-<%= i %>">
+							<a  href="CoursePage.aspx?course=<%=course.CourseId %>"><span class="courses-name"><%= course.Name %></span></a>
+							<span class="start-time">开课时间: <%= course.BeginDate %> -- <%= course.EndDate %></span>
 							<span class ="copy-courses">
 								<a href="javascript:;"><button class="copy-courses-btn" type="button">复制课程</button></a>
 							</span>
 							<span class ="import-students">
-								<a href="#"><button class="import-students-btn" type="button">导入学生名单</button></a>
-							</span>
-						</div>
-						<div class="course-card" id="course-card-1">
-							<a  href="#"><span class="courses-name">计算机网络</span></a>
-							<span class="start-time">开课时间: 2017/9/1 -- 2017/12/31</span>
-							<span class ="copy-courses">
-								<a href="#"><button class="copy-courses-btn" type="button">复制课程</button></a>
-							</span>
-							<span class ="import-students">
-								<a href="#"><button class="import-students-btn" type="button">导入学生名单</button></a>
-							</span>
-						</div>
-						<div class="course-card" id="course-card-2">
-							<a  href="#"><span class="courses-name">互联网程序设计</span></a>
-							<span class="start-time">开课时间: 2017/9/1 -- 2017/12/31</span>
-							<span class ="copy-courses">
-								<a href="javascript:;"><button class="copy-courses-btn" type="button">复制课程</button></a>
-							</span>
-							<span class ="import-students">
-								<a href="javascript:;"><button class="import-students-btn" type="button">导入学生名单</button></a>
-							</span>
-						</div>
-						<div class="course-card" id="course-card-2">
-							<a  href="#"><span class="courses-name">软件测试</span></a>
-							<span class="start-time">开课时间: 2017/9/1 -- 2017/12/31</span>
-							<span class ="copy-courses">
-								<a href="#"><button class="copy-courses-btn" type="button">复制课程</button></a>
-							</span>
-							<span class ="import-students">
-								<a href="#"><button class="import-students-btn" type="button">导入学生名单</button></a>
-							</span>
-						</div>
-						<div class="course-card" id="course-card-2">
-							<a  href="#"><span class="courses-name">高级网络管理</span></a>
-							<span class="start-time">开课时间: 2017/9/1 -- 2017/12/31</span>
-							<span class ="copy-courses">
-								<a href="#"><button class="copy-courses-btn" type="button">复制课程</button></a>
-							</span>
-							<span class ="import-students">
-								<a href="#"><button class="import-students-btn" type="button">导入学生名单</button></a>
+								<a href="ImportStudent.aspx?course=<%=course.CourseId %>"><button class="import-students-btn" type="button">导入学生名单</button></a>
 							</span>
 						</div>
 					</div>
+                    <%} i++;%>
 				</div>
 			</div>
 		</div>
