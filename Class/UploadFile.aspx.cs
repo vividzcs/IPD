@@ -8,7 +8,10 @@ public partial class Class_UploadFile : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        if (Session["User"] == null)
+        {
+            Response.Redirect("~/Default.aspx");
+        }
     }
 
     protected void FileUpload(object sender, EventArgs e)
