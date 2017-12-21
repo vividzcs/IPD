@@ -24,5 +24,9 @@ namespace BusinessLogicLayer.Interface
 
         Homework Get(Student student, CourseHomework sh);
 
+        CourseHomework GetCourseHomeworkByCourseId(int id);
+
+        IEnumerable<Homework> GetHomeworkByCourseHomeworkId(int id);
+
     }
 }
