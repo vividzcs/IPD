@@ -4,6 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>教师列表 - HAERMS</title>
     <link rel="stylesheet" href="/Content/teacherList.css"/>
+    <link href="/Content/managedepart.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="content">
@@ -17,7 +18,7 @@
                         </div>
                         <div class="teacherInfo">
                             <h2><%#Eval("Name") %></h2>
-                            <p class="intro"><%#Eval("Introduction")%></p>
+                            <p class="block-with-text intro"><%#Eval("Introduction")%></p>
                         </div>
                         <p>
                             <a class="btn" href="TeacherHome.aspx?tid=<%#Eval("TeacherId") %>">点击查看>></a>
