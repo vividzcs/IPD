@@ -31,5 +31,14 @@ namespace DataAccessLayer.Impl
             
             }
         }
+        
+        public Student SelectStudentByStudentNumber(Student student)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var queryable = context.Student.Where(s => s.StudentNumber == student.StudentNumber);
+                return queryable.FirstOrDefault();
+            }
+        }
     }
 }
