@@ -19,9 +19,12 @@ public class StudentServiceImpl : IStudentService
         throw new NotImplementedException();
     }
 
-    public object GetById(int id)
+    public Student GetByStudentNumber(string studentnumber)
     {
-        throw new NotImplementedException();
+        Student student = new Student() {
+            StudentNumber = studentnumber
+        };
+        return _studentDal.SelectStudentByStudentNumber(student);
     }
 
     public object Modify(object modifyWhich)
@@ -52,5 +55,10 @@ public class StudentServiceImpl : IStudentService
     public int ModifyPassword(Student student)
     {
         return _studentDal.UpdateStudent(student);
+    }
+
+    public object GetById(int id)
+    {
+        throw new NotImplementedException();
     }
 }
