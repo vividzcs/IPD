@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>管理教师 - HAERMS</title>
-    <link href="/Content/SenateList.css" rel="stylesheet" />
+    <link href="/Content/managedepart.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <form runat="server">
@@ -20,7 +20,8 @@
                     <asp:BoundField DataField="Name" HeaderText="姓名"></asp:BoundField>
                     <asp:TemplateField HeaderText="院系">
                         <EditItemTemplate>
-                            <asp:TextBox runat="server" ID="TextBox1" Text='<%# Bind("DepartmentName") %>'></asp:TextBox>
+                            <asp:DropDownList runat="server" ID="dropdownListDepartment" DataSourceID="ObjectDataSourceDepartment"></asp:DropDownList>
+                            <asp:ObjectDataSource runat="server" ID="ObjectDataSourceDepartment"></asp:ObjectDataSource>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label runat="server" ID="Label1" Text='<%# Bind("DepartmentName") %>'></asp:Label>
@@ -43,6 +44,10 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">
+                        <EditItemTemplate>
+                            <asp:LinkButton ID="lbUpdate" CommandArgument='<%# Eval("DepartmentId") %>' CommandName="UpdateRow" ForeColor="#8C4510" runat="server">更新</asp:LinkButton>
+                            <asp:LinkButton ID="lbCancel" CommandArgument='<%# Eval("DepartmentId") %>' CommandName="CancelUpdate" ForeColor="#8C4510" runat="server" CausesValidation="false">取消</asp:LinkButton>
+                        </EditItemTemplate>
                         <ItemTemplate>
                             <asp:LinkButton ID="LinkButtonEdit" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>'  CommandName="edit" Text="编辑"></asp:LinkButton>
                             <asp:LinkButton ID="LinkButtonFreeze" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>'  CommandName="freeze" Text="冻结"></asp:LinkButton>
