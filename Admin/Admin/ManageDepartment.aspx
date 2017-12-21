@@ -1,34 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ManageDepartment.aspx.cs" Inherits="Admin_ManageDepartment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<<<<<<< HEAD
-    <title>管理教师 - HAERMS</title>
-    <link href="../Content/SenateList.css" rel="stylesheet" />
-=======
     <title></title>
     <link href="/Content/managedepart.css" rel="stylesheet"/>
->>>>>>> 9c1c01a53214b02cdb8b439809ecbbd16439d896
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="school">
         <div class="choose">
-<<<<<<< HEAD
-             <a href="./Admin/ManageTeacher.aspx">教师列表</a>
-             <a href="javascript:" style="color:blue">院系列表</a>
-        </div> 
-        <table>
-            <tr>
-                <td>编号</td>
-                <td>名称</td>
-                <td></td>
-            </tr>
-        </table>
-        <input type="button" class="button_delete" value="删除">
-        <input type="button" class="button_submit" value="提交">
-        <input type="button" class="button_create" value="新建">
-    </div>
-</asp:Content>
-=======
             <a href="/Admin/Admin/ManageTeacher.aspx">教师列表</a>
             <a href="javascript:" style="color: blue">院系列表</a>
         </div>
@@ -89,7 +67,6 @@
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></FooterStyle>
 
                 <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White"></HeaderStyle>
->>>>>>> 9c1c01a53214b02cdb8b439809ecbbd16439d896
 
                 <PagerStyle HorizontalAlign="Center" BackColor="#2461BF" ForeColor="White"></PagerStyle>
 
