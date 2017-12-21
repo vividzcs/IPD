@@ -42,5 +42,22 @@ namespace DataAccessLayer.Impl
                            h.CourseHomeworkId == homework.CourseHomeworkId && h.StudentId == homework.StudentId) != null ? 1 : 0;
             }
         }
+        
+        public CourseHomework SelectByCourseHomeworkId(int id)
+        {
+            using (var context = new HaermsEntities())
+            {
+                return context.CourseHomework.Find(id);
+            }
+        }
+
+        public IEnumerable<Homework> SelectHomeworkByCourseHomeworkId(int id)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var querySet = context.Homework.Where(h => h.CourseHomeworkId == id);
+                return querySet.ToArray();
+            }
+        }
     }
 }
