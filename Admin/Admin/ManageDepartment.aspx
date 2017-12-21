@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ManageDepartment.aspx.cs" Inherits="Admin_ManageDepartment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title></title>
+    <title>管理教师 - HAERMS</title>
     <link href="../Content/SenateList.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -21,7 +21,5 @@
         <input type="button" class="button_submit" value="提交">
         <input type="button" class="button_create" value="新建">
     </div>
-    <script src="../Scripts/SenateObject.js"></script>
-    <script src="../Scripts/Senate.js"></script>
 </asp:Content>
 

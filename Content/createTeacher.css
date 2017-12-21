@@ -1,0 +1,66 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.clear {
+    clear: both;
+}
+
+body {
+    background-color: #eee;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+#CreateTeacher {
+    width:70%;
+    height:400px;
+    margin:100px auto;
+    padding:0px 30px 0px 30px;
+    position:relative;
+}
+.name,.jobNumber,.department {
+    display:inline-block;
+    width:50%;
+}
+input,select{
+    width: 80%;
+    height: 36px;
+    line-height: 36px;
+    border: solid 1px #d4d4d4;
+    border-radius: 5px;
+    outline: 0;
+    padding: 0 0 0 5px;
+    margin-top: 30px;
+    transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+.introduction {
+    position:absolute;
+    top:30px;
+    right:55px;
+}
+.introduction span {
+    width:80%;
+    position:absolute;
+    top:0px;
+    left:-50px;
+}
+input.buttonCreate {
+    display:block;
+    margin:200px auto;
+    width: 250px;
+    height: 36px;
+    background-color: #20a0ff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size:20px;
+    cursor:pointer;
+}
