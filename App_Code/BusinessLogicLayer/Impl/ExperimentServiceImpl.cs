@@ -58,5 +58,15 @@ namespace BusinessLogicLayer.Impl
         {
             return _experimentDal.Select(student.StudentId, ce.CourseExperimentId);
         }
+
+        public CourseExperiment GetCourseExperimentById(int id)
+        {
+            return _experimentDal.SelectByCourseExperimentId(id);
+        }
+
+        public IEnumerable<Experiment> GetExpermentByCourseExperimentId(int id)
+        {
+            return _experimentDal.SelectExpermentByCourseExpermentId(id);
+        }
     }
 }

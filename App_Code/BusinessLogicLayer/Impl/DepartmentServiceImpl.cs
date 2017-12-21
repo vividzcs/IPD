@@ -57,6 +57,11 @@ namespace BusinessLogicLayer.Impl
             throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// 创建Department
+        /// </summary>
+        /// <param name="department"></param>
+        /// <returns></returns>
         public int CreateDepartment(Department department)
         {
             throw new NotImplementedException();
@@ -64,7 +69,7 @@ namespace BusinessLogicLayer.Impl
 
         public int ModifyDepartment(Department department)
         {
-            throw new NotImplementedException();
+            return _departmentDal.UpdateDepartment(department);
         }
 
         public int DestoryDepartment(Department department)

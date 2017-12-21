@@ -39,5 +39,23 @@ namespace DataAccessLayer.Impl
                 return _t;
             }
         }
+
+        public int UpdateDepartment(Department department)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var firstOrDefault = context.Department.FirstOrDefault(d => d.DepartmentId == department.DepartmentId);
+                if (firstOrDefault == null) return 0;
+                else
+                {
+                    firstOrDefault.EnglishName = department.EnglishName;
+                    firstOrDefault.ChinesaeName = department.ChinesaeName;
+                    firstOrDefault.Introduction = department.Introduction;
+                    return context.SaveChanges();
+                }
+                
+
+            }
+        }
     }
 }

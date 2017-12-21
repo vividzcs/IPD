@@ -68,9 +68,7 @@
                                 </td>
                                 <td>
                                     <div class="content-cell">
-                                        <button class="btn btn-success">
-                                            <a href="/Download.aspx?req=<%#Eval("Name") %>">下载</a>
-                                        </button>
+                                        <a href="<%#Eval("Path") %>" class="btn btn-success" download="<%#Eval("Name") %>">下载</a>
                                     </div>
                                 </td>
                             </tr>

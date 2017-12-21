@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>主页 - HAERMS</title>
+    <link href="/Content/managedepart.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="content">
@@ -15,8 +16,10 @@
                         </div>
                         <div class="info">
                             <h2 class="title"><%#Eval("ChinesaeName") %></h2>
-                            <span class="english-name"><%#Eval("EnglishName") %></span>
-                            <span class="school-intro"><%#Eval("Introduction")%></span>
+                            <span class="english-name cut"><%#Eval("EnglishName") %></span>
+                            <div class="block-with-text school-intro">
+                                <span><%#Eval("Introduction") %></span>
+                            </div>
                         </div>
                     </div>
                 </ItemTemplate>

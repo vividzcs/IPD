@@ -24,17 +24,20 @@ public partial class Admin_IntroductionInDetail : System.Web.UI.Page
 
     protected void NextStep(object sender, EventArgs e)
     {
-        Course course = new Course()
+        try
         {
-            CourseId = int.Parse(CourseId.Value),
-            Description = Description.Value
-        };
-        //之后再验证数据
-        int id = int.Parse(CourseId.Value);
+            int id = int.Parse(CourseId.Value);
+            CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
+            Course course = (Course)courseServiceImpl.GetById(id);
+            course.Description = Description.Value.Replace("\n","<br/>");
 
-        CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
-        courseServiceImpl.Modify(course); 
+            //之后再验证数据
+            courseServiceImpl.Modify(course);
 
-        Response.Redirect("CourseSchedule.aspx?id=" + id);
+            Response.Redirect("CourseSchedule.aspx?id=" + id);
+        }catch(Exception ex)
+        {
+            Label.Text = "填写错误";
+        }
     }
 }

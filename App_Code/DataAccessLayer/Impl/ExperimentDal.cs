@@ -42,5 +42,25 @@ namespace DataAccessLayer.Impl
                            h.CourseExperimentId == exp.CourseExperimentId && h.StudentId == exp.StudentId) != null ? 1 : 0;
             }
         }
+        
+        public CourseExperiment SelectByCourseExperimentId(int id)
+        {
+            var context = new HaermsEntities();
+            return context.CourseExperiment.Find(id);
+        }
+
+        /// <summary>
+        /// 通过老师布置的实验ID获取交的作业集合
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IEnumerable<Experiment> SelectExpermentByCourseExpermentId(int id)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var querySet = context.Experiment.Where(e => e.CourseExperimentId == id);
+                return querySet.ToArray();
+            }
+        }
     }
 }

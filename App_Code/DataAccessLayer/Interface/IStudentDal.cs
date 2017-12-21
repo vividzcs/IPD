@@ -20,5 +20,7 @@ namespace DataAccessLayer.Interface
         /// <param name="student">学生对象</param>
         /// <returns>1成功 0失败</returns>
         int UpdateStudent(Student student);
+        
+        Student SelectStudentByStudentNumber(Student student);
     }
 }

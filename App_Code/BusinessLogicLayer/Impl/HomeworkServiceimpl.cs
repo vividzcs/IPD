@@ -58,5 +58,15 @@ namespace BusinessLogicLayer.Impl
         {
             return _homeworkDal.SelectByStudentAndCourseHomework(student, sh);
         }
+
+        public CourseHomework GetCourseHomeworkByCourseId(int id)
+        {
+            return _homeworkDal.SelectByCourseHomeworkId(id);
+        }
+
+        public IEnumerable<Homework> GetHomeworkByCourseHomeworkId(int id)
+        {
+            return _homeworkDal.SelectHomeworkByCourseHomeworkId(id);
+        }
     }
 }

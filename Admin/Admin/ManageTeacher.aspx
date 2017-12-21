@@ -61,6 +61,19 @@
                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
+<<<<<<< HEAD
+=======
+
+            <asp:ObjectDataSource runat="server" ID="ObjectDataSourceGetAllTeachers"
+                SelectMethod="GetAll" TypeName="BusinessLogicLayer.Impl.TeacherServiceImpl" DeleteMethod="FreezeTeacher">
+                <DeleteParameters>
+                    <asp:Parameter Name="teacherId" Type="Int32"></asp:Parameter>
+                </DeleteParameters>
+            </asp:ObjectDataSource>
+            <input type="button" class="button_delete" value="删除">
+            <input type="button" class="button_delete" value="提交">
+            <input type="button" class="button_create" value="新建">
+>>>>>>> 9c1c01a53214b02cdb8b439809ecbbd16439d896
         </div>
     </div>
         </form>

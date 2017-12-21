@@ -11,4 +11,9 @@ public partial class Admin_UploadHomework : System.Web.UI.Page
     {
 
     }
+
+    protected void NextStep(object sender, EventArgs e)
+    {
+        Response.Redirect("CourseList.aspx");
+    }
 }

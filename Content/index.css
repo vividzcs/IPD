@@ -91,7 +91,7 @@ body {
     margin: 15px 2.5%;
     width: 28.33%;
     min-width: 250px;
-    height: 360px;
+    height: 375px;
     min-height: 140%;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -104,15 +104,15 @@ body {
 
 .school-intro {
     font-size: 12px;
-    overflow : hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    /* max-height = line-height (1.2) * lines max number (3) */
+    max-height: 3.6em;
 }
 
 .english-name {
     font-size: large;
+}
+
+.cut {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;

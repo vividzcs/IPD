@@ -17,5 +17,13 @@ namespace DataAccessLayer.Interface
 
         Homework SelectByStudentAndCourseHomework(Student student, CourseHomework sh);
         int InsertHomework(Homework homework);
+        CourseHomework SelectByCourseHomeworkId(int id);
+
+        /// <summary>
+        /// 通过老师布置的作业ID获取交的作业集合
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        IEnumerable<Homework> SelectHomeworkByCourseHomeworkId(int id);
     }
 }

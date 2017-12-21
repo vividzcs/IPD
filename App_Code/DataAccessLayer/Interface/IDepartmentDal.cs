@@ -22,5 +22,6 @@ namespace DataAccessLayer.Interface
         Department SelectDepartmentById(int id);
 
         Department SelectDepartmentByName(string name);
+        int UpdateDepartment(Department department);
     }
 }
