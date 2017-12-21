@@ -1,7 +1,7 @@
 using Models;
 
 /**
- * 
+ *
  */
 namespace BusinessLogicLayer.Interface
 {
@@ -9,18 +9,20 @@ namespace BusinessLogicLayer.Interface
 
 
         /// <summary>
-        /// µÇÂ¼
+        /// ç™»å½•
         /// </summary>
-        /// <param name="student">ÒªµÇÂ¼µÄÑ§Éú¶ÔÏó</param>
-        /// <returns>È«¸±Îä×°£¨Êı¾İÌîÂú£©µÄÑ§Éú¶ÔÏó</returns>
+        /// <param name="student">è¦ç™»å½•çš„å­¦ç”Ÿå¯¹è±¡</param>
+        /// <returns>å…¨å‰¯æ­¦è£…ï¼ˆæ•°æ®å¡«æ»¡ï¼‰çš„å­¦ç”Ÿå¯¹è±¡</returns>
         Student Login(Student student);
 
         /// <summary>
-        /// ĞŞ¸ÄÑ§ÉúÃÜÂë
+        /// ä¿®æ”¹å­¦ç”Ÿå¯†ç 
         /// </summary>
-        /// <param name="student">ÒªĞŞ¸ÄµÄÑ§Éú£¬¸ÄºóµÄÃÜÂëÒÑ¾­Ìî³äºÃ</param>
-        /// <returns>1³É¹¦ 0Ê§°Ü</returns>
+        /// <param name="student">è¦ä¿®æ”¹çš„å­¦ç”Ÿï¼Œæ”¹åçš„å¯†ç å·²ç»å¡«å……å¥½</param>
+        /// <returns>1æˆåŠŸ 0å¤±è´¥</returns>
         int ModifyPassword(Student student);
+
+        Student GetByStudentNumber(string studentnumber);
 
     }
 }

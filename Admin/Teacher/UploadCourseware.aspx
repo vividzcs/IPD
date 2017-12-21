@@ -55,6 +55,7 @@
             </table>
         </div>
         <div class="button-group">
+            &nbsp;&nbsp;&nbsp;<span id="warning" style="display:none"></span>
             <asp:button class="btn btn-warning" runat="server" text="跳过" OnClick ="StepOver" />
             <asp:button class="btn btn-success" runat="server" text="完成，下一步" OnClick="NextStep" />
         </div>
@@ -126,6 +127,7 @@
             var buttonId = obj.id;
             var CourseId = document.getElementById('CourseIds').value;
             //alert(CourseId)
+            var warn = document.getElementById('warning');
             var num = parseInt(buttonId.substr(-1, 1));
             var fileName = document.getElementsByClassName("name" + num)[0];
             
@@ -137,7 +139,7 @@
             fd.append("file", fm); //将文件加到fd里面
             fd.append("CourseId", CourseId);
             var xhr = getXMLHttpRequest();
-            xhr.open("post", "ExperimentUploadHandler.ashx", true);
+            xhr.open("post", "CourseWareUploadHandler.ashx", true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4)
                 {
@@ -146,21 +148,30 @@
                         var rs = eval('(' + xhr.responseText + ')');
                         if (rs.status == 1)
                         {
+                            warn.style.display = "block";
+                            warn.style.color = "green";
+                            warn.innerHTML = "上传成功!";
                             fileName.value = rs.msg;
                             console.log(rs.msg);
                             fileName.style.backgroundColor = "rgba(0,255,0,0.5)";
                             obj.disabled = "disabled";
+                            obj.style = "background-color:#eee;"
                             
                         }
                         else
                         {
                             fileName.value = rs.msg;
                             fileName.style.backgroundColor = "rgba(255,0,0,0.5)";
+                            warn.innerHTML = rs.msg;
+                            warn.style.display = "block";
+                            warn.style.color = "red";
                         }
                     }
                     else {
                         fileName.value = "上传失败";
                         fileName.style.backgroundColor = "rgba(255,0,0,0.5)";
+                        warn.innerHTML = "上传失败";
+                        warn.style.color = "red";
                     }
                 }
                 

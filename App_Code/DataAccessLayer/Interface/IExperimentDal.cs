@@ -17,5 +17,13 @@ namespace DataAccessLayer.Interface
 
         Experiment Select(int studentStudentId, int ceCourseExperimentId);
         int InsertExperiment(Experiment exp);
+        CourseExperiment SelectByCourseExperimentId(int id);
+
+        /// <summary>
+        /// 通过老师布置的实验ID获取交的作业集合
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        IEnumerable<Experiment> SelectExpermentByCourseExpermentId(int id);
     }
 }
