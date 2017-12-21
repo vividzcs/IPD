@@ -79,7 +79,7 @@ namespace BusinessLogicLayer.Interface
      * @param teacher 
      * @return
      */
-        int ModifyTeacher(int teacherId, string name, int departmentId, string introduction, string jobNumber);
+        int ModifyTeacher(Teacher teacher);
 
 
         /**

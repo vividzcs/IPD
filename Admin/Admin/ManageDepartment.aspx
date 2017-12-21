@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title></title>
+    <link href="/Content/form-controls.css" rel="stylesheet"/>
     <link href="/Content/managedepart.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -82,6 +83,7 @@
 
                 <SortedDescendingHeaderStyle BackColor="#4870BE"></SortedDescendingHeaderStyle>
             </asp:GridView>
+            <a class=" center btn btn-primary" href="CreateDepartment.aspx" style="width:100px; text-align:center">新建</a>
         </form>
     </div>
 </asp:Content>

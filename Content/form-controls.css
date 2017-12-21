@@ -145,3 +145,7 @@ xmp {
 .input-style:hover {
     border: solid 1px #20a0ff;
 }
+.center {
+    display:block;
+    margin:0 auto;
+}

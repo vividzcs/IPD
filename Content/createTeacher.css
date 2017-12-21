@@ -19,14 +19,21 @@ a {
     width: 90%;
     margin: 0 auto;
 }
-#CreateTeacher {
-    width:70%;
-    height:400px;
-    margin:100px auto;
-    padding:0px 30px 0px 30px;
-    position:relative;
+#CreateDepartment, #CreateTeacher {
+    width: 70%;
+    height: 400px;
+    margin: 100px auto;
+    padding: 0px 30px 0px 30px;
+    position: relative;
 }
-.name,.jobNumber,.department {
+#CreateTeacher {
+    width: 70%;
+    height: 400px;
+    margin: 100px auto;
+    padding: 0px 30px 0px 30px;
+    position: relative;
+}
+.name,.jobNumber,.department,.englishName {
     display:inline-block;
     width:50%;
 }

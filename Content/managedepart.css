@@ -9,6 +9,11 @@ tr,
 th,
 td { padding: 10px }
 
+a {
+    text-decoration:none;
+    color:white;
+}
+
 textarea,
 input {
     border: solid 1px #d4d4d4;

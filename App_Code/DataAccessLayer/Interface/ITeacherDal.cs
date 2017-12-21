@@ -36,7 +36,7 @@ namespace DataAccessLayer.Interface
         int UpdateTeacherBanned(int teacherId);
 
 
-        int ModifyTeacher(int teacherId, string name, int departmentId, string introduction, string jobNumber);
+        int ModifyTeacher(Teacher teacher);
 
         void ResetTeacherPassword(int teacherId);
 

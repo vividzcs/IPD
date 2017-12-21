@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>管理教师 - HAERMS</title>
+    <link href="/Content/form-controls.css" rel="stylesheet"/>
     <link href="/Content/managedepart.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -12,16 +13,23 @@
              <a href="javascript:" style="color:blue">教师列表</a>
              <a href="/Admin/Admin/ManageDepartment.aspx">院系列表</a>
         </div> 
-            <asp:GridView ID="GridViewTeacher" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowEditing="GridViewTeacher_RowEditing" OnRowCancelingEdit="GridViewTeacher_RowCancelingEdit" OnRowCommand="GridViewTeacher_RowCommand">
+            <asp:GridView ID="GridViewTeacher" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ShowFooter="true" OnPageIndexChanging="GridViewTeacher_PageIndexChanging"  OnRowEditing="GridViewTeacher_RowEditing" OnRowCancelingEdit="GridViewTeacher_RowCancelingEdit" OnRowCommand="GridViewTeacher_RowCommand" OnRowDataBound="GridViewTeacher_RowDataBound">
 
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
 
                 <Columns>
-                    <asp:BoundField DataField="Name" HeaderText="姓名"></asp:BoundField>
+                    <asp:TemplateField HeaderText="姓名">
+                        <EditItemTemplate>
+                            <asp:TextBox runat="server" Text='<%# Bind("Name") %>' ID="TextBoxName"></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label runat="server" Text='<%# Bind("Name") %>' ID="LabelName"></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
                     <asp:TemplateField HeaderText="院系">
                         <EditItemTemplate>
-                            <asp:DropDownList runat="server" ID="dropdownListDepartment" DataSourceID="ObjectDataSourceDepartment"></asp:DropDownList>
-                            <asp:ObjectDataSource runat="server" ID="ObjectDataSourceDepartment"></asp:ObjectDataSource>
+                            <asp:DropDownList runat="server" ID="dropdownListDepartment" AutoPostBack="True"></asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:Label runat="server" ID="Label1" Text='<%# Bind("DepartmentName") %>'></asp:Label>
@@ -29,29 +37,31 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="简介">
                         <EditItemTemplate>
-                            <asp:TextBox runat="server" Text='<%# Bind("Introduction") %>' ID="TextBox2"></asp:TextBox>
+                            <asp:TextBox runat="server" Text='<%# Bind("Introduction") %>' ID="TextBoxIntroduction" TextMode="multiline" Columns="40" Rows="4"></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("Introduction") %>' ID="Label2"></asp:Label>
+                            <div class="block-with-text longtext">
+                                <asp:Label runat="server" Text='<%# Bind("Introduction") %>' ID="LabelIntroduction" TextMode="multiline" Columns="40" Rows="4"></asp:Label>
+                            </div>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="工号">
                         <EditItemTemplate>
-                            <asp:TextBox runat="server" Text='<%# Bind("JobNumber") %>' ID="TextBox3"></asp:TextBox>
+                            <asp:TextBox runat="server" Text='<%# Bind("JobNumber") %>' ID="TextBoxJobNumber"></asp:TextBox>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label runat="server" Text='<%# Bind("JobNumber") %>' ID="Label3"></asp:Label>
+                            <asp:Label runat="server" Text='<%# Bind("JobNumber") %>' ID="LabelJobNumber"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ShowHeader="False">
                         <EditItemTemplate>
-                            <asp:LinkButton ID="lbUpdate" CommandArgument='<%# Eval("DepartmentId") %>' CommandName="UpdateRow" ForeColor="#8C4510" runat="server">更新</asp:LinkButton>
-                            <asp:LinkButton ID="lbCancel" CommandArgument='<%# Eval("DepartmentId") %>' CommandName="CancelUpdate" ForeColor="#8C4510" runat="server" CausesValidation="false">取消</asp:LinkButton>
+                            <asp:LinkButton ID="lbUpdate" CommandArgument='<%# Eval("TeacherId") %>' CommandName="UpdateRow" ForeColor="#8C4510" runat="server">更新</asp:LinkButton>
+                            <asp:LinkButton ID="lbCancel" CommandArgument='<%# Eval("TeacherId") %>' CommandName="CancelUpdate" ForeColor="#8C4510" runat="server" CausesValidation="false">取消</asp:LinkButton>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:LinkButton ID="LinkButtonEdit" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>'  CommandName="edit" Text="编辑"></asp:LinkButton>
-                            <asp:LinkButton ID="LinkButtonFreeze" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>'  CommandName="freeze" Text="冻结"></asp:LinkButton>
-                            <asp:LinkButton ID="LinkButtonReset" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>' CommandName="reset" Text="重置"></asp:LinkButton>
+                            <asp:LinkButton ID="LinkButtonEdit" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>' ForeColor="#8C4510"   CommandName="edit" Text="编辑"></asp:LinkButton>
+                            <asp:LinkButton ID="LinkButtonFreeze" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>' ForeColor="#8C4510"   CommandName="freeze" Text="冻结"></asp:LinkButton>
+                            <asp:LinkButton ID="LinkButtonReset" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>' ForeColor="#8C4510"  CommandName="reset" Text="重置"></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -66,10 +76,9 @@
                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
+             <a class=" center btn btn-primary" href="CreateTeacher.aspx" style="width:100px; text-align:center">新建</a>
         </div>
     </div>
         </form>
-    <script src="/Scripts/Senate.js"></script>
-    <script src="/Scripts/SenateObject.js"></script>
 </asp:Content>
 

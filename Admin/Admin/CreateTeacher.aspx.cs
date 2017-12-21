@@ -29,4 +29,6 @@ public partial class Admin_CreateTeacher : System.Web.UI.Page
 
         Response.Redirect("ManageTeacher.aspx");
     }
+
+
 }

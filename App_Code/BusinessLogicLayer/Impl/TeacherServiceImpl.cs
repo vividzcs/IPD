@@ -115,9 +115,9 @@ namespace BusinessLogicLayer.Impl
             return _teacherDal.InsertTeacher(teacher);
         }
 
-        public int ModifyTeacher(int teacherId, string name, int departmentId, string introduction, string jobNumber)
+        public int ModifyTeacher(Teacher teacher)
         {
-            throw new NotImplementedException();
+            return _teacherDal.ModifyTeacher(teacher);
         }
     }
 }

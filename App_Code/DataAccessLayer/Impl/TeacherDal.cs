@@ -52,23 +52,24 @@ namespace DataAccessLayer.Impl
             using(var context = new HaermsEntities())
             {
                 var _t = context.Teacher.FirstOrDefault(t => t.TeacherId == teacherId);
-                _t.Banned = true;
+                var temp = _t.Banned;
+                _t.Banned = !temp;
                 context.SaveChanges();
-                return _t.Banned == true ? 1 : 0;
+                return _t.Banned == !temp ? 1 : 0;
             }
         }
 
-        public int ModifyTeacher(int teacherId, string name, int departmentId, string introduction, string jobNumber)
+        public int ModifyTeacher(Teacher teacher)
         {
             using(var context = new HaermsEntities())
             {
-                var _t = context.Teacher.FirstOrDefault(t => t.TeacherId == teacherId);
-                _t.Name = name;
-                _t.DepartmentId = departmentId;
-                _t.Introduction = introduction;
-                _t.JobNumber = jobNumber;
+                var _t = context.Teacher.FirstOrDefault(t => t.TeacherId == teacher.TeacherId);
+                _t.Name = teacher.Name;
+                _t.DepartmentId = teacher.DepartmentId;
+                _t.Introduction = teacher.Introduction;
+                _t.JobNumber = teacher.JobNumber;
                 context.SaveChanges();
-                return _t.Name == name ? 1 : 0;
+                return _t.Name == teacher.Name ? 1 : 0;
             }
         }
 
