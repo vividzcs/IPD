@@ -47,20 +47,21 @@ namespace BusinessLogicLayer.Impl
         {
             return _courseDal.SelectAllByTeacher(whichTeacher);
         }
+        public int GetTeacherIdByCourseId(int courseId)
+        {
+            return _courseDal.GetTeacherIdByCourseId(courseId);
+        }
 
         public IEnumerable<Course> GetByTeacherNotEndYet(Teacher whichTeacher)
         {
             return _courseDal.SelectNotEnded(whichTeacher);
         }
 
+
+
         public IEnumerable<Course> Get(Student student)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<Course> Get(Student student, string schoolYear, string semester)
-        {
-            return _courseDal.Select(new Class() {ClassId = student.ClassId}, schoolYear, semester);
+            return _courseDal.Select(new Class() {ClassId = student.ClassId});
         }
 
         public Course Get(Course whichCourse, Student whichStudent)

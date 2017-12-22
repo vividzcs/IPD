@@ -34,7 +34,7 @@ namespace BusinessLogicLayer.Interface
         /// <param name="schoolYear">学年</param>
         /// <param name="semester">学期</param>
         /// <returns></returns>
-        IEnumerable<Course> Get(Student student, string schoolYear, string semester);
+
 
         /**
      * @param whichCourse 

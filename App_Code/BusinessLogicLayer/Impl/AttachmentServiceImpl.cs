@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BusinessLogicLayer.Interface;
 using DataAccessLayer.Interface;
 using Models;
@@ -48,6 +49,15 @@ namespace BusinessLogicLayer.Impl
         public int Delete(object deleteWhich)
         {
             throw new System.NotImplementedException();
+        }
+        /// <summary>
+        /// 通过获取的课件Id删除课件
+        /// </summary>
+        /// <param name="neededDeleteAttachmentId">哪个课件Id</param>
+        /// <returns>删除是否成功</returns>
+        public bool DeleteByAttachemtId(int neededDeleteAttachmentId)
+        {
+            return _attachmentDal.DeleteByAttachemtId(neededDeleteAttachmentId);
         }
 
         /// <summary>
