@@ -70,8 +70,8 @@ namespace Student
                 
 
             }
-            //RepeaterCourseAndScore.DataSource = new { courses, dep};
-            //RepeaterCourseAndScore.DataBind();
+//            RepeaterCourseAndScore.DataSource = new { courses, dep};
+//            RepeaterCourseAndScore.DataBind();
 
         
         }      

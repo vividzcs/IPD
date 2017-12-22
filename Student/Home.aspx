@@ -12,9 +12,7 @@
     <link href="/Content/StudentDetail.css" rel="stylesheet"/>
     <link href="/Content/form-controls.css" rel="stylesheet"/>
     <style type="text/css">
-        .auto-style1 {
-            width: 420px;
-        }
+        .auto-style1 { width: 420px; }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -37,7 +35,7 @@
                         学院: <span runat="server" ID="SpanDepartment"></span>
                     </td>
                     <td>班级: <span runat="server" ID="SpanClass"></span></td>
-                </tr>  
+                </tr>
             </table>
             <div class="gradeData">
                 <table class="dataList">
@@ -46,43 +44,19 @@
                         <th>成绩</th>
                         <th>开课学院</th>
                     </tr>
-<<<<<<< HEAD
-<%--                        <asp:Repeater runat="server" ID="RepeaterCourseAndScore"   >
-                            <ItemTemplate>--%>
-                        <%
-                            foreach (var thiscourse in dep) { 
-                                //var thisCourseTeacherId = new CourseServiceImpl().GetTeacherIdByCourseId(thiscourse.CourseId);
-                                //  var thisTeacher = new TeacherServiceImpl().GetByTeacherId(thisCourseTeacherId);
-                                //  var thisTeacherDep = new DepartmentServiceImpl().GetByDepId(thisTeacher.DepartmentId);
-           
-                                %>
-                                <tr>
-=======
+                    <%
+                        foreach (var thiscourse in dep)
+                        {
+                    %>
+                        <tr>
+                            <td>
+                                <a href="/Class/Intro.aspx?cid=<%= thiscourse[0] %>"><%= thiscourse[1] %></a>
+                            </td>
 
-                    <asp:Repeater runat="server" ID="RepeaterCourseAndScore">
-                        <ItemTemplate>
-                            <tr>
-                                <td><%#Eval("SchoolYear") %></td>
-                                <td><%#Eval("Semester") %></td>
->>>>>>> origin
-                                <td>
-                                    <a href="/Class/Intro.aspx?cid=<%=thiscourse[0] %>"><%=thiscourse[1] %></a>
-                                </td>
-<<<<<<< HEAD
-                                <td><%=thiscourse[2] %></td>
-                                <td><%=thiscourse[3] %></td>
-                                </tr>
-                        <% } %>
-<%--                            </ItemTemplate>
-                        </asp:Repeater>--%>
-=======
-                                <td>to be programmed</td>
-                                <td>to be programmed</td>
-                            </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
-
->>>>>>> origin
+                            <td><%= thiscourse[2] %></td>
+                            <td><%= thiscourse[3] %></td>
+                        </tr>
+                    <% } %>
                 </table>
             </div>
         </div>
