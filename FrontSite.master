@@ -46,7 +46,7 @@
                                break;
                            case Admin admin:
                     %>
-                    <a><%= admin.Name %></a>
+                    <a href="/Admin/Admin/ManageTeacher.aspx"><%= admin.Name %></a>
                     <%
                                break;
                        }

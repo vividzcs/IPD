@@ -41,7 +41,7 @@ public partial class Login : System.Web.UI.Page
                     Session["user"] = admin;
                     if (string.IsNullOrEmpty(Request.QueryString["pre"]))
                     {
-                        Response.Redirect("/Default.aspx");
+                        Response.Redirect("~/Admin/Admin/ManageTeacher.aspx");
                     }
                     else
                     {

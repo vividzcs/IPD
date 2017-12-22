@@ -5,19 +5,12 @@ using Models;
  */
 namespace BusinessLogicLayer.Interface
 {
-    /// <inheritdoc />
-    public interface IAdminService : IBusinessLogicLayerBase {
-
+    public interface IAdminService
+    {
         /**
      * @param admin 
      * @return
      */
         Admin Login(Admin admin);
-
-       
-
-
-        
-
     }
 }
