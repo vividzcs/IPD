@@ -3,11 +3,14 @@ using Models;
 using System;
 using System.Collections;
 using System.IO;
+using Utils;
 
 public partial class Admin_CreateCourse : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        AuthHelper.AuthCheck(Session, Request, Response, Server);
+
         var all = new ClassServiceImpl().GetAll();
 
             DropDownList1.DataSource = all;  //绑定班级

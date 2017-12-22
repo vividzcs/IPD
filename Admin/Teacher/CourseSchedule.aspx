@@ -23,23 +23,23 @@
     <form class="main-container create-class-main-container" runat="server">
         <div class="main-content card">
             <h2>课程时间</h2>
-            <input id="CourseId" type="hidden" runat="server">
+            <input id="CourseId" type="hidden" runat="server"/>
             <hr>
             <table class="class-hour-table" border="2">
                 <tr>
                     <td class="table-head">开课时间</td>
                     <td>
-                        <input id="BeginDate" title="开始时间" type="date" class="input-style" min="2017-09-01" max="2099-12-31" runat="server">
+                        <input id="BeginDate" title="开始时间" type="date" class="input-style" min="2017-09-01" max="2099-12-31" runat="server"/>
                         -
-                        <input id="EndDate" title="结束时间" type="date" class="input-style" min="2017-09-01" max="2099-12-31" runat="server">
+                        <input id="EndDate" title="结束时间" type="date" class="input-style" min="2017-09-01" max="2099-12-31" runat="server"/>
                     </td>
                 </tr>
                 <tr>
                     <td class="table-head">课时安排</td>
                     <td>
-                        理论<input id="TheoryClassHour" title="理论课时" type="number" class="input-style" min="1" max="300" runat="server">课时
+                        理论<input id="TheoryClassHour" title="理论课时" type="number" class="input-style" min="1" max="300" runat="server"/>课时
                         +
-                        实验<input id="ExperimentClassHour" title="实验课时" type="number" class="input-style" min="1" max="300" runat="server">课时
+                        实验<input id="ExperimentClassHour" title="实验课时" type="number" class="input-style" min="1" max="300" runat="server"/>课时
                     </td>
                 </tr>
             </table>

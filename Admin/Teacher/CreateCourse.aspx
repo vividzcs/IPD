@@ -2,11 +2,11 @@
 <%@ Import Namespace="Models" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>创建课程 - HAERMS</title>
-    <link href="../../../Content/index.css" rel="stylesheet" />
-    <link href="../../../Content/classes.css" rel="stylesheet" />
-    <link href="../../../Content/teacher-style.css" rel="stylesheet" />
-    <link href="../../../Content/form-controls.css" rel="stylesheet" />
-    <link href="../../../Content/progressbar.css" rel="stylesheet" />
+    <link href="/Content/index.css" rel="stylesheet" />
+    <link href="/Content/classes.css" rel="stylesheet" />
+    <link href="/Content/teacher-style.css" rel="stylesheet" />
+    <link href="/Content/form-controls.css" rel="stylesheet" />
+    <link href="/Content/progressbar.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="progressbar-container progressbar-margin-top">
@@ -22,18 +22,18 @@
 
     <form class="main-container create-class-main-container" runat="server">
         <div class="main-content card">
-            <h2><input id="CourseName" title="课程名称" placeholder="课程名称" class="create-course-h2  input-style" required="required" runat="server"> <span style="font-size:12px;color:red"></span></h2>
+            <h2><input id="CourseName" title="课程名称" placeholder="课程名称" class="create-course-h2  input-style" required="required" runat="server"/> <span style="font-size:12px;color:red"></span></h2>
             <h5 class="teacher">陈晓江/肖云</h5>
             <hr />
-            <h2 style="margin:10px 0;">班级:&nbsp;<asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList></h2>
+            <h2 style="margin:10px 0;">班级:&nbsp;<asp:DropDownList ID="DropDownList1" runat="server" CssClass="input-style"></asp:DropDownList></h2>
             
             <hr />
             <h2 style="margin:10px 0;">
-            学年:&nbsp;<asp:DropDownList ID="SchoolYear" runat="server"></asp:DropDownList>&nbsp;&nbsp;&nbsp;学期:&nbsp;<asp:DropDownList ID="Semester" runat="server"></asp:DropDownList>
+            学年:&nbsp;<asp:DropDownList ID="SchoolYear" runat="server" CssClass="input-style"></asp:DropDownList>&nbsp;&nbsp;&nbsp;学期:&nbsp;<asp:DropDownList ID="Semester" runat="server" CssClass="input-style"></asp:DropDownList>
              </h2>
             <hr />
             <h2 style="margin:10px 0;">
-            课程图片:&nbsp;<asp:FileUpload ID="CourseImage" runat="server" />
+            课程图片:&nbsp;<asp:FileUpload ID="CourseImage" CssClass="input-style" runat="server" accept="image/*"/>
                 </h2>
             <hr />
             <div class="paragraphs">

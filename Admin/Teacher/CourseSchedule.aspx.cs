@@ -6,11 +6,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utils;
 
 public partial class Admin_CourseSchedule : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        AuthHelper.AuthCheck(Session, Request, Response, Server);
+
         CourseId.Value = Request.QueryString["id"] ?? "0";
 
         
