@@ -6,15 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogicLayer.Impl;
 using Models;
+using Utils;
 
 public partial class ImportStudent : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(Session["user"] == null)
-        {
-            Response.Redirect("../../Login.aspx");
-        }
+        AuthHelper.AuthCheck(Session, Request, Response, Server);
 
         if (Request["course"] == null)
         {
