@@ -5,26 +5,23 @@ using Models;
 using System.Web.UI;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
+using Utils;
 
 namespace Student
 {
     public partial class StudentHome : System.Web.UI.Page
     {
+        protected readonly List<string[]> dep = new List<string[]>();
+        private IEnumerable<Course> _thisStudentCourse;
 
-        public List<string[]> dep = new List<string[]>();
-        public IEnumerable<Course> thisStudentCourse;
         protected void Page_Load(object sender, EventArgs e)
         {
             //需要登录才能看到
-            var session = Session["user"];
-            if (session == null)
-            {
-                //没有登录转到登录界面
-                Response.Redirect("~/Login.aspx?pre="+Server.UrlEncode(Request.Url.AbsoluteUri));
-                return;
-            }
-            var student = new Models.Student();
-            if (session is Models.Student s)
+            AuthHelper.AuthCheck(Session, Request, Response, Server);
+
+            Models.Student student;
+            if (Session["user"] is Models.Student s)
             {
                 student = s;
             }
@@ -58,22 +55,23 @@ namespace Student
 
             //该生的课程数据绑定
             var courses = new CourseServiceImpl().Get(student);
-            thisStudentCourse = courses;
-            foreach (var course in courses) {
+            var studentCourse = courses as Course[] ?? courses.ToArray();
+            _thisStudentCourse = studentCourse;
+            foreach (var course in studentCourse)
+            {
                 var thisCourseTeacherId = new CourseServiceImpl().GetTeacherIdByCourseId(course.CourseId);
                 var thisTeacher = new TeacherServiceImpl().GetByTeacherId(thisCourseTeacherId);
                 var thisTeacherDep = new DepartmentServiceImpl().GetByDepId(thisTeacher.DepartmentId);
                 //得到当前学生的某个课程的成绩
-                var thisStudentScore = new ScoreServiceImpl().GetByCourseIdAndStudentId(course.CourseId,student.StudentId);
-                String[] str1 = { course.CourseId.ToString(),course.Name ,thisStudentScore.Mark.ToString(),thisTeacherDep.ChinesaeName };
+                var thisStudentScore =
+                    new ScoreServiceImpl().GetByCourseIdAndStudentId(course.CourseId, student.StudentId);
+                string[] str1 =
+                {
+                    course.CourseId.ToString(), course.Name, thisStudentScore.Mark.ToString(),
+                    thisTeacherDep.ChinesaeName
+                };
                 dep.Add(str1);
-                
-
             }
-//            RepeaterCourseAndScore.DataSource = new { courses, dep};
-//            RepeaterCourseAndScore.DataBind();
-
-        
-        }      
+        }
     }
 }
