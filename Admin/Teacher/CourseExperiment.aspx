@@ -53,10 +53,8 @@
                             <span class="experiment-deadline" id="experiment-deadline-<%= i %>">截止时间：<%= courseExperiment.Deadline.GetValueOrDefault().ToString("f") %></span>
                             <!-- 下载报告 -->
                             <div class="experiment-operation" id="btn-<%= i %>">
-                                <button type="button" class="btn btn-info">打包下载</button>
-                                <button type="button" class="btn btn-info">
-                                    <a href="#">单独查看</a>
-                                </button>
+                                <a class="btn btn-info">打包下载</a>
+                                <a class="btn btn-info" href="ManageCourseHwEx.aspx?pt=ex&id=<%= courseExperiment.CourseExperimentId %>">单独查看</a>
                             </div>
                             <!-- 下载报告-->
                             <div class="experiment-detail">

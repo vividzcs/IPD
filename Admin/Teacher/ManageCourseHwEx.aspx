@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ManageCourseHwEx.aspx.cs" Inherits="Admin_ManageCourseHwEx" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ManageCourseHwEx.aspx.cs" Inherits="Admin.Teacher.Admin_ManageCourseHwEx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>管理作业实验 - HAERMS</title>
@@ -89,7 +89,7 @@
                     <div class="experiment-operation">
                         <% if (ex.filename != null)
                             {%>
-                        <a href="<%=ex.path %>" class="btn btn-success" download="">下载</a>
+                        <a href="<%=ex.path %>" class="btn btn-success" download="<%=ex.filename %>">下载</a>
                         <a href="DeletePage.aspx?ex=<%=ex.exid %>" class="btn btn-danger">删除</a><%} %>
                     </div>
                 </td>
@@ -116,7 +116,7 @@
                     <div class="experiment-operation">
                         <% if (ho.filename != null)
                             {%>
-                        <a href="<%=ho.path %>" class="btn btn-success" download="">下载</a>
+                        <a href="<%=ho.path %>" class="btn btn-success" download="<%=ho.filename %>">下载</a>
                         <a href="DeletePage.aspx?ho=<%=ho.hoid %>" class="btn btn-danger">删除</a><%} %>
                     </div>
                 </td>

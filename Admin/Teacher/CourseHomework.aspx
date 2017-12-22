@@ -17,8 +17,6 @@
     <%--     通过调用业务逻辑CourseServiceImpl的GetById方法取得该课程的对象，给title赋值--%>
     <% var cid = int.Parse(Request.QueryString["course"]); %>
     <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
-    <% var teacherId = course.TeacherId;
-       var teacher = (Teacher) (new TeacherServiceImpl().GetById(teacherId)); %>
     <div class="">
         <nav class="sidebar">
             <div class="card">
@@ -56,10 +54,8 @@
                                 <span class="experiment-deadline" id="experiment-deadline-<%= i %>">截止时间：<%= homework.Deadline.ToString("f") %></span>
                                 <!-- 下载作业 -->
                                 <div class="homework-operation" id="btn-0">
-                                    <button type="button" class="btn btn-info">打包下载</button>
-                                    <button type="button" class="btn btn-info">
-                                        <a href="#">单独查看</a>
-                                    </button>
+                                    <a class="btn btn-info">打包下载</a>
+                                    <a class="btn btn-info" href="ManageCourseHwEx.aspx?pt=ho&id=<%= homework.CourseHomeworkId %>">单独查看</a>
                                 </div>
                                 <!-- 下载作业-->
                             </div>
@@ -80,10 +76,12 @@
     </div>
 
     <script>
-        (function init() {
+        (function() {
             var allHomework = document.getElementsByClassName('homework-detail');
             for (var homeworkIndex in allHomework) {
-                allHomework[homeworkIndex].style.display = 'none';
+                if (allHomework.hasOwnProperty(homeworkIndex)) {
+                    allHomework[homeworkIndex].style.display = 'none';
+                }
             }
         })();
 
@@ -92,13 +90,13 @@
                 parseInt(event.target.id.substr(event.target.id.lastIndexOf('-') + 1,
                     event.target.id.length))];
             var flagHw = homework.style.display === 'none';
-            if (homework !== undefined) {
+
                 homework.style.display = flagHw ? 'block' : 'none';
-            }
+
             var img = document.getElementById('img-' +
                 parseInt(event.target.id.substr(event.target.id.lastIndexOf('-') + 1,
                     event.target.id.length)));
-            if (img !== null) {
+            if (img !== null && img !== undefined) {
                 img.src = flagHw ? '../../Images/up_arrow.svg' : '../../Images/down_arrow.svg';
             }
         }

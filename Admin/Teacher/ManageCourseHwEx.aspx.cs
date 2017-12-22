@@ -1,209 +1,195 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogicLayer.Impl;
 using Models;
+using Utils;
 
-public partial class Admin_ManageCourseHwEx : System.Web.UI.Page
+namespace Admin.Teacher
 {
-    private string pagetype;
-    private Dictionary<string, string> exInfo = new Dictionary<string, string>();
-    private Dictionary<string, string> hoInfo = new Dictionary<string, string>();
-    private IEnumerable<Experiment> experimentlist;
-    private IEnumerable<Homework> homeworklist;
-
-    List<Exnode> exlist = new List<Exnode>();
-    List<Honode> holist = new List<Honode>();
-
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Admin_ManageCourseHwEx : System.Web.UI.Page
     {
-        pagetype = "ho";
-        int id = 9;
-        CourseExperiment courseExperiment = (CourseExperiment)new ExperimentServiceImpl().GetCourseExperimentById(id);
-        IEnumerable<CourseSelection> recoders = new CourseSelectionServiceImpl().GetRecordStudentByCourseId(courseExperiment.CourseId);
-        if (pagetype == "ex")
+        private IEnumerable<Experiment> experimentlist;
+        private IEnumerable<Homework> homeworklist;
+
+        readonly List<Exnode> exlist = new List<Exnode>();
+        readonly List<Honode> holist = new List<Honode>();
+
+        protected void Page_Load(object sender, EventArgs e)
         {
-            id = 8;
-            exInfo.Add("name", courseExperiment.Name);
-            exInfo.Add("deadline", courseExperiment.Deadline.ToString());
-            exInfo.Add("purpose", courseExperiment.Purpose);
-            exInfo.Add("steps", courseExperiment.Steps);
-            exInfo.Add("references", courseExperiment.References);
-
-            
-
-            foreach(var i in recoders)
+            AuthHelper.AuthCheck(Session, Request, Response, Server);
+            if (Request.QueryString["pt"] == null || Request.QueryString["id"] == null)
             {
-                using (var context = new HaermsEntities())
-                {
-                    var queryans = context.Experiment.Where(ex => ex.CourseExperimentId == courseExperiment.CourseExperimentId && i.StudentId == ex.StudentId);
-                    Exnode newnode = new Exnode();
-                    if (queryans.FirstOrDefault() != null)
-                    {
-                        newnode.filename = queryans.FirstOrDefault().Name;
-                        newnode.exid = queryans.FirstOrDefault().ExperimentId.ToString();
-                        newnode.mark = queryans.FirstOrDefault().Mark == null ? "0" : queryans.FirstOrDefault().Mark.ToString();
-                        newnode.path = queryans.FirstOrDefault().Path;
-                    }
-                    else
-                    {
-                        newnode.filename = null;
-                        newnode.exid = null;
-                    }
-                    newnode.stuname = context.Student.Find(i.StudentId).Name;
-                    newnode.stunum = context.Student.Find(i.StudentId).StudentNumber;
-
-                    exlist.Add(newnode);
-                }
+                return;
             }
-        }
-        else if(pagetype=="ho")
-        {
-            id = 7;
-            CourseHomework courseHomework = (CourseHomework)new HomeworkServiceImpl().GetCourseHomeworkByCourseId(id);
-            hoInfo.Add("name", courseHomework.Name);
-            hoInfo.Add("deadline", courseHomework.Deadline.ToString());
-            hoInfo.Add("purpose", courseHomework.Content);
-            
-            foreach(var i in recoders)
+
+            PageType = Request.QueryString["pt"];
+            int id = int.Parse(Request.QueryString["id"]);
+
+            if (PageType == "ex")
             {
-                using (var context = new HaermsEntities())
-                {
-                    var queryans = context.Homework.Where(ho => ho.CourseHomeworkId == id && ho.StudentId == i.StudentId);
-                    Honode newnode = new Honode();
-                    if (queryans.FirstOrDefault() != null)
-                    {
-                        newnode.filename = queryans.FirstOrDefault().Name;
-                        newnode.hoid = queryans.FirstOrDefault().HomeworkId.ToString();
-                        newnode.mark = queryans.FirstOrDefault().Mark == null ? "0" : queryans.FirstOrDefault().Mark.ToString();
-                        newnode.path = queryans.FirstOrDefault().Path;
-                    }
-                    else
-                    {
-                        newnode.filename = null;
-                        newnode.hoid = null;
-                    }
-                    newnode.stuname = context.Student.Find(i.StudentId).Name;
-                    newnode.stunum = context.Student.Find(i.StudentId).StudentNumber;
-                    holist.Add(newnode);
-                }
-            }
-        }
-    }
+                var courseExperiment =
+                    (CourseExperiment) new ExperimentServiceImpl().GetCourseExperimentById(id);
+                var recoders =
+                    new CourseSelectionServiceImpl().GetRecordStudentByCourseId(courseExperiment.CourseId);
+                ExInfo.Add("name", courseExperiment.Name);
+                ExInfo.Add("deadline", courseExperiment.Deadline.ToString());
+                ExInfo.Add("purpose", courseExperiment.Purpose);
+                ExInfo.Add("steps", courseExperiment.Steps);
+                ExInfo.Add("references", courseExperiment.References);
 
-    public string PageType
-    {
-        get
-        {
-            return pagetype;
-        }
-    }
-    
-    public Dictionary<string, string> ExInfo
-    {
-        get
-        {
-            return exInfo;
-        }
-    }
 
-    public Dictionary<string, string> HoInfo
-    {
-        get
-        {
-            return hoInfo;
-        }
-    }
-
-    public List<Exnode> ExList
-    {
-        get
-        {
-            return exlist;
-        }
-    }
-
-    public List<Honode> HoList
-    {
-        get
-        {
-            return holist;
-        }
-    }
-
-    protected void updatemark_Click(object sender, EventArgs e)
-    {
-        string markstring = Request.Form.Get("input-mark");
-        if(markstring == null)
-        {
-            return ;
-        }
-        var marklist = markstring.Split(',');
-        int p = 0;
-        if(pagetype == "ex")
-        {
-            foreach (var i in exlist)
-            {
-                if (i.filename != null)
+                foreach (var i in recoders)
                 {
                     using (var context = new HaermsEntities())
                     {
-                        int experimentid = int.Parse(i.exid);
-                        var queryset = context.Experiment.Where(ex => ex.ExperimentId == experimentid);
-                        var thefirst = queryset.FirstOrDefault();
-                        if (thefirst != null)
+                        var queryans = context.Experiment.Where(ex =>
+                            ex.CourseExperimentId == courseExperiment.CourseExperimentId && i.StudentId == ex.StudentId);
+                        var newnode = new Exnode();
+                        if (queryans.FirstOrDefault() != null)
                         {
-                            thefirst.Mark = int.Parse(marklist[p]);
-                            context.SaveChanges();
+                            newnode.filename = queryans.FirstOrDefault()?.Name;
+                            newnode.exid = queryans.FirstOrDefault()?.ExperimentId.ToString();
+                            newnode.mark = queryans.FirstOrDefault()?.Mark == null
+                                ? "0"
+                                : queryans.FirstOrDefault()?.Mark.ToString();
+                            newnode.path = queryans.FirstOrDefault()?.Path;
                         }
+                        else
+                        {
+                            newnode.filename = null;
+                            newnode.exid = null;
+                        }
+                        newnode.stuname = context.Student.Find(i.StudentId)?.Name;
+                        newnode.stunum = context.Student.Find(i.StudentId)?.StudentNumber;
+
+                        exlist.Add(newnode);
                     }
                 }
-                p++;
             }
-        }
-        else
-        {
-            foreach(var i in holist)
+            else if (PageType == "ho")
             {
-                if(i.filename != null)
+                var courseHomework = new HomeworkServiceImpl().GetCourseHomeworkByCourseId(id);
+                var recoders =
+                    new CourseSelectionServiceImpl().GetRecordStudentByCourseId(courseHomework.CourseId);
+                HoInfo.Add("name", courseHomework.Name);
+                HoInfo.Add("deadline", courseHomework.Deadline.ToString(CultureInfo.InvariantCulture));
+                HoInfo.Add("purpose", courseHomework.Content);
+
+                foreach (var i in recoders)
                 {
                     using (var context = new HaermsEntities())
                     {
-                        int homeworkid = int.Parse(i.hoid);
-                        var queryset = context.Homework.Where(ho => ho.HomeworkId == homeworkid);
-                        var thefirst = queryset.FirstOrDefault();
-                        if(thefirst != null)
+                        var queryans =
+                            context.Homework.Where(ho => ho.CourseHomeworkId == id && ho.StudentId == i.StudentId);
+                        Honode newnode = new Honode();
+                        if (queryans.FirstOrDefault() != null)
                         {
-                            thefirst.Mark = int.Parse(marklist[p]);
-                            context.SaveChanges();
+                            newnode.filename = queryans.FirstOrDefault()?.Name;
+                            newnode.hoid = queryans.FirstOrDefault()?.HomeworkId.ToString();
+                            newnode.mark = queryans.FirstOrDefault()?.Mark == null
+                                ? "0"
+                                : queryans.FirstOrDefault()?.Mark.ToString();
+                            newnode.path = queryans.FirstOrDefault()?.Path;
                         }
+                        else
+                        {
+                            newnode.filename = null;
+                            newnode.hoid = null;
+                        }
+                        newnode.stuname = context.Student.Find(i.StudentId)?.Name;
+                        newnode.stunum = context.Student.Find(i.StudentId)?.StudentNumber;
+                        holist.Add(newnode);
                     }
                 }
-                p++;
+            }
+        }
+
+        protected string PageType { get; private set; }
+
+        protected Dictionary<string, string> ExInfo { get; } = new Dictionary<string, string>();
+
+        protected Dictionary<string, string> HoInfo { get; } = new Dictionary<string, string>();
+
+        protected IEnumerable<Exnode> ExList => exlist;
+
+        protected IEnumerable<Honode> HoList => holist;
+
+        protected void updatemark_Click(object sender, EventArgs e)
+        {
+            var markstring = Request.Form.Get("input-mark");
+            if (markstring == null)
+            {
+                return;
+            }
+            var marklist = markstring.Split(',');
+            var p = 0;
+            if (PageType == "ex")
+            {
+                foreach (var i in exlist)
+                {
+                    if (i.filename != null)
+                    {
+                        using (var context = new HaermsEntities())
+                        {
+                            var experimentid = int.Parse(i.exid);
+                            var queryset = context.Experiment.Where(ex => ex.ExperimentId == experimentid);
+                            var thefirst = queryset.FirstOrDefault();
+                            if (thefirst != null)
+                            {
+                                thefirst.Mark = int.Parse(marklist[p]);
+                                context.SaveChanges();
+                            }
+                        }
+                    }
+                    p++;
+                }
+            }
+            else
+            {
+                foreach (var i in holist)
+                {
+                    if (i.filename != null)
+                    {
+                        using (var context = new HaermsEntities())
+                        {
+                            var homeworkid = int.Parse(i.hoid);
+                            var queryset = context.Homework.Where(ho => ho.HomeworkId == homeworkid);
+                            var thefirst = queryset.FirstOrDefault();
+                            if (thefirst != null)
+                            {
+                                thefirst.Mark = int.Parse(marklist[p]);
+                                context.SaveChanges();
+                            }
+                        }
+                    }
+                    p++;
+                }
             }
         }
     }
-}
 
-public class Exnode
-{
-    public string stunum;
-    public string stuname;
-    public string filename;
-    public string exid;
-    public string mark;
-    public string path;
-}
+    public class Exnode
+    {
+        public string stunum;
+        public string stuname;
+        public string filename;
+        public string exid;
+        public string mark;
+        public string path;
+    }
 
-public class Honode
-{
-    public string stunum;
-    public string stuname;
-    public string filename;
-    public string hoid;
-    public string mark;
-    public string path;
+    public class Honode
+    {
+        public string stunum;
+        public string stuname;
+        public string filename;
+        public string hoid;
+        public string mark;
+        public string path;
+    }
 }
