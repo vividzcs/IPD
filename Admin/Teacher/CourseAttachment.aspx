@@ -34,22 +34,22 @@
     <div class="">
         <nav class="sidebar">
             <div class="card">
-                <img src="../../Images/course-main_image.png" class="image-item"/>
+                <img src="../../Images/Course/default_img.png" class="image-item"/>
             </div>
-            <ul class="list-class card">
-                <li class="list-class-item">
-                    <a href="#">简介</a>
-                </li>
-                <li class="list-class-item selected-class-item">
-                    <a href="#">课件</a>
-                </li>
-                <li class="list-class-item">
-                    <a href="#">实验</a>
-                </li>
-                <li class="list-class-item">
-                    <a href="#">作业</a>
-                </li>
-            </ul>
+           <ul class="list-class card">
+            <li class="list-class-item">
+                <a href="./CoursePage.aspx">简介</a>
+            </li>
+            <li class="list-class-item selected-class-item">
+                <a href="./CourseAttachment.aspx">课件</a>
+            </li>
+            <li class="list-class-item">
+                <a href="./CourseExperiment.aspx">实验</a>
+            </li>
+            <li class="list-class-item">
+                <a href="./CourseHomework.aspx">作业</a>
+            </li>
+        </ul>
         </nav>
         <div class="main-container">
             <div class="main-content card">

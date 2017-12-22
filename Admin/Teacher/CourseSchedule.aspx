@@ -45,6 +45,7 @@
             </table>
         </div>
         <div class="button-group">
+            &nbsp;&nbsp;&nbsp;<asp:label runat="server" id="Label" style="color:red" ></asp:label><br/>
             <asp:button class="btn btn-warning" runat="server" text="跳过" OnClick ="StepOver" />
             <asp:button class="btn btn-success" runat="server" text="完成，下一步" OnClick="NextStep" />
         </div>

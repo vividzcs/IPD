@@ -1,4 +1,5 @@
 ﻿using System;
+using Utils;
 
 namespace Class
 {
@@ -7,7 +8,7 @@ namespace Class
         protected void Page_Load(object sender, EventArgs e)
         {
             //需要登录和cid(courseId)才能访问到的页面
-            var session = Session["user"];
+            
             var cidString = Request.QueryString["cid"];
             if (string.IsNullOrEmpty(cidString))
             {
@@ -15,8 +16,8 @@ namespace Class
                 return;
             }
 
-            if (session == null)
-            Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
+            AuthHelper.AuthCheck(Session, Request, Response, Server);
+            
         }
     }
 }

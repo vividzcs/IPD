@@ -61,20 +61,30 @@ namespace BusinessLogicLayer.Impl
             return _departmentDal.SelectDepartmentById(DepId);
         }
 
+        /// <summary>
+        /// 创建Department
+        /// </summary>
+        /// <param name="department"></param>
+        /// <returns></returns>
         public int CreateDepartment(Department department)
         {
-            throw new NotImplementedException();
+            return _departmentDal.insertDepartment(department);
         }
 
+        /// <summary>
+        /// 编辑Department
+        /// </summary>
+        /// <param name="department"></param>
+        /// <returns></returns>
         public int ModifyDepartment(Department department)
         {
-            throw new NotImplementedException();
+            return _departmentDal.UpdateDepartment(department);
         }
+
 
         public int DestoryDepartment(Department department)
         {
             throw new NotImplementedException();
         }
-
     }
 }

@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using Models;
 
 /**
- * 
+ *
  */
 namespace BusinessLogicLayer.Interface
 {
     public interface IExperimentService : IBusinessLogicLayerBase {
 
         /// <summary>
-        /// 通过课程id获取课程实验情况
+        /// 通閫氳繃璇剧▼id鑾峰彇璇剧▼瀹為獙鎯呭喌
         /// </summary>
         /// <param name="whichCourse"></param>
         /// <returns></returns>
@@ -18,12 +18,16 @@ namespace BusinessLogicLayer.Interface
         int Submit(CourseExperiment courseExperiment, Student whichStudent, Experiment exp);
 
         /// <summary>
-        /// 由学生（id）和课程实验（id）来获取该次实验报告对象
+        /// 閫氳繃璇剧▼id鑾峰彇璇剧▼瀹為獙鎯呭喌
         /// </summary>
-        /// <param name="student">学生</param>
-        /// <param name="ce">课程实验</param>
-        /// <returns>实验报告对象</returns>
+        /// <param name="student">瀛︾敓</param>
+        /// <param name="ce">璇剧▼瀹為獙</param>
+        /// <returns>瀹為獙鎶ュ憡瀵硅薄</returns>
         Experiment Get(Student student, CourseExperiment ce);
+
+        CourseExperiment GetCourseExperimentById(int id);
+
+        IEnumerable<Experiment> GetExpermentByCourseExperimentId(int id);
 
     }
 }

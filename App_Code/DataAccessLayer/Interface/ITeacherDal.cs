@@ -37,5 +37,9 @@ namespace DataAccessLayer.Interface
 
 
         int ModifyTeacher(Teacher teacher);
+
+        void ResetTeacherPassword(int teacherId);
+
+        int InsertTeacher(Teacher teacher);
     }
 }

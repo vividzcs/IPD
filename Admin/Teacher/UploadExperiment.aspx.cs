@@ -11,4 +11,17 @@ public partial class Admin_UploadExperiment : System.Web.UI.Page
     {
 
     }
+
+    protected void StepOver(object sender, EventArgs e)
+    {
+
+
+        Response.Redirect("UploadHomework.aspx?id=" + Request.QueryString["id"]);
+
+    }
+
+    protected void NextStep(object sender, EventArgs e)
+    {
+        Response.Redirect("UploadHomework.aspx?id=" + Request.QueryString["id"]);
+    }
 }

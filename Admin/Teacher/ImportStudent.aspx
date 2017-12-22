@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ImportStudent.aspx.cs" Inherits="ImportStudent" %>
+﻿<%@ Page Title="" codepage=65001 Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ImportStudent.aspx.cs" Inherits="ImportStudent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="../../Content/form.css" rel="stylesheet" />
@@ -23,7 +23,7 @@
                     <div class="controltable">
                         <button type="button" name="button" class="btn btn-primary" onclick="createnewrow()">创建新行</button>
                         <button type="button" name="button" class="btn btn-danger" onclick="deleteblankrow()">删除空行</button>
-<%--                        <button type="submit" class="btn btn-success" runat="server" onserverclick="import_ServerClick">提交信息</button>--%>
+                        <button type="submit" class="btn btn-success" runat="server" onserverclick="import_ServerClick">提交信息</button>
                     </div>
                 </form>
             </div>

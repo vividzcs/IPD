@@ -92,6 +92,6 @@ namespace BusinessLogicLayer.Interface
      * @param teacher 
      * @return
      */
-        int ResetTeacherPassword(Teacher teacher);
+        void ResetTeacherPassword(int teacherId);
     }
 }

@@ -40,5 +40,6 @@ namespace BusinessLogicLayer.Interface
      * @return
      */
         int DestoryDepartment(Department department);
+        
     }
 }

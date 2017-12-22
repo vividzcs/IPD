@@ -108,21 +108,20 @@ namespace BusinessLogicLayer.Impl
           return _teacherDal.UpdateTeacherBanned(teacherId);
         }
 
-        public int ResetTeacherPassword(Teacher teacher)
+        public void ResetTeacherPassword(int teacherId)
         {
-            throw new NotImplementedException();
+            _teacherDal.ResetTeacherPassword(teacherId);
         }
 
 
         public int CreateTeacher(Teacher teacher)
         {
-            throw new NotImplementedException();
+            return _teacherDal.InsertTeacher(teacher);
         }
 
         public int ModifyTeacher(Teacher teacher)
         {
             return _teacherDal.ModifyTeacher(teacher);
         }
-
     }
 }

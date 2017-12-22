@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using DataAccessLayer.Interface;
 using Models;
+using System.Collections;
 
 /// <summary>
 /// CourseDal 的摘要说明
@@ -60,17 +61,35 @@ public class CourseDal : ICourseDal
 
     public object Update(Course course)
     {
+
+        /* Name = CourseName.Value,
+         Name = CourseName.Value,
+            ShortIntroduction = ShortCourseIntro.Value,
+            TeacherId = teacher.TeacherId,
+            SchoolYear = SchoolYear.Text,
+            Semester = Semester.Text,
+            IntroImage  = Path,
+            ClassI
+         */
         using (var context = new HaermsEntities())
         {
-            var c = context.Course.Where(t=>t.CourseId == course.CourseId).ToArray();
-            var cl = c.First();
-            cl.Description = course.Description == null ? null : course.Description;
-            cl.BeginDate = course.BeginDate == null ? null : course.BeginDate;
-            cl.EndDate = course.EndDate == null ? null : course.EndDate;
-            cl.ExperimentClassHour = course.ExperimentClassHour == null ? null : course.ExperimentClassHour;
-            cl.TheoryClassHour = course.TheoryClassHour == null ? null : course.TheoryClassHour;
+            var c = context.Course.Where(t=>t.CourseId == course.CourseId).ToArray().First();
+            c.Name = course.Name;
+            c.ShortIntroduction = course.ShortIntroduction;
+            c.TeacherId = course.TeacherId;
+            c.SchoolYear = course.SchoolYear;
+            c.Semester = course.Semester;
+            c.IntroImage = course.IntroImage;
+            c.ClassId = course.ClassId;
+            c.BeginDate = course.BeginDate;
+            c.EndDate = course.EndDate;
+            c.Description = course.Description;
+            c.TheoryClassHour = course.TheoryClassHour;
+            c.ExperimentClassHour = course.ExperimentClassHour;
             context.SaveChanges();
-            return cl;
+            
+            
+            return course;
         }
     }
     

@@ -5,7 +5,7 @@
     <% var student = (Models.Student) Session["user"];
        if (student == null)
        {
-           Response.Redirect("~/Login.aspx?pre="+Server.UrlEncode(Request.Url.AbsoluteUri));
+           Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
            return;
        } %>
     <title><%= student.Name %> - 学生首页 - HAERMS</title>
@@ -46,6 +46,7 @@
                         <th>成绩</th>
                         <th>开课学院</th>
                     </tr>
+<<<<<<< HEAD
 <%--                        <asp:Repeater runat="server" ID="RepeaterCourseAndScore"   >
                             <ItemTemplate>--%>
                         <%
@@ -56,15 +57,32 @@
            
                                 %>
                                 <tr>
+=======
+
+                    <asp:Repeater runat="server" ID="RepeaterCourseAndScore">
+                        <ItemTemplate>
+                            <tr>
+                                <td><%#Eval("SchoolYear") %></td>
+                                <td><%#Eval("Semester") %></td>
+>>>>>>> origin
                                 <td>
                                     <a href="/Class/Intro.aspx?cid=<%=thiscourse[0] %>"><%=thiscourse[1] %></a>
                                 </td>
+<<<<<<< HEAD
                                 <td><%=thiscourse[2] %></td>
                                 <td><%=thiscourse[3] %></td>
                                 </tr>
                         <% } %>
 <%--                            </ItemTemplate>
                         </asp:Repeater>--%>
+=======
+                                <td>to be programmed</td>
+                                <td>to be programmed</td>
+                            </tr>
+                        </ItemTemplate>
+                    </asp:Repeater>
+
+>>>>>>> origin
                 </table>
             </div>
         </div>

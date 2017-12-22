@@ -11,7 +11,17 @@ namespace DataAccessLayer.Impl
     /// </summary>
     public class DepartmentDal : IDepartmentDal
     {
- 
+        public int insertDepartment(Department department)
+        {
+            using (var context = new HaermsEntities())
+            {
+                context.Department.Add(department);
+                context.SaveChanges();
+                return context.Department.First(t =>
+                           t.DepartmentId == department.DepartmentId) != null ? 1 : 0;
+            }
+        }
+
         public IEnumerable<Department> SelectAllDepartments()
         {
             using (var context = new HaermsEntities())
@@ -37,6 +47,24 @@ namespace DataAccessLayer.Impl
             {
                 var _t = context.Department.FirstOrDefault(t => t.ChinesaeName == name);
                 return _t;
+            }
+        }
+
+        public int UpdateDepartment(Department department)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var firstOrDefault = context.Department.FirstOrDefault(d => d.DepartmentId == department.DepartmentId);
+                if (firstOrDefault == null) return 0;
+                else
+                {
+                    firstOrDefault.EnglishName = department.EnglishName;
+                    firstOrDefault.ChinesaeName = department.ChinesaeName;
+                    firstOrDefault.Introduction = department.Introduction;
+                    return context.SaveChanges();
+                }
+                
+
             }
         }
     }
