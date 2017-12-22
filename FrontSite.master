@@ -41,7 +41,7 @@
                                break;
                            case Teacher teacher:
                     %>
-                    <a><%= teacher.Name %></a>
+                    <a href="/Admin/Teacher/CourseList.aspx"><%= teacher.Name %></a>
                     <%
                                break;
                            case Admin admin:

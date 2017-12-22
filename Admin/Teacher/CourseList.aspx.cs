@@ -6,42 +6,32 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogicLayer.Impl;
 using Models;
+using Utils;
 
 public partial class Admin_CourseList : System.Web.UI.Page
 {
-
-    private string[] teacherName = new string[2];
-    private IEnumerable<Course> course;
     protected void Page_Load(object sender, EventArgs e)
     {
-        var nowloginuser = Session["user"];
-        if (nowloginuser == null)
-        {
-            Response.Redirect("../../Login.aspx");
-        }
-        if((string)Session["userType"] != "teacher")
-        {
-            Response.Redirect("../../Default.aspx");
-        }
-        teacherName[0] = ((Teacher)nowloginuser).Name;
-        teacherName[1] = ((Teacher)nowloginuser).TeacherId.ToString();
+        AuthHelper.AuthCheck(Session, Request, Response, Server);
 
-        course = new CourseServiceImpl().GetByTeacher((Teacher)nowloginuser);
+        var teacher = new Teacher();
+        if (Session["user"] is Teacher t)
+        {
+            teacher = t;
+        }
+        else
+        {
+            Session.RemoveAll();
+            Response.Redirect("/Login.aspx");
+        }
+        
+        TeacherName[0] = teacher.Name;
+        TeacherName[1] = teacher.TeacherId.ToString();
+
+        Course = new CourseServiceImpl().GetByTeacher(teacher);
     }
 
-    public string[] TeacherName
-    {
-        get
-        {
-            return teacherName;
-        }
-    }
+    protected string[] TeacherName { get; } = new string[2];
 
-    public IEnumerable<Course> Course
-    {
-        get
-        {
-            return course;
-        }
-    }
+    protected IEnumerable<Course> Course { get; private set; }
 }

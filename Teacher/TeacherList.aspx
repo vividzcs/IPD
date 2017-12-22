@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="TeacherList.aspx.cs" Inherits="TeacherList" %>
+<%@ Import Namespace="Models" %>
 <%@ PreviousPageType VirtualPath="~/Default.aspx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
@@ -14,14 +15,21 @@
                 <ItemTemplate>
                     <div class="block">
                         <div class="headPic">
-                            <img src="<%#Eval("HeadImage") %>"/>
+                            <img src="<%#Eval("HeadImage") %>" alt="头像"/>
                         </div>
                         <div class="teacherInfo">
                             <h2><%#Eval("Name") %></h2>
-                            <p class="block-with-text intro"><%#Eval("Introduction")%></p>
+                            <p class="block-with-text intro"><%#Eval("Introduction") %></p>
                         </div>
                         <p>
-                            <a class="btn" href="TeacherHome.aspx?tid=<%#Eval("TeacherId") %>">点击查看>></a>
+                            <% if (Session["user"] is Teacher)
+                               { %>
+                                <a class="btn">点击查看>></a>
+                            <% }
+                               else
+                               { %>
+                                <a class="btn" href="TeacherHome.aspx?tid=<%#Eval("TeacherId") %>">点击查看>></a>
+                            <% } %>
                         </p>
                     </div>
                 </ItemTemplate>

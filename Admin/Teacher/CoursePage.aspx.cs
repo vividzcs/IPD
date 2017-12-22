@@ -1,43 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using Utils;
 
-public partial class Admin_CoursePage : System.Web.UI.Page
+namespace Admin.Teacher
 {
-    protected void Page_Load(object sender, EventArgs e)
+    public partial class Admin_CoursePage : System.Web.UI.Page
     {
-        //需要登录才能看到
-        var session = Session["user"];
-        if (session == null)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            //没有登录转到登录界面
-            Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
-            return;
-        }
-        var teacher = new Models.Teacher();
-        if (session is Models.Teacher t)
-        {
-            teacher = t;
-            //需要登录和cid(courseId)才能访问到的页面
-            //var cidString = Request.QueryString["cid"];
-            var cidString = "3";
-            if (string.IsNullOrEmpty(cidString))
+            //需要登录才能看到
+            AuthHelper.AuthCheck(Session, Request, Response, Server);
+
+            if (Session["user"] is Models.Teacher t)
             {
-                Response.Redirect("/Default.aspx");
-                return;
+         
+                //需要登录和cid(courseId)才能访问到的页面
+                var cidString = Request.QueryString["course"];
+                if (string.IsNullOrEmpty(cidString))
+                {
+                    Response.Redirect("/Default.aspx");
+                }
+            }
+            else
+            {
+                //登录的不是老师，转到登录界面
+                Session.Remove("user");
+                Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
             }
         }
-        else
-        {
-            //登录的不是老师，转到登录界面
-            Session.Remove("user");
-            Response.Redirect("~/Login.aspx?pre=" + Server.UrlEncode(Request.Url.AbsoluteUri));
-            return;
-        }
-
-
     }
 }
