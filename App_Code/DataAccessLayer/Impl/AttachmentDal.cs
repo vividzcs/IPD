@@ -20,4 +20,22 @@ public class AttachmentDal : IAttachmentDal
             return courseAttachments.ToArray();
         }
     }
+
+    public bool DeleteByAttachemtId(int neededDeleteAttachmentId)
+    {
+        using (var context = new HaermsEntities())
+        {
+            var courseAttachment = context.CourseAttachment.Where(ca => ca.AttachmentId == neededDeleteAttachmentId);
+            context.CourseAttachment.Remove((CourseAttachment)courseAttachment.First());
+            if (context.SaveChanges() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
 }

@@ -56,6 +56,10 @@ namespace BusinessLogicLayer.Impl
         {
             throw new System.NotImplementedException();
         }
+        public Department GetByDepId(int DepId)
+        {
+            return _departmentDal.SelectDepartmentById(DepId);
+        }
 
         /// <summary>
         /// 创建Department

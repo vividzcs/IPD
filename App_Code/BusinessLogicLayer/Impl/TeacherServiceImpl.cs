@@ -63,6 +63,10 @@ namespace BusinessLogicLayer.Impl
         {
             throw new System.NotImplementedException();
         }
+        public Teacher GetByTeacherId(int id)
+        {
+            return _teacherDal.SelectById(id);
+        }
 
         public Teacher Login(Teacher teacher)
         {

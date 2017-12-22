@@ -30,14 +30,14 @@ public class CourseDal : ICourseDal
         }
     }
 
-    public IEnumerable<Course> Select(Class cClass, string schoolYear, string semester)
-    {
-        using (var context = new HaermsEntities())
-        {
-            var queryable = context.Course.Where(c => c.ClassId == cClass.ClassId && c.SchoolYear == schoolYear && c.Semester == semester);
-            return queryable.ToList();
-        }
-    }
+    //public IEnumerable<Course> Select(Class cClass)
+    //{
+    //    using (var context = new HaermsEntities())
+    //    {
+    //        var queryable = context.Course.Where(c => c.ClassId == cClass.ClassId);
+    //        return queryable.ToList();
+    //    }
+    //}
 
     public IEnumerable<Course> SelectNotEnded(Teacher teacher)
     {
@@ -100,6 +100,14 @@ public class CourseDal : ICourseDal
         {
             var queryable = context.Course.Where(c => c.TeacherId == teacher.TeacherId);
             return queryable.ToArray();
+        }
+    }
+    public int GetTeacherIdByCourseId(int courseId)
+    {
+        using (var context = new HaermsEntities())
+        {
+            var queryable = (Course)context.Course.Where(c => c.CourseId == courseId).First();
+            return queryable.TeacherId;
         }
     }
 }

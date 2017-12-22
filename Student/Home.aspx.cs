@@ -2,11 +2,17 @@
 using System.Diagnostics;
 using BusinessLogicLayer.Impl;
 using Models;
+using System.Web.UI;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace Student
 {
     public partial class StudentHome : System.Web.UI.Page
     {
+
+        public List<string[]> dep = new List<string[]>();
+        public IEnumerable<Course> thisStudentCourse;
         protected void Page_Load(object sender, EventArgs e)
         {
             //需要登录才能看到
@@ -46,18 +52,28 @@ namespace Student
             var classService = new ClassServiceImpl();
             var cid = student.ClassId;
             var aClass = (Class) classService.GetById(cid);
-
+            //利用课程号查老师获得老师所属院系
             //赋值：班级名称
             SpanClass.InnerText = aClass.Name;
 
-            //特定学期，学年，该生的课程数据绑定
-            var courses = new CourseServiceImpl()
-                .Get(student, SchoolYearSelector.Value, SemesterSelector.Value);
-            RepeaterCourseAndScore.DataSource = courses;
-            RepeaterCourseAndScore.DataBind();
+            //该生的课程数据绑定
+            var courses = new CourseServiceImpl().Get(student);
+            thisStudentCourse = courses;
+            foreach (var course in courses) {
+                var thisCourseTeacherId = new CourseServiceImpl().GetTeacherIdByCourseId(course.CourseId);
+                var thisTeacher = new TeacherServiceImpl().GetByTeacherId(thisCourseTeacherId);
+                var thisTeacherDep = new DepartmentServiceImpl().GetByDepId(thisTeacher.DepartmentId);
+                //得到当前学生的某个课程的成绩
+                var thisStudentScore = new ScoreServiceImpl().GetByCourseIdAndStudentId(course.CourseId,student.StudentId);
+                String[] str1 = { course.CourseId.ToString(),course.Name ,thisStudentScore.Mark.ToString(),thisTeacherDep.ChinesaeName };
+                dep.Add(str1);
+                
+
+            }
+            //RepeaterCourseAndScore.DataSource = new { courses, dep};
+            //RepeaterCourseAndScore.DataBind();
 
         
-        }
-
+        }      
     }
 }
