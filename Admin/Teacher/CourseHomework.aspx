@@ -54,7 +54,7 @@
                                 <span class="experiment-deadline" id="experiment-deadline-<%= i %>">截止时间：<%= homework.Deadline.ToString("f") %></span>
                                 <!-- 下载作业 -->
                                 <div class="homework-operation" id="btn-0">
-                                    <a class="btn btn-info">打包下载</a>
+                                    <a class="btn btn-info" href="BatchDownload.aspx?pt=ho&id=<%= homework.CourseHomeworkId %>">打包下载</a>
                                     <a class="btn btn-info" href="ManageCourseHwEx.aspx?pt=ho&id=<%= homework.CourseHomeworkId %>">单独查看</a>
                                 </div>
                                 <!-- 下载作业-->
