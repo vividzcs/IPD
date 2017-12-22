@@ -6,13 +6,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Utils;
 
 public partial class Admin_ManageTeacher : System.Web.UI.Page
 {
     HaermsEntities pub = new HaermsEntities();
     protected void Page_Load(object sender, EventArgs e)
     {
-            if (!IsPostBack)
+        AuthHelper.AuthCheck(Session, Request, Response, Server);
+
+        if (!IsPostBack)
             {
                 GetData();
             }
