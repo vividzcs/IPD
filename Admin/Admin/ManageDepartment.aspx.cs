@@ -19,6 +19,9 @@ public partial class Admin_ManageDepartment : System.Web.UI.Page
         }
     }
 
+    /*
+     * get and bind data with the gridview
+     */
     private void InitDepartmemtsData()
     {
         var allDepartments = new DepartmentServiceImpl().GetAll();
@@ -26,6 +29,9 @@ public partial class Admin_ManageDepartment : System.Web.UI.Page
         GridViewDepartments.DataBind();
     }
 
+    /*
+     * these code is the same as the teacher operators
+     */
     protected void GridViewDepartments_OnRowCommand(object sender, GridViewCommandEventArgs e)
     {
         IDepartmentService service = new DepartmentServiceImpl();

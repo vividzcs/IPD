@@ -14,6 +14,9 @@ public partial class Admin_CreateDepartment : System.Web.UI.Page
 
     }
 
+    /*
+     create department
+         */
     protected void ButtonCreateDepartment_Click(object sender, EventArgs e)
     {
         new DepartmentServiceImpl().CreateDepartment(new Department

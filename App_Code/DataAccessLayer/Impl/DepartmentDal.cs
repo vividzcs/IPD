@@ -50,6 +50,9 @@ namespace DataAccessLayer.Impl
             }
         }
 
+        /**
+         modify the department
+             */
         public int UpdateDepartment(Department department)
         {
             using (var context = new HaermsEntities())

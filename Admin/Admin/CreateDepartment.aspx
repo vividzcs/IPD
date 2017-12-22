@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>管理教师 - HAERMS</title>
+    <link href="/Content/form-controls.css" rel="stylesheet"/>
     <link href="/Content/createTeacher.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -14,9 +15,9 @@
                 英文名：<asp:TextBox ID="TextBoxEnglishName" runat="server" Width="360px"></asp:TextBox>
             </div>
             <div class="introduction">
-                 <span>简介：</span><textarea id="TextAreaIntroduction" runat="server" rows="20" cols="50"></textarea>
+                 <span>简介：</span><textarea id="TextAreaIntroduction" runat="server" rows="15" cols="50"></textarea>
             </div>  
-            <asp:Button type="submit" CssClass="buttonCreate" ID="ButtonCreate" runat="server" Text="创建" OnClick="ButtonCreateDepartment_Click"/>
+             <asp:Button type="submit" CssClass="center btn btn-primary btn_create" Width="100px" ID="ButtonCreate" runat="server" Text="创建" OnClick="ButtonCreateDepartment_Click"/>
         </div> 
     </form>
     <script type="text/javascript">

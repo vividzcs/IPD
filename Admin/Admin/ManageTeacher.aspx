@@ -9,10 +9,16 @@
     <form runat="server">
         <div>
         <div class="teacher">
-        <div class="choose">
-             <a href="javascript:" style="color:blue">教师列表</a>
-             <a href="/Admin/Admin/ManageDepartment.aspx">院系列表</a>
-        </div> 
+            <div class="nav">
+                <ul>
+                    <li>
+                        <a href="ManageDepartment.aspx" style="color:black">院系列表</a>
+                    </li>
+                    <li>
+                        <a href="javascript:" style="color:blue">教师列表</a>
+                    </li>
+                </ul>
+            </div>
             <asp:GridView ID="GridViewTeacher" runat="server" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" ShowFooter="true" OnPageIndexChanging="GridViewTeacher_PageIndexChanging"  OnRowEditing="GridViewTeacher_RowEditing" OnRowCancelingEdit="GridViewTeacher_RowCancelingEdit" OnRowCommand="GridViewTeacher_RowCommand" OnRowDataBound="GridViewTeacher_RowDataBound">
 
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -60,8 +66,8 @@
                         </EditItemTemplate>
                         <ItemTemplate>
                             <asp:LinkButton ID="LinkButtonEdit" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>' ForeColor="#8C4510"   CommandName="edit" Text="编辑"></asp:LinkButton>
-                            <asp:LinkButton ID="LinkButtonFreeze" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>' ForeColor="#8C4510"   CommandName="freeze" Text="冻结"></asp:LinkButton>
-                            <asp:LinkButton ID="LinkButtonReset" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>' ForeColor="#8C4510"  CommandName="reset" Text="重置"></asp:LinkButton>
+                            <asp:LinkButton ID="LinkButtonFreeze" CssClass="freeze" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>' ForeColor="#8C4510"   CommandName="freeze" Text="冻结"></asp:LinkButton>
+                            <asp:LinkButton ID="LinkButtonReset" CssClass="reset" runat="server" CausesValidation="False" CommandArgument='<%# Eval("TeacherId")%>' ForeColor="#8C4510"  CommandName="reset" Text="重置"></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

@@ -15,6 +15,9 @@ public partial class Admin_CreateTeacher : System.Web.UI.Page
 
     }
 
+    /*
+     * create teacher
+     */
     protected void ButtonCreateTeacher_Click(object sender, EventArgs e)
     {
         new TeacherServiceImpl().CreateTeacher(new Teacher()

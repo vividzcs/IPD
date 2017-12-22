@@ -25,6 +25,9 @@ public partial class Admin_ManageTeacher : System.Web.UI.Page
         GetData();
     }
 
+    /*
+     * get and bind the data to gridviewteacher
+     */
     private void GetData()
     {
         var teacher = from t in pub.Teacher
@@ -35,21 +38,28 @@ public partial class Admin_ManageTeacher : System.Web.UI.Page
         GridViewTeacher.DataBind();
     }
     
+    /*
+     * the event of clicking edit
+     */
     protected void GridViewTeacher_RowEditing(object sender, GridViewEditEventArgs e)
     {
         GridViewTeacher.EditIndex = e.NewEditIndex;
         GetData();
     }
 
-
+    /*
+     * the event of clicking canceledit
+     */
     protected void GridViewTeacher_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         GridViewTeacher.EditIndex = -1;
         GetData();
     }
 
-
-
+     
+    /*
+     * the click event of "freeze" "reset" "edit" "update" "cancel update" and "cancelupdit"
+     */
     protected void GridViewTeacher_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         switch (e.CommandName)
@@ -57,16 +67,6 @@ public partial class Admin_ManageTeacher : System.Web.UI.Page
             case "freeze":
 
                 new TeacherServiceImpl().FreezeTeacher(Convert.ToInt32(e.CommandArgument));
-                int rowIndex_freeze = ((GridViewRow)((LinkButton)e.CommandSource).NamingContainer).RowIndex;
-                var text = ((TextBox)GridViewTeacher.Rows[rowIndex_freeze].FindControl("LinkButtonFreeze")).Text;
-
-                if(text.Equals("冻结"))
-                {
-                    text = "解除冻结";
-                } else
-                {
-                    text = "冻结";
-                }
                 break;
 
             case "reset":
@@ -111,6 +111,10 @@ public partial class Admin_ManageTeacher : System.Web.UI.Page
         }
     }
 
+    /*when enter the edit mode,
+     * set the defaut department selectvalue equals the value
+     * which it correctly is.
+         */
     protected void GridViewTeacher_RowDataBound(object sender, GridViewRowEventArgs e)
     {
         if (e.Row.RowType == DataControlRowType.DataRow &&
@@ -130,6 +134,10 @@ public partial class Admin_ManageTeacher : System.Web.UI.Page
             Session["selectValue"] = null;
         }
     }
+
+    /*
+     * add the envent of the chanege of selectedValue in dropdowntList
+     */
     private void Ddl_SelectedIndexChanged(object sender, EventArgs e)
     {
         Session["selectValue"] = ((DropDownList)sender).SelectedValue;

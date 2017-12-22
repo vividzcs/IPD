@@ -47,18 +47,26 @@ namespace DataAccessLayer.Impl
             }
         }
 
+        /**
+         * when freeze teacher, 
+         * we set the Banned = true
+         * <returns>the banned we set equal true? true or fasle</returns>
+             */
         public int UpdateTeacherBanned(int teacherId)
         {
             using(var context = new HaermsEntities())
             {
                 var _t = context.Teacher.FirstOrDefault(t => t.TeacherId == teacherId);
-                var temp = _t.Banned;
-                _t.Banned = !temp;
+                _t.Banned = true;
                 context.SaveChanges();
-                return _t.Banned == !temp ? 1 : 0;
+                return _t.Banned == true ? 1 : 0;
             }
         }
 
+        /**
+            edit teacher
+            <returns>return the affected rows</returns>
+             */
         public int ModifyTeacher(Teacher teacher)
         {
             using(var context = new HaermsEntities())
@@ -68,28 +76,37 @@ namespace DataAccessLayer.Impl
                 _t.DepartmentId = teacher.DepartmentId;
                 _t.Introduction = teacher.Introduction;
                 _t.JobNumber = teacher.JobNumber;
-                context.SaveChanges();
-                return _t.Name == teacher.Name ? 1 : 0;
+                return context.SaveChanges();
             }
         }
 
-        public void ResetTeacherPassword(int teacherId)
+        /**
+         * reset teacher's password
+         * <returns>the password of this man now equals "111111"?true or false</returns>
+         */
+        public int ResetTeacherPassword(int teacherId)
         {
             using(var context = new HaermsEntities())
             {
                 var _t = context.Teacher.FirstOrDefault(t => t.TeacherId == teacherId);
-                _t.Password = Md5Helper.Md5WithSalt("111111");
+                _t.Password = "111111";
+                return _t.Password == "111111" ? 1 : 0;
             }
         }
 
+        
+         
+         /**
+          add a teacher
+            <returns>return the affected rows</returns>
+             */
+             
         public int InsertTeacher(Teacher teacher)
         {
             using (var context = new HaermsEntities())
             {
                 context.Teacher.Add(teacher);
-                context.SaveChanges();
-                return context.Teacher.First(t =>
-                           t.TeacherId == teacher.TeacherId) != null ? 1 : 0;
+                return context.SaveChanges();
             }
         }
     }

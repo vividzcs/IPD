@@ -7,9 +7,15 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="school">
-        <div class="choose">
-            <a href="/Admin/Admin/ManageTeacher.aspx">教师列表</a>
-            <a href="javascript:" style="color: blue">院系列表</a>
+        <div class="nav">
+                <ul>
+                    <li>
+                        <a href="javascript:" style="color:blue">院系列表</a>
+                    </li>
+                    <li>
+                        <a href="ManageTeacher.aspx" style="color:black">教师列表</a>
+                    </li>
+                </ul>
         </div>
         <form runat="server">
             <asp:GridView runat="server" ID="GridViewDepartments" AutoGenerateColumns="False"

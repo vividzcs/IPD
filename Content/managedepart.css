@@ -1,4 +1,22 @@
-﻿table {
+﻿
+.nav {
+    display: block;
+    width: 100px;
+    height: 70px;
+    background: #cccccc;
+    position: fixed;
+    top: 200px;
+    left: 0px;
+}
+.nav li {
+    height:35px;
+    text-align:center;
+    line-height:35px;
+}
+.nav li:nth-child(1) {
+    border-bottom:1px solid white;
+}
+table {
     max-width: 100%;
     width: 80%;
     margin: 100px auto;

@@ -99,22 +99,36 @@ namespace BusinessLogicLayer.Impl
             throw new System.NotImplementedException();
         }
 
+        /*
+         freeze teacher
+             */
         public int FreezeTeacher(int teacherId)
         {
           return _teacherDal.UpdateTeacherBanned(teacherId);
         }
 
-        public void ResetTeacherPassword(int teacherId)
+        /**
+         * reset teacher's password
+         * <return>int</return>
+         */
+        public int ResetTeacherPassword(int teacherId)
         {
-            _teacherDal.ResetTeacherPassword(teacherId);
+            return _teacherDal.ResetTeacherPassword(teacherId);
         }
 
-
+        /**
+         * create teacher
+         * <returns>the teacher we created</returns>
+         */
         public int CreateTeacher(Teacher teacher)
         {
             return _teacherDal.InsertTeacher(teacher);
         }
 
+        /**
+         edit teacher
+            <returns>the teahcer we modified</returns>
+             */
         public int ModifyTeacher(Teacher teacher)
         {
             return _teacherDal.ModifyTeacher(teacher);
