@@ -17,7 +17,6 @@ namespace BusinessLogicLayer.Impl
         {
             throw new System.NotImplementedException();
         }
-
         public object GetById(int id)
         {
             return _courseDal.SelectById(id);
@@ -57,7 +56,10 @@ namespace BusinessLogicLayer.Impl
             return _courseDal.SelectNotEnded(whichTeacher);
         }
 
-
+        public Course GetByCourseId(int id)
+        {
+            return _courseDal.SelectById(id);
+        }
 
         public IEnumerable<Course> Get(Student student)
         {
@@ -68,5 +70,7 @@ namespace BusinessLogicLayer.Impl
         {
             throw new System.NotImplementedException();
         }
+
+
     }
 }
