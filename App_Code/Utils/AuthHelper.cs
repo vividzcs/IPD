@@ -9,11 +9,11 @@ namespace Utils
     /// </summary>
     public static class AuthHelper
     {
-        public static void AuthCheck(HttpSessionState session, HttpRequest request, HttpResponse response, HttpServerUtility server)
+        public static void AuthCheck(HttpSessionState session, HttpRequest request, HttpResponse response,
+            HttpServerUtility server)
         {
             if (session["user"] == null)
                 response.Redirect("~/Login.aspx?pre=" + server.UrlEncode(request.Url.AbsoluteUri));
-
         }
 
 
@@ -26,6 +26,7 @@ namespace Utils
                 response.Redirect("/Login.aspx");
             }
         }
+
         public static void AdminOnlyPage(HttpSessionState session, HttpRequest request, HttpResponse response,
             HttpServerUtility server)
         {
@@ -35,6 +36,7 @@ namespace Utils
                 response.Redirect("/Login.aspx");
             }
         }
+
         public static void StudentOnlyPage(HttpSessionState session, HttpRequest request, HttpResponse response,
             HttpServerUtility server)
         {
