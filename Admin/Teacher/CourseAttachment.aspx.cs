@@ -15,6 +15,8 @@ namespace Admin.Teacher
 
             //需要登录才能看到
             AuthHelper.LoginCheck(Session, Request, Response, Server);
+            AuthHelper.TeacherOnlyPage(Session, Request, Response, Server);
+
             var teacher = new Models.Teacher();
             string cidString = "";
             if (Session["user"] is Models.Teacher t)

@@ -13,6 +13,7 @@ public partial class Admin_CourseSchedule : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         AuthHelper.LoginCheck(Session, Request, Response, Server);
+        AuthHelper.TeacherOnlyPage(Session, Request, Response, Server);
 
         CourseId.Value = Request.QueryString["id"] ?? "0";
 

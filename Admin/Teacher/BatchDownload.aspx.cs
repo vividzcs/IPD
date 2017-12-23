@@ -8,11 +8,15 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusinessLogicLayer.Impl;
 using ICSharpCode.SharpZipLib.Zip;
+using Utils;
 
 public partial class Admin_Teacher_BatchDownload : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        AuthHelper.LoginCheck(Session, Request, Response, Server);
+        AuthHelper.TeacherOnlyPage(Session, Request, Response, Server);
+
         if (Request.QueryString["pt"] == null || Request.QueryString["id"] == null)
         {
             Response.Redirect("~/Default.aspx");

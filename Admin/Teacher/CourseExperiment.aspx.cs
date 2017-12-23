@@ -9,6 +9,7 @@ namespace Admin.Teacher
         {
             //需要登录才能看到
             AuthHelper.LoginCheck(Session, Request, Response, Server);
+            AuthHelper.TeacherOnlyPage(Session, Request, Response, Server);
 
             if (Session["user"] is Models.Teacher t)
             {

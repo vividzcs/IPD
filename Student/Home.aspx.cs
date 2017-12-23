@@ -19,6 +19,7 @@ namespace Student
         {
             //需要登录才能看到
             AuthHelper.LoginCheck(Session, Request, Response, Server);
+            AuthHelper.StudentOnlyPage(Session, Request, Response, Server);
 
             Models.Student student;
             if (Session["user"] is Models.Student s)

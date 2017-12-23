@@ -3,15 +3,15 @@ using System.Globalization;
 using System.IO;
 using BusinessLogicLayer.Impl;
 using Models;
+using Utils;
 
 public partial class Class_UploadFile : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["User"] == null)
-        {
-            Response.Redirect("~/Default.aspx");
-        }
+        //需要登录和cid(courseId)才能访问到的页面
+        AuthHelper.LoginCheck(Session, Request, Response, Server);
+        AuthHelper.StudentOnlyPage(Session, Request, Response, Server);
     }
 
     protected void FileUpload(object sender, EventArgs e)

@@ -10,6 +10,7 @@ public partial class Admin_CreateCourse : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         AuthHelper.LoginCheck(Session, Request, Response, Server);
+        AuthHelper.TeacherOnlyPage(Session, Request, Response, Server);
 
         var all = new ClassServiceImpl().GetAll();
 
