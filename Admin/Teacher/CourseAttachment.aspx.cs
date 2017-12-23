@@ -44,7 +44,7 @@ namespace Admin.Teacher
             //var nowAttachment_id =((CourseAttachment)thisTeacherAttachment).AttachmentId;
             try
             {
-                var neededDeleteAttachmentId = int.Parse(Request.Form.Keys[2]);
+                var neededDeleteAttachmentId = int.Parse(Request.Form.Keys[1]);
                 if (new AttachmentServiceImpl().DeleteByAttachemtId(neededDeleteAttachmentId))
                 {
                     //删除成功

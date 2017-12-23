@@ -35,7 +35,7 @@
 }
 .start-time {
 	margin: 0;
-	font-size: 16px;
+	font-size: 12px;
 	color: #999;
 	padding-left: 15px;
 	text-decoration: none;
@@ -59,4 +59,9 @@
     float: right;
     overflow: hidden;
     display: inline-block;
+}
+
+.btn-form {
+    float: right;
+    padding: 4px;
 }
