@@ -16,7 +16,7 @@ namespace Class
                 return;
             }
 
-            AuthHelper.AuthCheck(Session, Request, Response, Server);
+            AuthHelper.LoginCheck(Session, Request, Response, Server);
             
         }
     }

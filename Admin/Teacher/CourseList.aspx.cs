@@ -12,7 +12,7 @@ public partial class Admin_CourseList : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        AuthHelper.AuthCheck(Session, Request, Response, Server);
+        AuthHelper.LoginCheck(Session, Request, Response, Server);
 
         var teacher = new Teacher();
         if (Session["user"] is Teacher t)

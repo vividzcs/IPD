@@ -9,7 +9,7 @@ namespace Utils
     /// </summary>
     public static class AuthHelper
     {
-        public static void AuthCheck(HttpSessionState session, HttpRequest request, HttpResponse response,
+        public static void LoginCheck(HttpSessionState session, HttpRequest request, HttpResponse response,
             HttpServerUtility server)
         {
             if (session["user"] == null)

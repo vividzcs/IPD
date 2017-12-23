@@ -21,7 +21,7 @@ namespace Admin.Teacher
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            AuthHelper.AuthCheck(Session, Request, Response, Server);
+            AuthHelper.LoginCheck(Session, Request, Response, Server);
             if (Request.QueryString["pt"] == null || Request.QueryString["id"] == null)
             {
                 return;

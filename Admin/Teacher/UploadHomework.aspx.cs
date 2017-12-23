@@ -10,7 +10,7 @@ public partial class Admin_UploadHomework : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        AuthHelper.AuthCheck(Session, Request, Response, Server);
+        AuthHelper.LoginCheck(Session, Request, Response, Server);
 
     }
 

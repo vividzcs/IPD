@@ -13,7 +13,7 @@ public partial class Admin_ManageTeacher : System.Web.UI.Page
     HaermsEntities pub = new HaermsEntities();
     protected void Page_Load(object sender, EventArgs e)
     {
-        AuthHelper.AuthCheck(Session, Request, Response, Server);
+        AuthHelper.LoginCheck(Session, Request, Response, Server);
 
         if (!IsPostBack)
             {
