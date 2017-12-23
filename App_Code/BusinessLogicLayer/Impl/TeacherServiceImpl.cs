@@ -70,7 +70,16 @@ namespace BusinessLogicLayer.Impl
 
         public Teacher Login(Teacher teacher)
         {
-            return _teacherDal.SelectByJobNumberAndPassword(teacher);
+            var t = _teacherDal.SelectByJobNumberAndPassword(teacher);
+            if (t != null)
+            {
+                var banned = _teacherDal.IsBanned(t);
+                return !banned ? t : null;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public int CreateCourse(Course course)

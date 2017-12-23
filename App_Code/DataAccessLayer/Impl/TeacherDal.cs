@@ -109,5 +109,14 @@ namespace DataAccessLayer.Impl
                 return context.SaveChanges();
             }
         }
+
+        public bool IsBanned(Teacher teacher)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var t = context.Teacher.Find(teacher.TeacherId);
+                return t?.Banned ?? true;
+            }
+        }
     }
 }
