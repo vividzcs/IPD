@@ -9,7 +9,7 @@ public partial class Admin_Teacher_EditCourseWare : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        LoginCheck
     }
 
     protected void StepOver(object sender, EventArgs e)

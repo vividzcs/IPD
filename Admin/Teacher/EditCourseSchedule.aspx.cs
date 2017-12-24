@@ -12,7 +12,7 @@ public partial class Admin_Teacher_EditCourseSchedule : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        AuthHelper.AuthCheck(Session, Request, Response, Server);
+        AuthHelper.LoginCheck(Session, Request, Response, Server);
         if (!IsPostBack)
         {
             if (Request.QueryString["id"] != null)
@@ -21,10 +21,10 @@ public partial class Admin_Teacher_EditCourseSchedule : System.Web.UI.Page
                 CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
                 Course course = (Course)courseServiceImpl.GetById(CourseId);
                 //绑定数据
-                BeginDate.Value = string.Concat(course.BeginDate);
-                EndDate.Value = string.Concat(course.EndDate);
-                TheoryClassHour.Value = string.Concat(course.TheoryClassHour);
-                ExperimentClassHour.Value = string.Concat(course.ExperimentClassHour);
+                BeginDate.Value = course.BeginDate.ToString().Replace("/","-").Remove(course.BeginDate.ToString().IndexOf(" "));
+                EndDate.Value = course.EndDate.ToString().Replace("/", "-").Remove(course.EndDate.ToString().IndexOf(" "));
+                TheoryClassHour.Value = course.TheoryClassHour.ToString();
+                ExperimentClassHour.Value = course.ExperimentClassHour.ToString();
             }
         }
     }

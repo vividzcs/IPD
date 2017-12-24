@@ -12,7 +12,7 @@ public partial class Admin_Teacher_EditIntroDetail : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        AuthHelper.AuthCheck(Session, Request, Response, Server);
+        AuthHelper.LoginCheck(Session, Request, Response, Server);
         if (!IsPostBack)
         {
             if (Request.QueryString["id"] != null)
@@ -21,7 +21,7 @@ public partial class Admin_Teacher_EditIntroDetail : System.Web.UI.Page
                 CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
                 Course course = (Course)courseServiceImpl.GetById(CourseId);
                 //绑定数据
-                Description.Value = course.Description;
+                Description.Value = Server.HtmlEncode(course.Description);
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="EditIntroDetail.aspx.cs" Inherits="Admin_Teacher_EditIntroDetail" %>
+﻿<%@ Page Title="" Language="C#"  MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="EditIntroDetail.aspx.cs" Inherits="Admin_Teacher_EditIntroDetail" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <title>创建课程 - 详细介绍 - HAERMS</title>

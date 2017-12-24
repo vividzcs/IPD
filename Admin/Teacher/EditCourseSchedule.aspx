@@ -29,9 +29,9 @@
                 <tr>
                     <td class="table-head">开课时间</td>
                     <td>
-                        <input id="BeginDate" title="开始时间" type="date" class="input-style" min="2017-09-01" max="2099-12-31" runat="server"/>
+                        <input id="BeginDate" title="开始时间" type="text" class="input-style" min="2017-09-01" max="2099-12-31" runat="server"/>
                         -
-                        <input id="EndDate" title="结束时间" type="date" class="input-style" min="2017-09-01" max="2099-12-31" runat="server"/>
+                        <input id="EndDate" title="结束时间" type="text" class="input-style" min="2017-09-01" max="2099-12-31" runat="server"/>
                     </td>
                 </tr>
                 <tr>
