@@ -62,15 +62,7 @@ public class CourseDal : ICourseDal
     public object Update(Course course)
     {
 
-        /* Name = CourseName.Value,
-         Name = CourseName.Value,
-            ShortIntroduction = ShortCourseIntro.Value,
-            TeacherId = teacher.TeacherId,
-            SchoolYear = SchoolYear.Text,
-            Semester = Semester.Text,
-            IntroImage  = Path,
-            ClassI
-         */
+        
         using (var context = new HaermsEntities())
         {
             var c = context.Course.Where(t=>t.CourseId == course.CourseId).ToArray().First();

@@ -12,6 +12,7 @@
 			<h2><%= TeacherName[0] %><a href="CreateCourse.aspx?teacher=<%= TeacherName[1] %>"><button class="create-course">创建课程</button></a></h2>
 			<hr/>
 		</div>
+        <form class="main-container create-class-main-container" runat="server">
 		<div class="courses">
 			<div class="courses-info">
 				<div class="hd">开课列表</div>
@@ -23,7 +24,10 @@
 							<a  href="CoursePage.aspx?course=<%=course.CourseId %>"><span class="courses-name"><%= course.Name %></span></a>
 							<span class="start-time">开课时间: <%= course.BeginDate %> -- <%= course.EndDate %></span>
 							<span class ="copy-courses">
-								<a href="javascript:;"><button class="copy-courses-btn" type="button">复制课程</button></a>
+								<a href="EditCourse.aspx?id=<%=course.CourseId %>"> <button class="import-students-btn" type="button">编辑课程</button></a>
+							</span>
+                            <span class ="copy-courses">
+								<a href="CourseList.aspx?courseId=<%=course.CourseId %>"> <button class="import-students-btn" type="button">复制课程</button></a>
 							</span>
 							<span class ="import-students">
 								<a href="ImportStudent.aspx?course=<%=course.CourseId %>"><button class="import-students-btn" type="button">导入学生名单</button></a>
@@ -34,6 +38,7 @@
 				</div>
 			</div>
 		</div>
+            </form>
 	</div>
 </asp:Content>
 

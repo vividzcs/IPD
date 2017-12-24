@@ -42,8 +42,10 @@
 	list-style: none;
 }
 
-.content button {
-	font-family: 微软雅黑, monospace;
+.content .import-students-btn,
+.content .copy-courses-btn,
+.content .create-course {
+    font-family: 微软雅黑, monospace;
     font-size: 15px;
     cursor: pointer;
     background-color: rgb(255, 255, 255);

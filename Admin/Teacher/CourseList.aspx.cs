@@ -14,6 +14,7 @@ public partial class Admin_CourseList : System.Web.UI.Page
     {
         AuthHelper.AuthCheck(Session, Request, Response, Server);
 
+        
         var teacher = new Teacher();
         if (Session["user"] is Teacher t)
         {
@@ -29,9 +30,25 @@ public partial class Admin_CourseList : System.Web.UI.Page
         TeacherName[1] = teacher.TeacherId.ToString();
 
         Course = new CourseServiceImpl().GetByTeacher(teacher);
+
+        if (Request.QueryString["courseId"] != null)
+        {
+            //¸´ÖÆ¿Î³Ì
+            int CourseId = int.Parse(Request.QueryString["courseId"]);
+            CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
+            Course course = (Course)courseServiceImpl.GetById(CourseId);
+
+            Response.Write(courseServiceImpl.Create(course));
+            Response.Redirect("CourseList.aspx");
+        }
+
     }
+
+  
 
     protected string[] TeacherName { get; } = new string[2];
 
     protected IEnumerable<Course> Course { get; private set; }
+    
+
 }
