@@ -41,5 +41,12 @@ namespace DataAccessLayer.Interface
         int ResetTeacherPassword(int teacherId);
 
         int InsertTeacher(Teacher teacher);
+
+        /// <summary>
+        /// 如果老师已经被禁了，就不能登录
+        /// </summary>
+        /// <param name="teacher">老师对象，要包含id</param>
+        /// <returns>如果没找到该老师就返回true，否则该返回啥就返回啥</returns>
+        bool IsBanned(Teacher teacher);
     }
 }

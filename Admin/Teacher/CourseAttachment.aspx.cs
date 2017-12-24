@@ -14,7 +14,9 @@ namespace Admin.Teacher
         {
 
             //需要登录才能看到
-            AuthHelper.AuthCheck(Session, Request, Response, Server);
+            AuthHelper.LoginCheck(Session, Request, Response, Server);
+            AuthHelper.TeacherOnlyPage(Session, Request, Response, Server);
+
             var teacher = new Models.Teacher();
             string cidString = "";
             if (Session["user"] is Models.Teacher t)
@@ -44,7 +46,7 @@ namespace Admin.Teacher
             //var nowAttachment_id =((CourseAttachment)thisTeacherAttachment).AttachmentId;
             try
             {
-                var neededDeleteAttachmentId = int.Parse(Request.Form.Keys[2]);
+                var neededDeleteAttachmentId = int.Parse(Request.Form.Keys[1]);
                 if (new AttachmentServiceImpl().DeleteByAttachemtId(neededDeleteAttachmentId))
                 {
                     //删除成功

@@ -18,7 +18,8 @@ namespace Student
         protected void Page_Load(object sender, EventArgs e)
         {
             //需要登录才能看到
-            AuthHelper.AuthCheck(Session, Request, Response, Server);
+            AuthHelper.LoginCheck(Session, Request, Response, Server);
+            AuthHelper.StudentOnlyPage(Session, Request, Response, Server);
 
             Models.Student student;
             if (Session["user"] is Models.Student s)

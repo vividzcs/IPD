@@ -26,80 +26,65 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <% var cid = int.Parse(Request.QueryString["course"]); %>
-    <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
-    <nav class="sidebar">
-        <div class="card">
-            <img src="<%= course.IntroImage %>" class="image-item" alt="课程图片"/>
-        </div>
-        <ul class="list-class card">
-            <li class="list-class-item">
-                <a href="CoursePage.aspx?course=<%= cid %>">简介</a>
-            </li>
-            <li class="list-class-item selected-class-item">
-                <a href="CourseAttachment.aspx?course=<%= cid %>">课件</a>
-            </li>
-            <li class="list-class-item">
-                <a href="CourseExperiment.aspx?course=<%= cid %>">实验</a>
-            </li>
-            <li class="list-class-item">
-                <a href="CourseHomework.aspx?course=<%= cid %>">作业</a>
-            </li>
-        </ul>
-    </nav>
-    <div class="main-container">
-        <div class="main-content card">
-            <table class="attachment-table clear" border="2">
-                <tr>
-                    <th class="auto-style1">课件名称</th>
-                    <th class="auto-style1">发布日期</th>
-                    <th class="auto-style1">操作</th>
-                </tr>
-                <% foreach (var atta in thisTeacherAttachment)
-                   { %>
+    <form runat="server">
+        <% var cid = int.Parse(Request.QueryString["course"]); %>
+        <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
+        <nav class="sidebar">
+            <div class="card">
+                <img src="<%= course.IntroImage %>" class="image-item" alt="课程图片"/>
+            </div>
+            <ul class="list-class card">
+                <li class="list-class-item">
+                    <a href="CoursePage.aspx?course=<%= cid %>">简介</a>
+                </li>
+                <li class="list-class-item selected-class-item">
+                    <a href="CourseAttachment.aspx?course=<%= cid %>">课件</a>
+                </li>
+                <li class="list-class-item">
+                    <a href="CourseExperiment.aspx?course=<%= cid %>">实验</a>
+                </li>
+                <li class="list-class-item">
+                    <a href="CourseHomework.aspx?course=<%= cid %>">作业</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-container">
+            <div class="main-content card">
+                <table class="attachment-table clear" border="2">
                     <tr>
-                        <td>
-                            <div class="content-cell">
-                                <span><%= atta.Name %></span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="content-cell">
-                                <span><%= atta.IssuedTime %></span>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="content-cell">
-                                <form id="deleteAttachment" method="post" action="CourseAttachment.aspx">
-                                    <input type="hidden" name="<%= atta.AttachmentId %>" size="20" value="<%= atta.AttachmentId %>"/>
-                                    <input type="submit" class="btn btn-danger" value="删除">
-                                    <%--                                <a href="" id="<%=atta.AttachmentId%>"class ="btn btn-danger" >删除</a>
+                        <th class="auto-style1">课件名称</th>
+                        <th class="auto-style1">发布日期</th>
+                        <th class="auto-style1">操作</th>
+                    </tr>
+                    <% foreach (var atta in thisTeacherAttachment)
+                       { %>
+                        <tr>
+                            <td>
+                                <div class="content-cell">
+                                    <span><%= atta.Name %></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="content-cell">
+                                    <span><%= atta.IssuedTime %></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="content-cell">
+                                    <form id="deleteAttachment" method="post" action="CourseAttachment.aspx">
+                                        <input type="hidden" name="<%= atta.AttachmentId %>" size="20" value="<%= atta.AttachmentId %>"/>
+                                        <input type="submit" class="btn btn-danger" value="删除">
+                                        <%--                                <a href="" id="<%=atta.AttachmentId%>"class ="btn btn-danger" >删除</a>
                                 <Button ID="deleteAttachment"  class="btn btn-danger" Text="删除"   OnCommand="deleteAttachment_Command" />
                                 <asp:Label ID="verfyUploadFile" runat="server" Text=""></asp:Label>--%>
-                                </form>
-                            </div>
-                        </td>
-                    </tr>
-                <% } %>
-            </table>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
         </div>
-    </div>
-
-    <script>
-        var i = 0;
-        var label = document.getElementById('el_switch');
-
-        function change() {
-            var flag = i % 2 === 0;
-            document.getElementById('switch_button').style.transform =
-                flag ? 'translate(2px, 2px)' : 'translate(26px, 2px)';
-//        document.getElementById('checkbox-input').value = flag ? 'off' : 'on';
-            document.getElementById('switch_core').style.backgroundColor = flag ? '#bfcbd9' : '#20a0ff';
-            i++
-        }
-
-        label.addEventListener('click', change, false);
-
-    </script>
-
+    </form>
+    
 </asp:Content>
