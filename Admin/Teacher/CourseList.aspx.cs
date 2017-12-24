@@ -38,7 +38,7 @@ public partial class Admin_CourseList : System.Web.UI.Page
             int CourseId = int.Parse(Request.QueryString["courseId"]);
             CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
             Course course = (Course)courseServiceImpl.GetById(CourseId);
-
+            course.Name = course.Name + "_Copy";
             int newId = courseServiceImpl.Create(course);
             Response.Redirect("EditCourse.aspx?id=" + newId);
         }
