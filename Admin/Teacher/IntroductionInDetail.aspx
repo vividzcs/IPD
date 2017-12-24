@@ -24,7 +24,6 @@
         <div class="main-content card">
            
             <h2>课程概述</h2>
-            <input id="CourseId" type="hidden" runat="server"/>
             <hr>
             <div class="paragraphs">
                 <textarea id="Description" title="课程简介" placeholder="课程简介" rows="14" class="input-style" runat="server"></textarea>

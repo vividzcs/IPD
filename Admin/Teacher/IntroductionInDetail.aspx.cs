@@ -1,10 +1,6 @@
 ﻿using BusinessLogicLayer.Impl;
 using Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Utils;
 
@@ -15,12 +11,11 @@ public partial class Admin_IntroductionInDetail : System.Web.UI.Page
         AuthHelper.LoginCheck(Session, Request, Response, Server);
         AuthHelper.TeacherOnlyPage(Session, Request, Response, Server);
 
-        CourseId.Value = Request.QueryString["id"] ?? "0";
     }
 
     protected void StepOver(object sender, EventArgs e)
     {
-        int id = int.Parse(CourseId.Value);
+        int id = int.Parse(Request.QueryString["id"]);
 
         Response.Redirect("CourseSchedule.aspx?id=" + id);
 
@@ -30,7 +25,7 @@ public partial class Admin_IntroductionInDetail : System.Web.UI.Page
     {
         try
         {
-            int id = int.Parse(CourseId.Value);
+            int id = int.Parse(Request.QueryString["id"]);
             CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
             Course course = (Course)courseServiceImpl.GetById(id);
             course.Description = Description.Value.Replace("\n","<br/>");

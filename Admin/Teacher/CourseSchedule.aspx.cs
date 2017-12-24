@@ -15,14 +15,13 @@ public partial class Admin_CourseSchedule : System.Web.UI.Page
         AuthHelper.LoginCheck(Session, Request, Response, Server);
         AuthHelper.TeacherOnlyPage(Session, Request, Response, Server);
 
-        CourseId.Value = Request.QueryString["id"] ?? "0";
 
         
     }
 
     protected void StepOver(object sender, EventArgs e)
     {
-        int id = int.Parse(CourseId.Value);
+        int id = int.Parse(Request.QueryString["id"]);
 
         Response.Redirect("UploadCourseware.aspx?id=" + id);
     }

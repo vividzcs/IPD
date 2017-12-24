@@ -23,7 +23,6 @@
     <form class="main-container create-class-main-container" runat="server">
         <div class="main-content card">
             <h2>课程时间</h2>
-            <input id="CourseId" type="hidden" runat="server"/>
             <hr>
             <table class="class-hour-table" border="2">
                 <tr>

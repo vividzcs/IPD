@@ -23,7 +23,6 @@
     <form class="main-container create-class-main-container" runat="server">
         <div class="main-content card">
             <h2>课程实验</h2>
-            <input id="CourseIds" type="hidden" value="<%= Request.QueryString["id"] ?? "0" %>">
             <hr>
             <div class="table-top-form">
                 <button class="btn btn-info" type="button" onclick="addExperiment()">添加实验</button>
