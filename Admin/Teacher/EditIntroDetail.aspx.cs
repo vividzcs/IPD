@@ -17,7 +17,7 @@ public partial class Admin_Teacher_EditIntroDetail : System.Web.UI.Page
                 CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
                 Course course = (Course)courseServiceImpl.GetById(CourseId);
                 //绑定数据
-                Description.Value = Server.HtmlEncode(course.Description);
+                Description.Value = course.Description.Replace("<br/>" ,"\n");
             }
         }
     }

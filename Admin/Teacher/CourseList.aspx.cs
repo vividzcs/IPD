@@ -39,8 +39,8 @@ public partial class Admin_CourseList : System.Web.UI.Page
             CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
             Course course = (Course)courseServiceImpl.GetById(CourseId);
 
-            Response.Write(courseServiceImpl.Create(course));
-            Response.Redirect("CourseList.aspx");
+            int newId = courseServiceImpl.Create(course);
+            Response.Redirect("EditCourse.aspx?id=" + newId);
         }
 
     }

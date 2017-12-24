@@ -30,10 +30,10 @@ public partial class Admin_CourseSchedule : System.Web.UI.Page
     {
         try
         {
-            int id = int.Parse(CourseId.Value);
+            int id = int.Parse(Request.QueryString["id"]);
             CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
             Course course = (Course)courseServiceImpl.GetById(id);
-            course.CourseId = int.Parse(CourseId.Value);
+            course.CourseId = id;
             course.BeginDate = DateTime.Parse(BeginDate.Value);
             course.EndDate = DateTime.Parse(EndDate.Value);
             course.TheoryClassHour = int.Parse(TheoryClassHour.Value);
