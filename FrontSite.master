@@ -56,7 +56,7 @@
                    }
                 %>
 
-                <a href="/ChangPassword.aspx">修改密码</a>
+                <a href="/ChangePassword.aspx">修改密码</a>
             </div>
         </div>
     </div>

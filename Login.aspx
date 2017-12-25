@@ -29,11 +29,18 @@
     </form>
 </div>
 <script type="text/javascript">
+    var tip1 = document.getElementById('TipUsername');
+    var tip2 = document.getElementById('TipPassword');
+
+    (function() {
+        tip1.style.visibility = 'hidden';
+        tip2.style.visibility = 'hidden';
+    })();
+
     function check() {
         var username = document.getElementById('Username').value;
         var password = document.getElementById('Password').value;
-        var tip1 = document.getElementById('TipUsername');
-        var tip2 = document.getElementById('TipPassword');
+        
         var flag = false;
         if (username === '') {
             tip1.style.visibility = 'visible';

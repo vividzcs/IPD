@@ -146,5 +146,10 @@ namespace BusinessLogicLayer.Impl
         {
             return _teacherDal.ModifyTeacher(teacher);
         }
+
+        public int ModifyPassword(Teacher teacher)
+        {
+            return _teacherDal.UpdateTeacherPassword(teacher);
+        }
     }
 }

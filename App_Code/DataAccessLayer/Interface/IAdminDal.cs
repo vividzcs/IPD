@@ -10,4 +10,5 @@ using System.Web;
 public interface IAdminDal
 {
     Admin SelectByJobNumberAndPassword(Admin admin);
+    int UpdateAdminPassword(Admin admin);
 }

@@ -16,4 +16,9 @@ public class AdminServiceImpl : IAdminService
     {
         return _adminDal.SelectByJobNumberAndPassword(admin);
     }
+
+    public int ModifyPassword(Admin admin)
+    {
+        return _adminDal.UpdateAdminPassword(admin);
+    }
 }

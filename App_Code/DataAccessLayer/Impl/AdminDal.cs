@@ -17,4 +17,18 @@ public class AdminDal : IAdminDal
             return iqueryable.FirstOrDefault();
         }
     }
+
+    public int UpdateAdminPassword(Admin admin)
+    {
+        using (var context = new HaermsEntities())
+        {
+            var q = context.Admin.Find(admin.AdminId);
+            if (q == null)
+            {
+                return 0;
+            }
+            q.Password = admin.Password;
+            return context.SaveChanges();
+        }
+    }
 }

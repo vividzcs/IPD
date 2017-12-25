@@ -118,5 +118,19 @@ namespace DataAccessLayer.Impl
                 return t?.Banned ?? true;
             }
         }
+
+        public int UpdateTeacherPassword(Teacher teacher)
+        {
+            using (var context = new HaermsEntities())
+            {
+                var q = context.Teacher.Find(teacher.TeacherId);
+                if (q == null)
+                {
+                    return 0;
+                }
+                q.Password = teacher.Password;
+                return context.SaveChanges();
+            }
+        }
     }
 }

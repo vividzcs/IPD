@@ -24,11 +24,13 @@ namespace DataAccessLayer.Impl
         {
             using (var context = new HaermsEntities())
             {
-                var q = context.Student.Where(s => s.StudentId == student.StudentId);
-                var st = q.First();
-                st.Password = student.Password;
+                var q = context.Student.Find(student.StudentId);
+                if (q == null)
+                {
+                    return 0;
+                }
+                q.Password = student.Password;
                 return context.SaveChanges();
-            
             }
         }
         

@@ -48,5 +48,7 @@ namespace DataAccessLayer.Interface
         /// <param name="teacher">老师对象，要包含id</param>
         /// <returns>如果没找到该老师就返回true，否则该返回啥就返回啥</returns>
         bool IsBanned(Teacher teacher);
+
+        int UpdateTeacherPassword(Teacher teacher);
     }
 }

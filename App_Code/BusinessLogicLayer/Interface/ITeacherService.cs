@@ -74,13 +74,7 @@ namespace BusinessLogicLayer.Interface
      * @return
      */
         int CreateTeacher(Teacher teacher);
-
-        /**
-     * @param teacher 
-     * @return
-     */
-        int ModifyTeacher(Teacher teacher);
-
+    
 
         /**
     * @param teacher 
@@ -93,5 +87,12 @@ namespace BusinessLogicLayer.Interface
      * @return
      */
         int ResetTeacherPassword(int teacherId);
+
+        /// <summary>
+        /// 更改老师密码
+        /// </summary>
+        /// <param name="teacher"></param>
+        /// <returns></returns>
+        int ModifyPassword(Teacher teacher);
     }
 }
