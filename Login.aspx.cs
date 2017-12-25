@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,7 +40,8 @@ public partial class Login : System.Web.UI.Page
                 if (admin != null)
                 {
                     Session["user"] = admin;
-                    if (string.IsNullOrEmpty(Request.QueryString["pre"]))
+                    if (string.IsNullOrEmpty(Request.QueryString["pre"]) || 
+                            Request.QueryString["pre"].EndsWith("default.aspx", true, CultureInfo.CurrentCulture))
                     {
                         Response.Redirect("~/Admin/Admin/ManageTeacher.aspx");
                     }
@@ -73,7 +75,8 @@ public partial class Login : System.Web.UI.Page
                 {
                     Session["user"] = student;
 
-                    if (string.IsNullOrEmpty(Request.QueryString["pre"]))
+                    if (string.IsNullOrEmpty(Request.QueryString["pre"]) ||
+                        Request.QueryString["pre"].EndsWith("default.aspx", true, CultureInfo.CurrentCulture))
                     {
                         Response.Redirect("/Student/Home.aspx");
                     }
@@ -105,7 +108,8 @@ public partial class Login : System.Web.UI.Page
                 if (teacher != null)
                 {
                     Session["user"] = teacher;
-                    if (string.IsNullOrEmpty(Request.QueryString["pre"]))
+                    if (string.IsNullOrEmpty(Request.QueryString["pre"]) ||
+                        Request.QueryString["pre"].EndsWith("default.aspx", true, CultureInfo.CurrentCulture))
                     {
                         Response.Redirect("/Admin/Teacher/CourseList.aspx");
                     }
