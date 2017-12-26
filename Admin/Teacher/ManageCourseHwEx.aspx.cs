@@ -21,14 +21,6 @@ namespace Admin.Teacher
 
         private string url;
 
-        public string Url
-        {
-            get
-            {
-                return url;
-            }
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             url = Request.Url.AbsoluteUri.Split('/').Last();
@@ -38,7 +30,7 @@ namespace Admin.Teacher
 
             if (Request.QueryString["pt"] == null || Request.QueryString["id"] == null)
             {
-                return;
+                Response.Redirect("~/Default.aspx");
             }
 
             PageType = Request.QueryString["pt"];
