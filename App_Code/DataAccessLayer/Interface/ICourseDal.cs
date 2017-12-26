@@ -16,13 +16,6 @@ namespace DataAccessLayer.Interface
         Course SelectById(int id);
 
         /// <summary>
-        /// 通过班级（ｉｄ）查找课程
-        /// </summary>
-        /// <param name="cClass">要查找的那个班级（ｉｄ有效）</param>
-        /// <returns>该班级的所有课程</returns>
-        IEnumerable<Course> Select(Class cClass);
-
-        /// <summary>
         /// 查找某班级某学年某学期的所有课程
         /// </summary>
         /// <param name="cClass">班级（ｉｄ需有效）</param>

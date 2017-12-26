@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BusinessLogicLayer.Interface;
+using DataAccessLayer.Impl;
 using DataAccessLayer.Interface;
 using Models;
 
@@ -63,7 +65,11 @@ namespace BusinessLogicLayer.Impl
 
         public IEnumerable<Course> Get(Student student)
         {
-            return _courseDal.Select(new Class() {ClassId = student.ClassId});
+            var courseSelections = new CourseSelectionServiceImpl().GetCoursesByStudentId(student);
+            var courses = new List<Course>(15);
+            //相等于使用foreach循环，把查出来的课程对象放进courses这个List里面
+            courses.AddRange(courseSelections.Select(courseSelection => GetByCourseId(courseSelection.CourseId)));
+            return courses;
         }
 
         public Course Get(Course whichCourse, Student whichStudent)

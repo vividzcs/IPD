@@ -21,20 +21,14 @@ namespace BusinessLogicLayer.Interface
      */
         IEnumerable<Course> GetByTeacherNotEndYet(Teacher whichTeacher);
 
-        /**
-     * @param student 
-     * @return
-     */
-        IEnumerable<Course> Get(Student student);
 
         /// <summary>
-        /// 课程和班级直接挂钩，学生和班级直接挂钩，通过将学生转化为班级，查找课程
+        /// 这个Get方法作用是查询这个学生被选择的课程，也就是不是通过所在班级映射的
+        /// 而是因为老师倒入了该学生，他才能看见这门课
         /// </summary>
-        /// <param name="student">哪个学生的课程？</param>
-        /// <param name="schoolYear">学年</param>
-        /// <param name="semester">学期</param>
+        /// <param name="student"></param>
         /// <returns></returns>
-
+        IEnumerable<Course> Get(Student student);
 
         /**
      * @param whichCourse 

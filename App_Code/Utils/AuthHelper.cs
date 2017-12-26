@@ -46,5 +46,13 @@ namespace Utils
                 response.Redirect("/Login.aspx");
             }
         }
+
+        public static void VerifySelection(Student student, Course course, HttpResponse response)
+        {
+            if (!new CourseSelectionServiceImpl().VerifyStudentCourseSelection(student, course))
+            {
+                response.Redirect("~/Student/Home.aspx");
+            }
+        }
     }
 }

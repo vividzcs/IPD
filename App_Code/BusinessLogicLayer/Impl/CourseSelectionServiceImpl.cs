@@ -11,7 +11,7 @@ using Models;
 /// </summary>
 public class CourseSelectionServiceImpl : ICourseSelectionService
 {
-    private readonly CourseSelectionDal _courseSelectionDal = new CourseSelectionDal();
+    private readonly ICourseSelectionDal _courseSelectionDal = new CourseSelectionDal();
 
     public int CreateCourseSelectRecording(CourseSelection courseSelection)
     {
@@ -23,4 +23,14 @@ public class CourseSelectionServiceImpl : ICourseSelectionService
         return _courseSelectionDal.SelectRecordStudentByCourseId(id);
     }
 
+    public IEnumerable<CourseSelection> GetCoursesByStudentId(Student student)
+    {
+        return _courseSelectionDal.SelectByStudentId(student.StudentId);
+    }
+
+    public bool VerifyStudentCourseSelection(Student s, Course c)
+    {
+        //true 如果源序列中不包含任何元素，则否则为 false
+        return _courseSelectionDal.SelectByStudentIdAndCourseId(s, c).Any();
+    }
 }

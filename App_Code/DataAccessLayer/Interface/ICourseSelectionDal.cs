@@ -19,4 +19,12 @@ public interface ICourseSelectionDal
 
     IEnumerable<CourseSelection> SelectRecordStudentByCourseId(int id);
 
+    /// <summary>
+    /// 通过学生id，获取该生的所有课程映射信息
+    /// </summary>
+    /// <param name="studentStudentId"></param>
+    /// <returns></returns>
+    IEnumerable<CourseSelection> SelectByStudentId(int studentStudentId);
+
+    IEnumerable<CourseSelection> SelectByStudentIdAndCourseId(Student student, Course course);
 }
