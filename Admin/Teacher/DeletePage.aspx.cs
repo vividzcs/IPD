@@ -31,6 +31,7 @@ public partial class Admin_Teacher_DeletePage : System.Web.UI.Page
                 {
                     Response.Redirect("ManageCourseHwEx.aspx");
                 }
+                
                 var queryset = context.Experiment.Where(ex => ex.ExperimentId == exid);
                 if (queryset.FirstOrDefault() != null)
                 {
@@ -101,6 +102,6 @@ public partial class Admin_Teacher_DeletePage : System.Web.UI.Page
                 }
             }
         }
-        Response.Redirect("ManageCourseHwEx.aspx");
+        Response.Redirect(Request.UrlReferrer.ToString().Split('/').Last());
     }
 }

@@ -15,18 +15,22 @@ namespace Admin.Teacher
     {
         private IEnumerable<Experiment> experimentlist;
         private IEnumerable<Homework> homeworklist;
-
+        
         readonly List<Exnode> exlist = new List<Exnode>();
         readonly List<Honode> holist = new List<Honode>();
 
+        private string url;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            url = Request.Url.AbsoluteUri.Split('/').Last();
+
             AuthHelper.LoginCheck(Session, Request, Response, Server);
             AuthHelper.TeacherOnlyPage(Session, Request, Response, Server);
 
             if (Request.QueryString["pt"] == null || Request.QueryString["id"] == null)
             {
-                return;
+                Response.Redirect("~/Default.aspx");
             }
 
             PageType = Request.QueryString["pt"];
@@ -147,8 +151,8 @@ namespace Admin.Teacher
                                 context.SaveChanges();
                             }
                         }
+                        p++;
                     }
-                    p++;
                 }
             }
             else
@@ -168,10 +172,11 @@ namespace Admin.Teacher
                                 context.SaveChanges();
                             }
                         }
+                        p++;
                     }
-                    p++;
                 }
             }
+            Server.Transfer(url);
         }
     }
 
