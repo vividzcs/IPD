@@ -71,18 +71,26 @@
                             </td>
                             <td>
                                 <div class="content-cell">
-                                    <form id="deleteAttachment" method="post" action="CourseAttachment.aspx">
                                         <input type="hidden" name="<%= atta.AttachmentId %>" size="20" value="<%= atta.AttachmentId %>"/>
                                         <input type="submit" class="btn btn-danger" value="删除">
                                         <%--                                <a href="" id="<%=atta.AttachmentId%>"class ="btn btn-danger" >删除</a>
                                 <Button ID="deleteAttachment"  class="btn btn-danger" Text="删除"   OnCommand="deleteAttachment_Command" />
                                 <asp:Label ID="verfyUploadFile" runat="server" Text=""></asp:Label>--%>
-                                    </form>
                                 </div>
                             </td>
                         </tr>
                     <% } %>
+                    <tr>
+                        <td colspan="3" align="right">                
+                            <a href="javascript:;" class="experiment-homeworkfile btn">
+                            <asp:FileUpload ID="FileUploadCourseAttachment" runat="server"/>点击这里上传课件</a>
+                            <asp:Button ID="UploadCourseAttachment" runat="server" Text="上传" class="btn experiment-upload" OnCommand="UploadCourseAttachment_Command"/>
+                        </td> 
+                    </tr>
                 </table>
+
+
+                
             </div>
         </div>
     </form>

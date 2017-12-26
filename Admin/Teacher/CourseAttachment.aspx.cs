@@ -51,6 +51,7 @@ namespace Admin.Teacher
                 {
                     //删除成功
                     Response.Write("<script language='javascript'>alert('删除成功！');</script>");
+                    Response.Redirect(Request.Url.ToString());
                 }
                 else
                 {
@@ -69,5 +70,24 @@ namespace Admin.Teacher
 
 
 
+
+        protected void UploadCourseAttachment_Command(object sender, System.Web.UI.WebControls.CommandEventArgs e)
+        {
+            String savePath = @"";//此处savePath未加入，应该填入相应路径
+            if (FileUploadCourseAttachment.HasFile)
+            {
+                String filename;
+                filename = FileUploadCourseAttachment.FileName;
+                savePath += filename;
+                FileUploadCourseAttachment.SaveAs(savePath);
+                Response.Write("<script language='javascript'>alert('上传成功！');</script>");
+                Response.Redirect(Request.Url.ToString());
+
+            }
+            else
+            {
+                Response.Write("<script language='javascript'>alert('上传失败，请重试！');</script>");
+            }
+        }
     }
 }
