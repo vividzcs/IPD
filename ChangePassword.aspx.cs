@@ -15,14 +15,14 @@ public partial class ChangePassword : System.Web.UI.Page
         //必须要登录了才能更改密码
         AuthHelper.LoginCheck(Session, Request, Response, Server);
 
-        SpanTipPassword.Visible = false;
-        SpanTipConfirmPassword.Visible = false;
+//        SpanTipPassword.Visible = false;
+//        SpanTipConfirmPassword.Visible = false;
     }
 
     protected void ChangePasswordAction(object sender, EventArgs e)
     {
 
-        if (new_password.Value.Length == 0)
+        /*if (new_password.Value.Length == 0)
         {
             SpanTipPassword.Visible = true;
             return;
@@ -47,7 +47,7 @@ public partial class ChangePassword : System.Web.UI.Page
             SpanTipPassword.Visible = true;
             return;
         }
-        SpanTipPassword.Visible = false;
+        SpanTipPassword.Visible = false;*/
 
 
         //封装数据
@@ -62,11 +62,6 @@ public partial class ChangePassword : System.Web.UI.Page
                     Session.RemoveAll();
                     Response.Redirect("/Login.aspx");
                 }
-                else
-                {
-                    SpanTipPassword.InnerText = "出现错误！";
-                    SpanTipPassword.Visible = true;
-                }
                 break;
 
             case Teacher teacher:
@@ -77,11 +72,6 @@ public partial class ChangePassword : System.Web.UI.Page
                     Session.RemoveAll();
                     Response.Redirect("/Login.aspx");
                 }
-                else
-                {
-                    SpanTipPassword.InnerText = "出现错误！";
-                    SpanTipPassword.Visible = true;
-                }
                 break;
 
             case Admin admin:
@@ -91,11 +81,6 @@ public partial class ChangePassword : System.Web.UI.Page
                     //改密成功，清除session，要求重新登录
                     Session.RemoveAll();
                     Response.Redirect("/Login.aspx");
-                }
-                else
-                {
-                    SpanTipPassword.InnerText = "出现错误！";
-                    SpanTipPassword.Visible = true;
                 }
                 break;
 
