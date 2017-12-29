@@ -19,4 +19,38 @@ public class CourseAttachmentDal : ICourseAttachmentDal
             return obj.AttachmentId;
         }
     }
+    public IEnumerable<CourseAttachment> SelectByCourse(Course course)
+    {
+        using (var context = new HaermsEntities())
+        {
+            var courseAttachments = context.CourseAttachment.Where(ca => ca.CourseId == course.CourseId);
+            return courseAttachments.ToArray();
+        }
+    }
+    public CourseAttachment SelectByAttachmentId(int attachmentId)
+    {
+        using (var context = new HaermsEntities())
+        {
+            var courseAttachments = context.CourseAttachment.Where(ca => ca.AttachmentId == attachmentId);
+            return courseAttachments.ToArray().First();
+        }
+    }
+
+    public bool DeleteByAttachemtId(int neededDeleteAttachmentId)
+    {
+        using (var context = new HaermsEntities())
+        {
+            var courseAttachment = context.CourseAttachment.Where(ca => ca.AttachmentId == neededDeleteAttachmentId);
+            context.CourseAttachment.Remove((CourseAttachment)courseAttachment.First());
+            if (context.SaveChanges() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
 }

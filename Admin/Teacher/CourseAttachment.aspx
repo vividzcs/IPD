@@ -24,9 +24,22 @@
     <style type="text/css">
         .auto-style1 { height: 24px; }
     </style>
+  <script type="text/javascript">
+      function verfy(attachmentId) {
+          var reallydelete = confirm("确认删除？")
+          if (reallydelete == true) {
+              document.getElementById(attachmentId).name = attachmentId + "neededdeleted";
+              return true;
+          }
+          else {
+              return false;
+          }
+      }
+  </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <form runat="server">
+<form runat="server">
         <% var cid = int.Parse(Request.QueryString["course"]); %>
         <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
         <nav class="sidebar">
@@ -58,6 +71,7 @@
                     </tr>
                     <% foreach (var atta in thisTeacherAttachment)
                        { %>
+
                         <tr>
                             <td>
                                 <div class="content-cell">
@@ -71,14 +85,15 @@
                             </td>
                             <td>
                                 <div class="content-cell">
-                                        <input type="hidden" name="<%= atta.AttachmentId %>" size="20" value="<%= atta.AttachmentId %>"/>
-                                        <input type="submit" class="btn btn-danger" value="删除">
+                                        <input type="hidden" id="<%= atta.AttachmentId %>" name="<%= atta.AttachmentId %>" size="20" value="<%= atta.AttachmentId %>"/>
+                                        <input type="submit" class="btn btn-danger" value="删除" onclick="return verfy(<%= atta.AttachmentId %>)">
                                         <%--                                <a href="" id="<%=atta.AttachmentId%>"class ="btn btn-danger" >删除</a>
                                 <Button ID="deleteAttachment"  class="btn btn-danger" Text="删除"   OnCommand="deleteAttachment_Command" />
                                 <asp:Label ID="verfyUploadFile" runat="server" Text=""></asp:Label>--%>
                                 </div>
                             </td>
                         </tr>
+
                     <% } %>
                     <tr>
                         <td colspan="3" align="right">                
@@ -88,11 +103,8 @@
                         </td> 
                     </tr>
                 </table>
-
-
-                
             </div>
         </div>
-    </form>
-    
+</form>
+
 </asp:Content>
