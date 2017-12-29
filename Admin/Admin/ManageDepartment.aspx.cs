@@ -59,7 +59,7 @@ public partial class Admin_ManageDepartment : System.Web.UI.Page
             string englishName = ((TextBox)GridViewDepartments.Rows[rowIndex].FindControl("TextBoxEnglishName")).Text;
             string intro = ((TextBox)GridViewDepartments.Rows[rowIndex].FindControl("TextBoxIntroduction")).Text;
 
-            service.ModifyDepartment(new Department()
+            int succeed = service.ModifyDepartment(new Department()
             {
                 ChinesaeName = chineseName,
                 DepartmentId = departmentId,
@@ -69,6 +69,10 @@ public partial class Admin_ManageDepartment : System.Web.UI.Page
 
             GridViewDepartments.EditIndex = -1;
             InitDepartmemtsData();
+
+            Response.Write(succeed == 1
+                    ? "<script>alert(\"修改成功！\");window.close();opener.location.reload();</script>"
+                    : "<script>alert(\"修改失败请重试！\");</script>");
         }
         else if (e.CommandName == "InsertRow")
         {

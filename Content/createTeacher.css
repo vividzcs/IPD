@@ -19,6 +19,7 @@ a {
     width: 90%;
     margin: 0 auto;
 }
+
 #CreateDepartment, #CreateTeacher {
     width: 70%;
     height: 400px;
@@ -33,11 +34,15 @@ a {
     padding: 0px 30px 0px 30px;
     position: relative;
 }
-.name,.jobNumber,.department,.englishName {
-    display:inline-block;
-    width:50%;
+.name, .jobNumber, .department, .englishName {
+    display: inline-block;
+    width: 50%;
+    margin-top:5px;
 }
-input,select{
+.introduction {
+    margin-top:30px;
+}
+input, select {
     width: 80%;
     height: 36px;
     line-height: 36px;
@@ -48,19 +53,20 @@ input,select{
     margin-top: 30px;
     transition: border-color .2s cubic-bezier(.645,.045,.355,1);
 }
-.introduction {
-    position:absolute;
-    top:30px;
-    right:55px;
-}
-.introduction span {
-    width:80%;
-    position:absolute;
-    top:0px;
-    left:-50px;
-}
-input.btn_create {
-    display: block;
-    margin-top:250px;
-    line-height:1;
-}
+    input.upload {
+        margin-top:0px;
+    }
+    input.btn_create {
+        display: block;
+        margin-top: 15px;
+        line-height: 1;
+    }
+    input.btn_class_upload {
+        line-height: 1;
+        margin-top:0px;
+        float: right;
+    }
+.pic_label {
+    margin-top:5px;
+    font-size:10px;
+} 

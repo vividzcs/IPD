@@ -8,6 +8,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <form id="form1" runat="server" onsubmit="return check()">
         <div id="CreateDepartment">
+            <div style="padding-top:30px">
+                <asp:FileUpload CssClass="upload" ID="pic_upload" runat="server" />
+                <asp:Label ID="lbl_pic" runat="server" class="pic_text"></asp:Label>
+            </div>
+            <div class="pic_label">上传图片格式为.jpg, .gif, .bmp,.png</div>
+           
             <div class="name">
                 名称：<asp:TextBox ID="TextBoxName" runat="server"></asp:TextBox>
             </div> 
@@ -15,7 +21,7 @@
                 英文名：<asp:TextBox ID="TextBoxEnglishName" runat="server" Width="360px"></asp:TextBox>
             </div>
             <div class="introduction">
-                 <span>简介：</span><textarea id="TextAreaIntroduction" runat="server" rows="15" cols="50"></textarea>
+                 简介：<textarea id="TextAreaIntroduction" runat="server" rows="5" cols="103"></textarea>
             </div>  
              <asp:Button type="submit" CssClass="center btn btn-primary btn_create" Width="100px" ID="ButtonCreate" runat="server" Text="创建" OnClick="ButtonCreateDepartment_Click"/>
         </div> 
@@ -24,13 +30,13 @@
         function check() {
             var name = document.getElementsByClassName('name')[0].getElementsByTagName('input')[0].value;
             var englishName = document.getElementsByClassName('englishName')[0].getElementsByTagName('input')[0].value;
-            var reg = /^[A-Za-z]+$/;
+            var fileUpload = document.getElementsByClassName('upload')[0].value;
             var flag = true;
-            if (name === '' || englishName === '') {
+            if (name === '' || englishName === '' || fileUpload === '') {
                 alert("请将信息补充完整!");
                 flag = false;
             }
-            if (reg.test(englishName)) {
+            if (!englishName.toLocaleLowerCase()) {
                 alert("请输入正确的英文名!");
                 flag = false;
             }

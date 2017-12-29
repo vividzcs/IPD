@@ -70,11 +70,17 @@ public partial class Admin_ManageTeacher : System.Web.UI.Page
         {
             case "freeze":
 
-                new TeacherServiceImpl().FreezeTeacher(Convert.ToInt32(e.CommandArgument));
+                int succeed_freeze = new TeacherServiceImpl().FreezeTeacher(Convert.ToInt32(e.CommandArgument));
+                Response.Write(succeed_freeze != 0
+                    ? "<script>alert(\"冻结成功！\");window.close();opener.location.reload();</script>"
+                    : "<script>alert(\"冻结失败请重试！\");</script>");
                 break;
 
             case "reset":
-                    new TeacherServiceImpl().ResetTeacherPassword(Convert.ToInt32(e.CommandArgument));
+                    int succeed_reset = new TeacherServiceImpl().ResetTeacherPassword(Convert.ToInt32(e.CommandArgument));
+                    Response.Write(succeed_reset != 0
+                    ? "<script>alert(\"重置成功！\");window.close();opener.location.reload();</script>"
+                    : "<script>alert(\"重置失败请重试！\");</script>");
                 break;
 
             case "edit":
@@ -94,7 +100,7 @@ public partial class Admin_ManageTeacher : System.Web.UI.Page
                 string introduction = ((TextBox)GridViewTeacher.Rows[rowIndex_update].FindControl("TextBoxIntroduction")).Text;
                 string jobNumber = ((TextBox)GridViewTeacher.Rows[rowIndex_update].FindControl("TextBoxJobNumber")).Text;
 
-                new TeacherServiceImpl().ModifyTeacher(new Teacher()
+                int succeed_update = new TeacherServiceImpl().ModifyTeacher(new Teacher()
                 {
                     TeacherId = teacherId,
                     Name = name,
@@ -106,6 +112,10 @@ public partial class Admin_ManageTeacher : System.Web.UI.Page
 
                 GridViewTeacher.EditIndex = -1;
                 GetData();
+
+                Response.Write(succeed_update != 0
+                    ? "<script>alert(\"更新成功！\");window.close();opener.location.reload();</script>"
+                    : "<script>alert(\"更新失败请重试！\");</script>");
                 break;
 
             case "CancelUpdate":

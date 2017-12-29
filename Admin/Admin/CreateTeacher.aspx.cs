@@ -2,6 +2,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -22,18 +23,70 @@ public partial class Admin_CreateTeacher : System.Web.UI.Page
      */
     protected void ButtonCreateTeacher_Click(object sender, EventArgs e)
     {
-        new TeacherServiceImpl().CreateTeacher(new Teacher()
+
+        Boolean fileOk = false;
+        if (pic_upload.HasFile)//验证是否包含文件
         {
-            Name = TextBoxName.Text,
-            Password = Md5Helper.Md5WithSalt("111111"),
-            JobNumber = TextBoxJobNumber.Text,
-            DepartmentId = Convert.ToInt32(DropDownListDepartment.Text),
-            Banned = false,
-            Introduction = TextAreaIntroduction.InnerText
-        });
+            //取得文件的扩展名,并转换成小写
+            string fileExtension = Path.GetExtension(pic_upload.FileName).ToLower();
+            //验证上传文件是否图片格式
+            fileOk = IsImage(fileExtension);
+
+
+            if (fileOk)
+            {
+                string savePath = Server.MapPath("~/Images/TeacherAvatar/");
+                if (!Directory.Exists(savePath))
+                {
+                    Directory.CreateDirectory(savePath);
+                }
+                var millisecond = DateTime.Now.Millisecond;
+                pic_upload.SaveAs(savePath + millisecond + pic_upload.FileName);//保存图片
+
+                //清空提示
+                lbl_pic.Text = "";
+
+                new TeacherServiceImpl().CreateTeacher(new Teacher()
+                {
+                    Name = TextBoxName.Text,
+                    Password = Md5Helper.Md5WithSalt("111111"),
+                    JobNumber = TextBoxJobNumber.Text,
+                    DepartmentId = Convert.ToInt32(DropDownListDepartment.Text),
+                    Banned = false,
+                    Introduction = TextAreaIntroduction.InnerText,
+                    HeadImage = savePath.Remove(0, Server.MapPath("~").Length - 1) + millisecond + pic_upload.FileName,
+                });
+
+            }
+            else
+            {
+                lbl_pic.Text = "要上传的文件类型不对！请重新选择！";
+            }
+        }
+        else
+        {
+            lbl_pic.Text = "请选择要上传的图片！";
+        }
+       
 
         Response.Redirect("ManageTeacher.aspx");
     }
 
-
+    public bool IsImage(string str)
+    {
+        bool isimage = false;
+        string thestr = str.ToLower();
+        //限定只能上传jpg和gif图片
+        string[] allowExtension = { ".jpg", ".gif", ".bmp", ".png" };
+        //对上传的文件的类型进行一个个匹对
+        for (int i = 0; i < allowExtension.Length; i++)
+        {
+            if (thestr == allowExtension[i])
+            {
+                isimage = true;
+                break;
+            }
+        }
+        return isimage;
+    }
 }
