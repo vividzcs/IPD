@@ -56,21 +56,20 @@ namespace Admin.Teacher
                     if (Regex.IsMatch(Request.Form.Keys[i], pattern))
                     {
                         neededDeleteAttachmentId = int.Parse(Request.Form.Keys[i].ToString().Split('n')[0]);
+                        var deletePath = new CourseAttachmentServiceimpl().GetByAttachmentId(neededDeleteAttachmentId);
                         if (new CourseAttachmentServiceimpl().DeleteByAttachemtId(neededDeleteAttachmentId))
                         {
                             //删除数据库成功
                             //删除当前目录下文件
-                            var deletePath = new CourseAttachmentServiceimpl().GetByAttachmentId(neededDeleteAttachmentId).path;
-                            string temp = deletePath.Path;
-                            string a = "~" + temp;
-                            FileInfo file = new FileInfo(Server.MapPath(a));//指定文件路径
-                            var b = "ss";
+                            var temp = Server.MapPath("~" + deletePath.Path);
+                            FileInfo file = new FileInfo(temp);//指定文件路径
                             try//判断文件是否存在
                             {
-                                file.Attributes = FileAttributes.Normal;//将文件属性设置为普通,比方说只读文件设置为普通
+
+                                //file.Attributes = FileAttributes.Normal;//将文件属性设置为普通,比方说只读文件设置为普通
                                 file.Delete();//删除文件
-                                //Response.Write("<script language='javascript'>alert('删除成功！请按F5刷新');</script>");
-                                Response.Redirect(Request.Url.ToString());
+                                Response.Write("<script language='javascript'>alert('删除成功！请按F5刷新');</script>");
+                                //Response.Redirect(Request.Url.ToString());
                             }
                             catch (Exception ex)
                             { }
@@ -122,7 +121,7 @@ namespace Admin.Teacher
                     //通过session获得课程id
                     string cidString = Request.QueryString["course"];
                     neededInsertCourseAttachment.CourseId = int.Parse(cidString);
-                    neededInsertCourseAttachment.Path = savePath + teacherJobNum + filename;
+                    neededInsertCourseAttachment.Path = savePath + teacherJobNum + "/" +filename;
                     neededInsertCourseAttachment.IssuedTime = DateTime.Now.ToLocalTime();
                     if (new CourseAttachmentServiceimpl().Create(neededInsertCourseAttachment) > 0)
                     {

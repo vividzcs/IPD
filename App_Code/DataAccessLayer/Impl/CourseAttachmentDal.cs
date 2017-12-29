@@ -31,7 +31,7 @@ public class CourseAttachmentDal : ICourseAttachmentDal
     {
         using (var context = new HaermsEntities())
         {
-            var courseAttachments = context.CourseAttachment.Where(ca => ca.AttachmentId== attachmentId);
+            var courseAttachments = context.CourseAttachment.Where(ca => ca.AttachmentId == attachmentId);
             return courseAttachments.ToArray().First();
         }
     }
