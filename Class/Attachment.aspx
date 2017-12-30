@@ -74,7 +74,7 @@
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
-                    <asp:ObjectDataSource runat="server" ID="ObjectDataSourceAttachments" SelectMethod="Get" TypeName="BusinessLogicLayer.Impl.AttachmentServiceImpl">
+                    <asp:ObjectDataSource runat="server" ID="ObjectDataSourceAttachments" SelectMethod="Get" TypeName="CourseAttachmentServiceimpl">
                         <SelectParameters>
                             <asp:QueryStringParameter QueryStringField="cid" Name="courseId" Type="Int32"></asp:QueryStringParameter>
                         </SelectParameters>
