@@ -23,6 +23,7 @@
 <form class="main-container create-class-main-container" runat="server">
     <div class="main-content card">
         <h2>课程作业</h2>
+        <input id="CourseIds" type="hidden" value="<%= Request.QueryString["id"] ?? "0" %>">
         <hr>
         <div class="table-top-form">
             <button class="btn btn-info" type="button" onclick="addHomework()">添加作业</button>
@@ -88,7 +89,7 @@
             "                    </span>\n" +
             "                    <span class=\"homework-deadline\" id=\"homework-deadline-hw-"+homeworkCounter+"\">\n" +
             "                        截止时间：\n" +
-            "                        <input title=\"作业截止时间\" type=\"date\" class=\"input-style\" id='HomeDeadline" + homeworkCounter+"'>\n" +
+            "                        <input title=\"作业截止时间\" type=\"datetime-local\" class=\"input-style\" id='HomeDeadline" + homeworkCounter+"'>\n" +
             "                    </span>\n" + 
             "                </div>\n" +
             "                <div class=\"homework-detail\">\n" +

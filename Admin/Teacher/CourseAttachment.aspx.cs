@@ -113,6 +113,10 @@ namespace Admin.Teacher
                     filename = FileUploadCourseAttachment.FileName;
                     //存储路径为当前路径+老师工号
                     string webSavePath = Server.MapPath("~" + savePath + "/" + teacherJobNum + "/" + filename);
+                    if (!Directory.Exists(Server.MapPath("~" + savePath + "/" + teacherJobNum + "/")))
+                    {
+                        Directory.CreateDirectory(Server.MapPath("~" + savePath + "/" + teacherJobNum + "/"));
+                    }
                     FileUploadCourseAttachment.SaveAs(webSavePath);
 
                     //插入到数据库中

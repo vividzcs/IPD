@@ -34,6 +34,10 @@ public partial class Admin_Teacher_ExcelImport : System.Web.UI.Page
             //把文件放到TeacherUpload/StudentExcelList目录下
             string fileName = Path.Combine(Server.MapPath("~/TeacherUpload/StudentExcelList"),
                 Guid.NewGuid() + Path.GetExtension(Uploader.PostedFile.FileName));
+            if (!Directory.Exists(Server.MapPath("~/TeacherUpload/StudentExcelList")))
+            {
+                Directory.CreateDirectory(Server.MapPath("~/TeacherUpload/StudentExcelList"));
+            }
             Uploader.PostedFile.SaveAs(fileName);
 
             //创建excel访问的数据源

@@ -89,7 +89,7 @@
             "                    </span>\n" +
             "                    <span class=\"homework-deadline\" id=\"homework-deadline-hw-"+homeworkCounter+"\">\n" +
             "                        截止时间：\n" +
-            "                        <input title=\"作业截止时间\" type=\"date\" class=\"input-style\" id='HomeDeadline" + homeworkCounter+"'>\n" +
+            "                        <input title=\"作业截止时间\" type=\"datetime-local\" class=\"input-style\" id='HomeDeadline" + homeworkCounter+"'>\n" +
             "                    </span>\n" + 
             "                </div>\n" +
             "                <div class=\"homework-detail\">\n" +

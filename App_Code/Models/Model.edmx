@@ -146,7 +146,7 @@
           <Property Name="JobNumber" Type="char" MaxLength="8" Nullable="false" />
           <Property Name="Password" Type="char" MaxLength="32" Nullable="false" />
           <Property Name="DepartmentId" Type="int" Nullable="false" />
-          <Property Name="Introduction" Type="nvarchar" MaxLength="300" />
+          <Property Name="Introduction" Type="nvarchar(max)" />
           <Property Name="Banned" Type="bit" Nullable="false" />
           <Property Name="HeadImage" Type="nvarchar" MaxLength="100" />
           <Property Name="Title" Type="nvarchar" MaxLength="40" />
@@ -572,7 +572,7 @@
           <Property Name="JobNumber" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="DepartmentId" Type="Int32" Nullable="false" />
-          <Property Name="Introduction" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Introduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Banned" Type="Boolean" Nullable="false" />
           <Property Name="HeadImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Title" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
