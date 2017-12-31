@@ -134,8 +134,14 @@ public partial class Admin_Teacher_BatchDownload : System.Web.UI.Page
                 {
                     zip.Add(Server.MapPath("~") + p);
                 }
-                zip.CommitUpdate();
-
+                try
+                {
+                    zip.CommitUpdate();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write("<script>alert(\"打包出错，请联系管理员，错误信息：\" " + ex.Message + ");</script>");
+                }
                 buffer = new byte[ms.Length];
                 ms.Position = 0;
                 ms.Read(buffer, 0, buffer.Length); //读入buffer
