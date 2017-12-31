@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="EditCourseSchedule.aspx.cs" Inherits="Admin_Teacher_EditCourseSchedule" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title>创建课程 - 时间安排 - HAERMS</title>
+    <title>编辑课程 - 时间安排 - HAERMS</title>
     <link href="../../Content/index.css" rel="stylesheet" />
     <link href="../../Content/classes.css" rel="stylesheet" />
     <link href="../../Content/teacher-style.css" rel="stylesheet" />

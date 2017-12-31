@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="CreateDepartment.aspx.cs" Inherits="Admin_CreateDepartment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title>管理教师 - HAERMS</title>
+    <title>创建院系 - HAERMS</title>
     <link href="/Content/form-controls.css" rel="stylesheet"/>
     <link href="/Content/createTeacher.css" rel="stylesheet" />
 </asp:Content>

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" codepage=65001 Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ImportStudent.aspx.cs" Inherits="ImportStudent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>导入学生 - HAERMS</title>
     <link href="../../Content/form.css" rel="stylesheet" />
     <link href="../../Content/index.css" rel="stylesheet" />
     <link href="../../Content/importstu.css" rel="stylesheet" />

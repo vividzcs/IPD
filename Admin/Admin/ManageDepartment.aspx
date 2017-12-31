@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="ManageDepartment.aspx.cs" Inherits="Admin_ManageDepartment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title></title>
+    <title>管理院系 - HAERMS</title>
     <link href="/Content/form-controls.css" rel="stylesheet"/>
     <link href="/Content/managedepart.css" rel="stylesheet"/>
 </asp:Content>

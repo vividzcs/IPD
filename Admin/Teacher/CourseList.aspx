@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/FrontSite.master" AutoEventWireup="true" CodeFile="CourseList.aspx.cs" Inherits="Admin_CourseList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <title></title>
+    <title>课程列表 - HAERMS</title>
     <link href="/Content/index.css" rel="stylesheet"/>
     <link href="/Content/teacher-detail.css" rel="stylesheet"/>
     <link href="/Content/courses-list.css" rel="stylesheet"/>
