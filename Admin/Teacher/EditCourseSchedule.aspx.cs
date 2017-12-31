@@ -17,8 +17,8 @@ public partial class Admin_Teacher_EditCourseSchedule : System.Web.UI.Page
                 CourseServiceImpl courseServiceImpl = new CourseServiceImpl();
                 Course course = (Course)courseServiceImpl.GetById(CourseId);
                 //绑定数据
-                BeginDate.Value = course.BeginDate.ToString().Replace("/","-").Remove(course.BeginDate.ToString().IndexOf(" "));
-                EndDate.Value = course.EndDate.ToString().Replace("/", "-").Remove(course.EndDate.ToString().IndexOf(" "));
+                BeginDate.Value = course.BeginDate.GetValueOrDefault().ToString("yyyy-MM-dd");
+                EndDate.Value = course.EndDate.GetValueOrDefault().ToString("yyyy-MM-dd");
                 TheoryClassHour.Value = course.TheoryClassHour.ToString();
                 ExperimentClassHour.Value = course.ExperimentClassHour.ToString();
             }
