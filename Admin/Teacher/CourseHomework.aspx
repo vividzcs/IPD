@@ -70,7 +70,9 @@
                     <% i++;
                        } %>
                 </div>
-                <a href="EditHomework.aspx?id=<%= cid %>" class="btn btn-large btn-primary" target="_blank">发布新作业</a>
+                <div class="float-right">
+                    <a href="EditHomework.aspx?id=<%= cid %>" class="btn btn-large btn-primary" target="_blank">发布新作业</a>
+                </div>
             </div>
         </div>
     </div>
@@ -91,7 +93,7 @@
                     event.target.id.length))];
             var flagHw = homework.style.display === 'none';
 
-                homework.style.display = flagHw ? 'block' : 'none';
+            homework.style.display = flagHw ? 'block' : 'none';
 
             var img = document.getElementById('img-' +
                 parseInt(event.target.id.substr(event.target.id.lastIndexOf('-') + 1,

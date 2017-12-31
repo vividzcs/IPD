@@ -80,7 +80,10 @@
 
                     </div>
                     </div>
-                <a href="EditExperiment.aspx?id=<%= cid %>" class="btn btn-large btn-primary" target="_blank">发布新实验</a>
+                <div class="float-right">
+                    <a href="EditExperiment.aspx?id=<%= cid %>" class="btn btn-large btn-primary" target="_blank">发布新实验</a>
+                </div>
+                
             </div>
         </div>
     </div>
