@@ -218,3 +218,7 @@ footer {
     list-style-type: none;
     background: none;
 }
+
+.float-right {
+    float: right;
+}

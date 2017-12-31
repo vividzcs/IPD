@@ -4,19 +4,19 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
-<%--        通过调用业务逻辑CourseServiceImpl的GetById方法取得该课程的对象，给title赋值--%>
-         <% var cid = int.Parse(Request.QueryString["course"]); %> 
-     <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
+    <%--        通过调用业务逻辑CourseServiceImpl的GetById方法取得该课程的对象，给title赋值--%>
+    <% var cid = int.Parse(Request.QueryString["course"]); %>
+    <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
     <title><%= course.Name %> - 课程首页 - HAERMS</title>
     <link href="../../Content/index.css" rel="stylesheet"/>
     <link href="../../Content/classes.css" rel="stylesheet"/>
     <link href="../../Content/form-controls.css" rel="stylesheet"/>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<%--      通过调用业务逻辑CourseServiceImpl的GetById方法取得该课程的对象，给title赋值--%>
-         <% var cid = int.Parse(Request.QueryString["course"]); %>
+    <%--      通过调用业务逻辑CourseServiceImpl的GetById方法取得该课程的对象，给title赋值--%>
+    <% var cid = int.Parse(Request.QueryString["course"]); %>
 
-     <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
+    <% var course = (Course) (new CourseServiceImpl().GetById(cid)); %>
     <% var teacherId = course.TeacherId;
        var teacher = (Teacher) (new TeacherServiceImpl().GetById(teacherId)); %>
     <div class="">
@@ -49,6 +49,9 @@
                         <%= course.ShortIntroduction %>
                     </p>
                 </div>
+                <div class="float-right">
+                    <a href="EditCourse.aspx?id=<%= cid %>" class="btn btn-large btn-primary" target="_blank">编辑</a>
+                </div>
             </div>
             <div class="main-content card">
                 <h2>课程概述</h2>
@@ -56,9 +59,9 @@
                 <div class="paragraphs">
                     <% var description = course.Description;
                        if (description == null)
-                       {%>
-                            <p>课程暂无概述</p>
-                       <%}
+                       { %>
+                        <p>课程暂无概述</p>
+                    <% }
                        else
                        {
                            var desSplit = description.Split(Environment.NewLine.ToCharArray());
@@ -69,6 +72,9 @@
                             <p><%= pTrimed %></p>
                     <% }
                        } %>
+                </div>
+                <div class="float-right">
+                    <a href="EditIntroDetail.aspx?id=<%= cid %>" class="btn btn-large btn-primary" target="_blank">编辑</a>
                 </div>
             </div>
             <div class="main-content card">
@@ -94,8 +100,10 @@
                         <td>理论<%= course.TheoryClassHour %>课时 + 实验<%= course.ExperimentClassHour %>课时</td>
                     </tr>
                 </table>
+                <div class="float-right">
+                    <a href="EditCourseSchedule.aspx?id=<%= cid %>" class="btn btn-large btn-primary" target="_blank">编辑</a>
+                </div>
             </div>
         </div>
     </div>
 </asp:Content>
-

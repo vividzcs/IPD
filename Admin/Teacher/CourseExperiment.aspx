@@ -80,10 +80,11 @@
 
                     </div>
                     </div>
+                <a href="EditExperiment.aspx?id=<%= cid %>" class="btn btn-large btn-primary" target="_blank">发布新实验</a>
             </div>
         </div>
     </div>
-    <a href="EditExperiment.aspx?id=<%= cid %>" class="btn btn-large btn-default" target="_blank">发布新实验</a>
+
     <script>
         (function init() {
             var allExpDet = document.getElementsByClassName('experiment-detail');

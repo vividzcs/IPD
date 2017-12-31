@@ -70,9 +70,9 @@
                     <% i++;
                        } %>
                 </div>
+                <a href="EditHomework.aspx?id=<%= cid %>" class="btn btn-large btn-primary" target="_blank">发布新作业</a>
             </div>
         </div>
-
     </div>
 
     <script>
